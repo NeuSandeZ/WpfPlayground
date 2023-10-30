@@ -1,54 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Navigation;
+﻿using System.Windows;
 using Hotel.MVVM.ViewModels;
+using Hotel.Services;
 using Hotel.Services.Interfaces;
 using Hotel.Stores;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Hotel
+namespace Hotel;
+
+/// <summary>
+///     Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    private readonly IHost _host;
+
+    public App()
     {
-        private readonly IHost _host;
+        _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
+            {
+                services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<NavigationStore>();
 
-        public App()
-        {
-            _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
+                services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton(s => new MainWindow
                 {
-                    services.AddSingleton<INavigationService, Services.NavigationService>();
-                    services.AddSingleton<NavigationStore>();
+                    DataContext = s.GetRequiredService<MainWindowViewModel>()
+                });
+            })
+            .Build();
+    }
 
-                    services.AddSingleton<MainWindowViewModel>();
-                    services.AddSingleton(s => new MainWindow()
-                    {
-                        DataContext = s.GetRequiredService<MainWindowViewModel>()
-                    });
-                })
-                .Build();
-        }
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        _host.Start();
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            _host.Start();
+        var navigationStore = _host.Services.GetRequiredService<NavigationStore>();
+        navigationStore.CurrentViewModel = new AccountsListingViewModel();
 
-            var navigationStore = _host.Services.GetRequiredService<NavigationStore>();
-            navigationStore.CurrentViewModel = new AccountsListingViewModel();
+        MainWindow = _host.Services.GetRequiredService<MainWindow>();
+        MainWindow.Show();
 
-            MainWindow = _host.Services.GetRequiredService<MainWindow>();
-            MainWindow.Show();
-            
-            base.OnStartup(e);
-        }
+        base.OnStartup(e);
     }
 }

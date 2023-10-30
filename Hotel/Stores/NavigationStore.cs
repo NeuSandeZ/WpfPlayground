@@ -5,9 +5,8 @@ namespace Hotel.Stores;
 
 public class NavigationStore
 {
-    public event Action? CurrentViewModelChanged;
-    
     private ViewModelBase _currentViewModel;
+
     public ViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
@@ -17,6 +16,8 @@ public class NavigationStore
             OnCurrentViewModelChanged();
         }
     }
+
+    public event Action? CurrentViewModelChanged;
 
     private void OnCurrentViewModelChanged()
     {

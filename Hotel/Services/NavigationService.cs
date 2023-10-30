@@ -7,10 +7,12 @@ namespace Hotel.Services;
 public class NavigationService : INavigationService
 {
     private readonly NavigationStore _navigationStore;
+
     public NavigationService(NavigationStore navigationStore)
     {
         _navigationStore = navigationStore;
     }
+
     public ViewModelBase Navigate(View view)
     {
         return _navigationStore.CurrentViewModel = GetCurrentView(view);

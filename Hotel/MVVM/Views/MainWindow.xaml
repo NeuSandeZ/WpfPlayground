@@ -3,32 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:Hotel.MVVM.Views"
         xmlns:viewModels="clr-namespace:Hotel.MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="Hotel" 
-        Height="600" 
+        Title="Hotel"
+        Height="600"
         Width="850"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
-        
+
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
-        
+
         xmlns:myCustomControls="clr-namespace:Hotel.Utilities.MyCustomControls">
-    
+
     <Border Background="#212529">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="228" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            
+
             <Grid HorizontalAlignment="Left"
                   Width="228">
 
-                <Border Background="#272B2F"/>
+                <Border Background="#272B2F" />
 
                 <StackPanel Height="400"
                             Width="228">
@@ -36,9 +35,9 @@
                     <!--// Home //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding NavigateCommand }"
-                              CommandParameter="{x:Static viewModels:View.ListingViewModel}"
-                              IsChecked="True">
+                                               Command="{Binding NavigateCommand }"
+                                               CommandParameter="{x:Static viewModels:View.ListingViewModel}"
+                                               IsChecked="True">
 
                         <Grid>
 
@@ -55,8 +54,8 @@
                     <!--// Customer //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding NavigateCommand }"
-                              CommandParameter="{x:Static viewModels:View.TestViewModel}">
+                                               Command="{Binding NavigateCommand }"
+                                               CommandParameter="{x:Static viewModels:View.TestViewModel}">
 
                         <Grid>
 
@@ -73,7 +72,7 @@
                     <!--// Products //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding }">
+                                               Command="{Binding }">
 
                         <Grid>
 
@@ -90,7 +89,7 @@
                     <!--// Orders //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding }">
+                                               Command="{Binding }">
 
                         <Grid>
 
@@ -107,7 +106,7 @@
                     <!--// Transactions //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding }">
+                                               Command="{Binding }">
 
                         <Grid>
 
@@ -124,7 +123,7 @@
                     <!--// Shipments //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding }">
+                                               Command="{Binding }">
 
                         <Grid>
 
@@ -141,7 +140,7 @@
                     <!--// Settings //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                              Command="{Binding }">
+                                               Command="{Binding }">
 
                         <Grid>
 

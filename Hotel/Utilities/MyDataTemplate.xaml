@@ -2,13 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewModels="clr-namespace:Hotel.MVVM.ViewModels"
                     xmlns:views="clr-namespace:Hotel.MVVM.Views">
-    
-        <DataTemplate DataType="{x:Type viewModels:AccountsListingViewModel}">
-            <views:AccountsListingView />
-        </DataTemplate>
-    
-        <DataTemplate DataType="{x:Type viewModels:TestViewModel}">
-            <views:TestViewModel/>
-        </DataTemplate>
-    
+
+    <DataTemplate DataType="{x:Type viewModels:AccountsListingViewModel}">
+        <views:AccountsListingView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:TestViewModel}">
+        <views:TestViewModel />
+    </DataTemplate>
+
 </ResourceDictionary>
