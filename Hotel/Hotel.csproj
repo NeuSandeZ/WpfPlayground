@@ -14,6 +14,33 @@
 
     <ItemGroup>
       <Folder Include="MVVM\Models\" />
+      <Folder Include="Utilities\Fonts\" />
+      <Folder Include="Utilities\Images\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="MVVM\Views\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Utilities\Images\img_customer.png" />
+      <Resource Include="Utilities\Images\img_customer.png" />
+      <None Remove="Utilities\Images\img_home.png" />
+      <Resource Include="Utilities\Images\img_home.png" />
+      <None Remove="Utilities\Images\img_order.png" />
+      <Resource Include="Utilities\Images\img_order.png" />
+      <None Remove="Utilities\Images\img_product.png" />
+      <Resource Include="Utilities\Images\img_product.png" />
+      <None Remove="Utilities\Images\img_setting.png" />
+      <Resource Include="Utilities\Images\img_setting.png" />
+      <None Remove="Utilities\Images\img_shipment.png" />
+      <Resource Include="Utilities\Images\img_shipment.png" />
+      <None Remove="Utilities\Images\img_transaction.png" />
+      <Resource Include="Utilities\Images\img_transaction.png" />
     </ItemGroup>
 
 </Project>

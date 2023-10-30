@@ -7,9 +7,7 @@ D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.deps.json
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.runtimeconfig.json
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.pdb
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MainWindow.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\App.baml
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MainWindow.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.g.resources
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.GeneratedMSBuildEditorConfig.editorconfig
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.AssemblyInfoInputs.cache
@@ -188,3 +186,10 @@ D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\System.Text.Json.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Diagnostics.EventLog.Messages.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Diagnostics.EventLog.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\MyDataTemplate.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\ButtonStyle.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\ImageStyle.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\TextStyle.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\PageStyle.baml

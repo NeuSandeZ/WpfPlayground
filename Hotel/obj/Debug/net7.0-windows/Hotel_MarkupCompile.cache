@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\RiderProjects\SRC\Hotel\App.xaml
-31919192797
+8-941138606
 
-14481018084
+15-694912270
 227-2021451206
-MainWindow.xaml;MVVM\Views\AccountsListingView.xaml;MVVM\Views\TestViewModel.xaml;
+MVVM\Views\AccountsListingView.xaml;MVVM\Views\MainWindow.xaml;MVVM\Views\TestViewModel.xaml;Utilities\MyDataTemplate.xaml;Utilities\Styles\ButtonStyle.xaml;Utilities\Styles\ImageStyle.xaml;Utilities\Styles\PageStyle.xaml;Utilities\Styles\TextStyle.xaml;
 
 False
 

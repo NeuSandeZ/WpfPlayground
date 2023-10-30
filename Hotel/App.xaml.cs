@@ -12,7 +12,6 @@ using Hotel.Services.Interfaces;
 using Hotel.Stores;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NavigationService = System.Windows.Navigation.NavigationService;
 
 namespace Hotel
 {
@@ -37,15 +36,14 @@ namespace Hotel
                     });
                 })
                 .Build();
-            
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             _host.Start();
 
-            var _navigationStore = _host.Services.GetRequiredService<NavigationStore>();
-            _navigationStore.CurrentViewModel = new AccountsListingViewModel();
+            var navigationStore = _host.Services.GetRequiredService<NavigationStore>();
+            navigationStore.CurrentViewModel = new AccountsListingViewModel();
 
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();

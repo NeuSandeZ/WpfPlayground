@@ -7,12 +7,22 @@
              >
     
     <Application.Resources>
+        
         <ResourceDictionary x:Key="">
             <ResourceDictionary.MergedDictionaries>
+                
                 <ui:ThemeResources RequestedTheme="Light"/>
                 <ui:XamlControlsResources/>
+                
+                <ResourceDictionary Source="Utilities/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="Utilities/Styles/ImageStyle.xaml"/>
+                <ResourceDictionary Source="Utilities/Styles/TextStyle.xaml"/>
+                <ResourceDictionary Source="Utilities/Styles/PageStyle.xaml"/>
+                <ResourceDictionary Source="Utilities/MyDataTemplate.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
     </Application.Resources>
     
 </Application>

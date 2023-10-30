@@ -6,12 +6,10 @@ namespace Hotel.Commands;
 
 public class NavigateCommand : BaseCommand
 {
-    private readonly NavigationStore _navigationStore;
     private readonly INavigationService _navigationService;
-
-    public NavigateCommand(NavigationStore navigationStore, INavigationService navigationService)
+    
+    public NavigateCommand(INavigationService navigationService)
     {
-        _navigationStore = navigationStore;
         _navigationService = navigationService;
     }
 
@@ -19,7 +17,7 @@ public class NavigateCommand : BaseCommand
     {
         if (parameter is View view)
         {
-            _navigationStore.CurrentViewModel = _navigationService.Navigate(view); 
+            _navigationService.Navigate(view); 
         }
     }
 }
