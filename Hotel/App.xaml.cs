@@ -20,8 +20,8 @@ public partial class App : Application
         _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
                 services.AddSingleton<INavigationService, NavigationService>();
-                services.AddSingleton<NavigationStore>();
-
+                services.AddSingleton<NavigationViewStore>();
+                
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton(s => new MainWindow
                 {
@@ -34,9 +34,9 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         _host.Start();
-
-        var navigationStore = _host.Services.GetRequiredService<NavigationStore>();
-        navigationStore.CurrentViewModel = new AccountsListingViewModel();
+        
+        var navigationStore = _host.Services.GetRequiredService<NavigationViewStore>();
+        navigationStore.CurrentViewModel = new ReservationsListingViewModel();
 
         MainWindow = _host.Services.GetRequiredService<MainWindow>();
         MainWindow.Show();

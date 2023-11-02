@@ -7,16 +7,16 @@ namespace Hotel.MVVM.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    private readonly NavigationStore _navigationStore;
+    private readonly NavigationViewStore _navigationViewStore;
 
-    public MainWindowViewModel(NavigationStore navigationStore, INavigationService navigationService)
+    public MainWindowViewModel(NavigationViewStore navigationViewStore, INavigationService navigationService)
     {
-        _navigationStore = navigationStore;
+        _navigationViewStore = navigationViewStore;
         NavigateCommand = new NavigateCommand(navigationService);
-        _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        _navigationViewStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
     }
 
-    public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+    public ViewModelBase CurrentViewModel => _navigationViewStore.CurrentViewModel;
     public ICommand NavigateCommand { get; }
 
     private void OnCurrentViewModelChanged()

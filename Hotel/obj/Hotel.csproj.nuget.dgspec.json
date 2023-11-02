@@ -52,6 +52,10 @@
             "ModernWpfUI": {
               "target": "Package",
               "version": "[0.9.7-preview.2, )"
+            },
+            "SimpleModal.WPF": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             }
           },
           "imports": [

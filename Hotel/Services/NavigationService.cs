@@ -6,16 +6,16 @@ namespace Hotel.Services;
 
 public class NavigationService : INavigationService
 {
-    private readonly NavigationStore _navigationStore;
+    private readonly NavigationViewStore _navigationViewStore;
 
-    public NavigationService(NavigationStore navigationStore)
+    public NavigationService(NavigationViewStore navigationViewStore)
     {
-        _navigationStore = navigationStore;
+        _navigationViewStore = navigationViewStore;
     }
 
     public ViewModelBase Navigate(View view)
     {
-        return _navigationStore.CurrentViewModel = GetCurrentView(view);
+        return _navigationViewStore.CurrentViewModel = GetCurrentView(view);
     }
 
     private ViewModelBase GetCurrentView(View view)
@@ -23,7 +23,7 @@ public class NavigationService : INavigationService
         switch (view)
         {
             case View.ListingViewModel:
-                return new AccountsListingViewModel();
+                return new ReservationsListingViewModel();
             case View.TestViewModel:
                 return new TestViewModel();
             default:

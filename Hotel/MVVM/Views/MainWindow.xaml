@@ -21,7 +21,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="228" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="622" />
             </Grid.ColumnDefinitions>
 
             <Grid HorizontalAlignment="Left"
@@ -44,7 +44,7 @@
                             <Image Source="\Utilities\Images\img_home.png"
                                    Style="{StaticResource Image_Style}" />
 
-                            <TextBlock Text="Home"
+                            <TextBlock Text="Reservations"
                                        Style="{StaticResource Text_Style}" />
 
                         </Grid>
@@ -79,7 +79,7 @@
                             <Image Source="\Utilities\Images\img_product.png"
                                    Style="{StaticResource Image_Style}" />
 
-                            <TextBlock Text="Products"
+                            <TextBlock Text="Rooms"
                                        Style="{StaticResource Text_Style}" />
 
                         </Grid>

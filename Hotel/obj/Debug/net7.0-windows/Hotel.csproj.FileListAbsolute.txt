@@ -147,10 +147,8 @@ D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\uz-Latn-UZ\ModernWpf.Control
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\uz-Latn-UZ\ModernWpf.resources.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\vi-VN\ModernWpf.Controls.resources.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\vi-VN\ModernWpf.resources.dll
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\AccountsListingView.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TestViewModel.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\AccountsListingView.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TestViewModel.baml
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -193,3 +191,9 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\ButtonStyle
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\ImageStyle.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\TextStyle.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\PageStyle.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Themes\Generic.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\ReservationsListingView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\ReservationsListingView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\CrudAddModalView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\CrudAddModalView.g.cs
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\ModalControl.dll
