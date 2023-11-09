@@ -10,10 +10,13 @@
         Width="850"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Transparent"
-
-        xmlns:ui="http://schemas.modernwpf.com/2019"
-        ui:WindowHelper.UseModernWindowStyle="True"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
 
         xmlns:myCustomControls="clr-namespace:Hotel.Utilities.MyCustomControls">
 

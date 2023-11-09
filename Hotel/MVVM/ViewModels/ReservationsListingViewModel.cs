@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using Hotel.Commands;
+using Hotel.Infrastructure;
 using Hotel.MVVM.Views;
 using Hotel.Services.Interfaces;
 using Hotel.Stores;

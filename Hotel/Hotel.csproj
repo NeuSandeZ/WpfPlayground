@@ -8,13 +8,23 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MaterialDesignThemes" Version="5.0.0-ci435" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-rc.2.23479.6"/>
-        <PackageReference Include="ModernWpfUI" Version="0.9.7-preview.2"/>
+        <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
         <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="MVVM\Models\"/>
         <Folder Include="Utilities\Fonts\"/>
         <Folder Include="Utilities\Images\"/>
     </ItemGroup>
@@ -46,6 +56,17 @@
         <Resource Include="Utilities\Fonts\Rubik-Medium.ttf" />
         <None Remove="Utilities\Fonts\Rubik-Regular.ttf" />
         <Resource Include="Utilities\Fonts\Rubik-Regular.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hotel.Infrastructure\Hotel.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="connectionString.json" />
+      <Content Include="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

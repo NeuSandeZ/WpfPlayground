@@ -11,9 +11,9 @@
              d:DesignHeight="600" d:DesignWidth="622"
              Style="{StaticResource Page_Style}">
      
-         <views:CrudViewBase.AddCommand>
-             <commands:AddModalCommand/>
-         </views:CrudViewBase.AddCommand>
+         <!-- <views:CrudViewBase.AddCommand> -->
+         <!--     <commands:AddModalCommand/> -->
+         <!-- </views:CrudViewBase.AddCommand> -->
      
      <Grid Background="Red" >
          
@@ -26,6 +26,7 @@
              <StackPanel Orientation="Horizontal">
                  
                  <Button> isOpen </Button>
+                 <DatePicker VerticalContentAlignment="Center"></DatePicker>
                  <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
                  <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
                  <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>

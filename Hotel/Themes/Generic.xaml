@@ -27,7 +27,6 @@
                             <TextBox Height="40"
                                      Width="200"
                                      Text="Search..."
-                                     FontWeight="Medium"
                                      Foreground="Azure"
                                      Background="MediumPurple"
                                      FontSize="16"
@@ -37,28 +36,16 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="40">
                                 
                                 <Button Content="Add" 
-                                        Height="40" 
-                                        FontWeight="Medium" 
-                                        Foreground="Azure" 
-                                        Background="Green" 
                                         FontSize="16"
                                         Margin="0 0 10 0"
-                                        Command="{Binding AddCommand, RelativeSource={RelativeSource AncestorType={x:Type local:CrudViewBase}}}"
-                                        />
-                                
+                                        Command="{Binding AddModalCommand}"
+                                        /><!-- Command="{Binding AddModalCommand, RelativeSource={RelativeSource AncestorType={x:Type local:CrudViewBase}}}" -->
+
                                 <Button Content="Edit" 
-                                        Height="40" 
-                                        FontWeight="Medium" 
-                                        Foreground="Azure" 
-                                        Background="Purple" 
                                         FontSize="16"
                                         Margin="0 0 10 0" />
                                 
                                 <Button Content="Delete" 
-                                        Height="40" 
-                                        FontWeight="Medium" 
-                                        Foreground="Azure" 
-                                        Background="IndianRed" 
                                         FontSize="16"
                                         Margin="0 0 10 0" />
                                 
