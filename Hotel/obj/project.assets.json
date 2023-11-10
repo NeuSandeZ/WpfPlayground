@@ -1617,10 +1617,34 @@
           }
         }
       },
+      "Hotel.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Hotel.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hotel.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hotel.Application.dll": {}
+        }
+      },
+      "Hotel.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Hotel.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hotel.Domain.dll": {}
+        }
+      },
       "Hotel.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "Hotel.Application": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
           "Microsoft.Extensions.Configuration": "8.0.0-rc.2.23479.6"
@@ -4298,6 +4322,16 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Hotel.Application/1.0.0": {
+      "type": "project",
+      "path": "../Hotel.Application/Hotel.Application.csproj",
+      "msbuildProject": "../Hotel.Application/Hotel.Application.csproj"
+    },
+    "Hotel.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Hotel.Domain/Hotel.Domain.csproj",
+      "msbuildProject": "../Hotel.Domain/Hotel.Domain.csproj"
+    },
     "Hotel.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../Hotel.Infrastructure/Hotel.Infrastructure.csproj",
@@ -4306,6 +4340,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "Hotel.Application >= 1.0.0",
       "Hotel.Infrastructure >= 1.0.0",
       "MaterialDesignThemes >= 5.0.0-ci435",
       "Microsoft.EntityFrameworkCore >= 7.0.13",
@@ -4350,6 +4385,9 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
+            "D:\\RiderProjects\\SRC\\Hotel.Application\\Hotel.Application.csproj": {
+              "projectPath": "D:\\RiderProjects\\SRC\\Hotel.Application\\Hotel.Application.csproj"
+            },
             "D:\\RiderProjects\\SRC\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj": {
               "projectPath": "D:\\RiderProjects\\SRC\\Hotel.Infrastructure\\Hotel.Infrastructure.csproj"
             }

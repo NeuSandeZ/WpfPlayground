@@ -20,4 +20,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-rc.2.23479.6" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Hotel.Application\Hotel.Application.csproj" />
+    </ItemGroup>
+
 </Project>

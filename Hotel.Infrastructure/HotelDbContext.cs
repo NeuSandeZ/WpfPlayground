@@ -1,4 +1,4 @@
-﻿using Hotel.Infrastructure.Entities;
+﻿using Hotel.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotel.Infrastructure;

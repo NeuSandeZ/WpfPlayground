@@ -110,3 +110,7 @@ D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\MaterialDesignColors.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\MaterialDesignThemes.Wpf.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\ShowMeTheXAML.dll
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Application.dll
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Domain.dll
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Application.pdb
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Domain.pdb

@@ -1073,6 +1073,29 @@
             "rid": "win"
           }
         }
+      },
+      "Hotel.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Hotel.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hotel.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hotel.Application.dll": {}
+        }
+      },
+      "Hotel.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Hotel.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hotel.Domain.dll": {}
+        }
       }
     }
   },
@@ -2931,10 +2954,21 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Hotel.Application/1.0.0": {
+      "type": "project",
+      "path": "../Hotel.Application/Hotel.Application.csproj",
+      "msbuildProject": "../Hotel.Application/Hotel.Application.csproj"
+    },
+    "Hotel.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Hotel.Domain/Hotel.Domain.csproj",
+      "msbuildProject": "../Hotel.Domain/Hotel.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Hotel.Application >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.13",
@@ -2974,7 +3008,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\RiderProjects\\SRC\\Hotel.Application\\Hotel.Application.csproj": {
+              "projectPath": "D:\\RiderProjects\\SRC\\Hotel.Application\\Hotel.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

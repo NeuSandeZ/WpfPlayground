@@ -1,0 +1,11 @@
+D:\RiderProjects\SRC\Hotel.Domain\bin\Debug\net7.0\Hotel.Domain.deps.json
+D:\RiderProjects\SRC\Hotel.Domain\bin\Debug\net7.0\Hotel.Domain.dll
+D:\RiderProjects\SRC\Hotel.Domain\bin\Debug\net7.0\Hotel.Domain.pdb
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.AssemblyInfoInputs.cache
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.AssemblyInfo.cs
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.csproj.CoreCompileInputs.cache
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.dll
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\refint\Hotel.Domain.dll
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.pdb
+D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\ref\Hotel.Domain.dll

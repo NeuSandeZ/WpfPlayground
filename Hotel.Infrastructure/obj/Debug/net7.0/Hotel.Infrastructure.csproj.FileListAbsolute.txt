@@ -12,3 +12,8 @@ D:\RiderProjects\SRC\Hotel.Infrastructure\obj\Debug\net7.0\refint\Hotel.Infrastr
 D:\RiderProjects\SRC\Hotel.Infrastructure\obj\Debug\net7.0\Hotel.Infrastructure.pdb
 D:\RiderProjects\SRC\Hotel.Infrastructure\obj\Debug\net7.0\Hotel.Infrastructure.genruntimeconfig.cache
 D:\RiderProjects\SRC\Hotel.Infrastructure\obj\Debug\net7.0\ref\Hotel.Infrastructure.dll
+D:\RiderProjects\SRC\Hotel.Infrastructure\bin\Debug\net7.0\Hotel.Application.dll
+D:\RiderProjects\SRC\Hotel.Infrastructure\bin\Debug\net7.0\Hotel.Domain.dll
+D:\RiderProjects\SRC\Hotel.Infrastructure\bin\Debug\net7.0\Hotel.Application.pdb
+D:\RiderProjects\SRC\Hotel.Infrastructure\bin\Debug\net7.0\Hotel.Domain.pdb
+D:\RiderProjects\SRC\Hotel.Infrastructure\obj\Debug\net7.0\Hotel.Infrastructure.csproj.CopyComplete
