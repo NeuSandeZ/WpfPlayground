@@ -4,8 +4,6 @@ using System.IO;
 using System.Windows;
 using Hotel.Infrastructure;
 using Hotel.MVVM.ViewModels;
-using Hotel.Services;
-using Hotel.Services.Interfaces;
 using Hotel.Stores;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,8 +33,10 @@ public partial class App : System.Windows.Application
             {
                 services.AddInfrastructure(connectionString);
                 
-                services.AddSingleton<INavigationService, NavigationService>();
+                // services.AddSingleton<INavigationService, NavigationService>();
                 services.AddSingleton<NavigationViewStore>();
+
+                services.AddSingleton<NavigationModalViewStore>(); // 
                 
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton(s => new MainWindow
@@ -50,9 +50,11 @@ public partial class App : System.Windows.Application
     protected override void OnStartup(StartupEventArgs e)
     {
         _host.Start();
-        
+
+        var navigationModalStore = _host.Services.GetRequiredService<NavigationModalViewStore>();
         var navigationStore = _host.Services.GetRequiredService<NavigationViewStore>();
-        navigationStore.CurrentViewModel = new ReservationsListingViewModel();
+        
+        navigationStore.CurrentViewModel = new ReservationsListingViewModel(navigationModalStore);
 
         MainWindow = _host.Services.GetRequiredService<MainWindow>();
         MainWindow.Show();

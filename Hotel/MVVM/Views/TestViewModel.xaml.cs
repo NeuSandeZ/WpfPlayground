@@ -2,7 +2,7 @@
 
 namespace Hotel.MVVM.Views;
 
-public partial class TestViewModel : UserControl
+public partial class TestViewModel : CrudViewBase
 {
     public TestViewModel()
     {

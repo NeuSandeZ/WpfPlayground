@@ -1,19 +1,23 @@
-﻿using Hotel.MVVM.ViewModels;
-using Hotel.Services.Interfaces;
+﻿using System;
+using Hotel.MVVM.ViewModels;
+using Hotel.Stores;
 
 namespace Hotel.Commands;
 
-public class NavigateCommand : BaseCommand
+public class NavigateCommand<TViewModel> : BaseCommand
+where TViewModel : ViewModelBase
 {
-    private readonly INavigationService _navigationService;
+    private readonly NavigationViewStore _navigationStore;
+    private readonly Func<TViewModel> _createViewModel;
 
-    public NavigateCommand(INavigationService navigationService)
+    public NavigateCommand(NavigationViewStore navigationStore, Func<TViewModel> createViewModel)
     {
-        _navigationService = navigationService;
+        _navigationStore = navigationStore;
+        _createViewModel = createViewModel;
     }
 
     public override void Execute(object? parameter)
     {
-        if (parameter is View view) _navigationService.Navigate(view);
+        _navigationStore.CurrentViewModel = _createViewModel();
     }
 }

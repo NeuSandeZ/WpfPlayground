@@ -47,18 +47,18 @@ namespace Hotel.MVVM.Views
     /// </summary>
     public class CrudViewBase : UserControl
     {
-        // public static readonly DependencyProperty AddCommandProperty =
-        //     DependencyProperty.Register(
-        //         "AddModalCommand", 
-        //         typeof(ICommand), 
-        //         typeof(CrudViewBase), 
-        //         new PropertyMetadata(null));
-        //
-        // public ICommand AddCommand
-        // {
-        //     get { return (ICommand)GetValue(AddCommandProperty); }
-        //     set { SetValue(AddCommandProperty, value); }
-        // }
+        public static readonly DependencyProperty AddCommandProperty =
+            DependencyProperty.Register(
+                "AddViewModalCommand", 
+                typeof(ICommand), 
+                typeof(CrudViewBase), 
+                new PropertyMetadata(null));
+        
+        public ICommand AddCommand
+        {
+            get { return (ICommand)GetValue(AddCommandProperty); }
+            set { SetValue(AddCommandProperty, value); }
+        }
 
         static CrudViewBase()
         {

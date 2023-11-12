@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using Hotel.Commands;
-using Hotel.Services.Interfaces;
 using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
@@ -8,25 +7,24 @@ namespace Hotel.MVVM.ViewModels;
 public class MainWindowViewModel : ViewModelBase
 {
     private readonly NavigationViewStore _navigationViewStore;
+    private readonly NavigationModalViewStore _navigationModalViewStore; //
+    public ViewModelBase CurrentViewModel => _navigationViewStore.CurrentViewModel;
+    public ICommand NavigateReservationCommand { get; }
+    public ICommand NavigateTestCommand { get; }
 
-    public MainWindowViewModel(NavigationViewStore navigationViewStore, INavigationService navigationService)
+    public MainWindowViewModel(NavigationViewStore navigationViewStore, NavigationModalViewStore navigationModalViewStore)
     {
         _navigationViewStore = navigationViewStore;
-        NavigateCommand = new NavigateCommand(navigationService);
+        _navigationModalViewStore = navigationModalViewStore;
+
+        NavigateReservationCommand = new NavigateCommand<ReservationsListingViewModel>(_navigationViewStore, () => new ReservationsListingViewModel(_navigationModalViewStore));
+        NavigateTestCommand = new NavigateCommand<TestViewModel>(navigationViewStore, () => new TestViewModel(navigationViewStore));
+
         _navigationViewStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
     }
-
-    public ViewModelBase CurrentViewModel => _navigationViewStore.CurrentViewModel;
-    public ICommand NavigateCommand { get; }
-
+    
     private void OnCurrentViewModelChanged()
     {
         OnPropertyChanged(nameof(CurrentViewModel));
     }
-}
-
-public enum View
-{
-    ListingViewModel,
-    TestViewModel
 }

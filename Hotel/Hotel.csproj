@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="Services\Interfaces\" />
         <Folder Include="Utilities\Fonts\"/>
         <Folder Include="Utilities\Images\"/>
     </ItemGroup>

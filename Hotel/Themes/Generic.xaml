@@ -37,9 +37,9 @@
                                 
                                 <Button Content="Add" 
                                         FontSize="16"
-                                        Margin="0 0 10 0"
-                                        Command="{Binding AddModalCommand}"
-                                        /><!-- Command="{Binding AddModalCommand, RelativeSource={RelativeSource AncestorType={x:Type local:CrudViewBase}}}" -->
+                                        Margin="0 0 10 0" 
+                                        Command="{Binding AddViewModalCommand}"
+                                        /><!-- Command="{Binding AddCommand, RelativeSource={RelativeSource AncestorType={x:Type local:CrudViewBase}}}" -->
 
                                 <Button Content="Edit" 
                                         FontSize="16"

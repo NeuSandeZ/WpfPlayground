@@ -12,7 +12,7 @@
              Style="{StaticResource Page_Style}">
      
          <!-- <views:CrudViewBase.AddCommand> -->
-         <!--     <commands:AddModalCommand/> -->
+         <!--     <commands:AddViewModalCommand/> -->
          <!-- </views:CrudViewBase.AddCommand> -->
      
      <Grid Background="Red" >

@@ -38,8 +38,7 @@
                     <!--// Home //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding NavigateCommand }"
-                                               CommandParameter="{x:Static viewModels:View.ListingViewModel}"
+                                               Command="{Binding NavigateReservationCommand }"
                                                IsChecked="True">
 
                         <Grid>
@@ -57,8 +56,7 @@
                     <!--// Customer //-->
 
                     <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding NavigateCommand }"
-                                               CommandParameter="{x:Static viewModels:View.TestViewModel}">
+                                               Command="{Binding NavigateTestCommand }">
 
                         <Grid>
 
