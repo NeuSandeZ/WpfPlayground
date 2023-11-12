@@ -1,16 +1,17 @@
 ﻿using System;
 using Hotel.MVVM.ViewModels;
 using Hotel.Stores;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Hotel.Commands;
 
-public class NavigateModalCommand<TViewModel> : BaseCommand
-    where TViewModel : ViewModelBase
+public class NavigateModalCommand : BaseCommand
+
 {
     private readonly NavigationModalViewStore _navigationModalViewStore;
-    private readonly Func<TViewModel> _createViewModel;
+    private readonly Func<ViewModelBase> _createViewModel;
 
-    public NavigateModalCommand(NavigationModalViewStore navigationModalViewStore, Func<TViewModel> createViewModel)
+    public NavigateModalCommand(NavigationModalViewStore navigationModalViewStore, Func<ViewModelBase> createViewModel)
     {
         _navigationModalViewStore = navigationModalViewStore;
         _createViewModel = createViewModel;

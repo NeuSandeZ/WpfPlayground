@@ -15,5 +15,9 @@
     <DataTemplate DataType="{x:Type viewModels:CrudAddModalViewModel}">
         <modals:CrudAddModalView/>
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type viewModels:TextXDViewModel}">
+        <modals:TestXD/>
+    </DataTemplate>
 
 </ResourceDictionary>

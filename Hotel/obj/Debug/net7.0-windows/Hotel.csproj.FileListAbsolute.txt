@@ -114,3 +114,5 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\refint\Hotel.dll
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.pdb
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.genruntimeconfig.cache
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\ref\Hotel.dll
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\TestXD.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\TestXD.baml
