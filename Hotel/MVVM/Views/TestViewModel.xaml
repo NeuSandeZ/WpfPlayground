@@ -17,11 +17,6 @@
     
     <Grid>
         
-        <modalControl:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
-            <!-- <modals:CrudAddModalView/> -->
-            <ContentControl Content="{Binding CurrentModalViewModel}"></ContentControl>
-        </modalControl:Modal>
-        
         <TextBlock> TEST VIEW </TextBlock>
     </Grid>
 </views:CrudViewBase>

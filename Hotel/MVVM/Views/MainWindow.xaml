@@ -7,9 +7,8 @@
         mc:Ignorable="d"
         Title="Hotel"
         Height="600"
-        Width="850"
+        Width="auto"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,149 +17,160 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
 
-        xmlns:myCustomControls="clr-namespace:Hotel.Utilities.MyCustomControls">
+        xmlns:myCustomControls="clr-namespace:Hotel.Utilities.MyCustomControls"
+        xmlns:modalControl="clr-namespace:ModalControl;assembly=ModalControl"
+        xmlns:modals="clr-namespace:Hotel.MVVM.Views.Modals">
 
     <Border Background="#212529">
+        
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="228" />
-                <ColumnDefinition Width="622" />
-            </Grid.ColumnDefinitions>
+            
+            <modalControl:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
+                <ContentControl Content="{Binding CurrentModalViewModel}"></ContentControl>
+            </modalControl:Modal>
+            
+            <Grid>
 
-            <Grid HorizontalAlignment="Left"
-                  Width="228">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="228" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                <Border Background="#272B2F" />
+                <Grid HorizontalAlignment="Left"
+                      Width="228">
 
-                <StackPanel Height="400"
-                            Width="228">
+                    <Border Background="#272B2F" />
 
-                    <!--// Home //-->
+                    <StackPanel Height="400"
+                                Width="228">
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding NavigateReservationCommand }"
-                                               IsChecked="True">
+                        <!--// Home //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding NavigateReservationCommand }"
+                                                   IsChecked="True">
 
-                            <Image Source="\Utilities\Images\img_home.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Reservations"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_home.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Reservations"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                    <!--// Customer //-->
+                        </myCustomControls:MyButton>
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding NavigateTestCommand }">
+                        <!--// Customer //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding NavigateTestCommand }">
 
-                            <Image Source="\Utilities\Images\img_customer.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Customer"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_customer.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Customer"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                    <!--// Products //-->
+                        </myCustomControls:MyButton>
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding }">
+                        <!--// Products //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding }">
 
-                            <Image Source="\Utilities\Images\img_product.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Rooms"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_product.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Rooms"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                    <!--// Orders //-->
+                        </myCustomControls:MyButton>
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding }">
+                        <!--// Orders //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding }">
 
-                            <Image Source="\Utilities\Images\img_order.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Orders"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_order.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Orders"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                    <!--// Transactions //-->
+                        </myCustomControls:MyButton>
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding }">
+                        <!--// Transactions //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding }">
 
-                            <Image Source="\Utilities\Images\img_transaction.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Transactions"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_transaction.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Transactions"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                    <!--// Shipments //-->
+                        </myCustomControls:MyButton>
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding }">
+                        <!--// Shipments //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding }">
 
-                            <Image Source="\Utilities\Images\img_shipment.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Shipments"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_shipment.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Shipments"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                    <!--// Settings //-->
+                        </myCustomControls:MyButton>
 
-                    <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                               Command="{Binding }">
+                        <!--// Settings //-->
 
-                        <Grid>
+                        <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
+                                                   Command="{Binding }">
 
-                            <Image Source="\Utilities\Images\img_setting.png"
-                                   Style="{StaticResource Image_Style}" />
+                            <Grid>
 
-                            <TextBlock Text="Settings"
-                                       Style="{StaticResource Text_Style}" />
+                                <Image Source="\Utilities\Images\img_setting.png"
+                                       Style="{StaticResource Image_Style}" />
 
-                        </Grid>
+                                <TextBlock Text="Settings"
+                                           Style="{StaticResource Text_Style}" />
 
-                    </myCustomControls:MyButton>
+                            </Grid>
 
-                </StackPanel>
+                        </myCustomControls:MyButton>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" />
 
             </Grid>
-
-            <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" />
-
         </Grid>
     </Border>
 </Window>

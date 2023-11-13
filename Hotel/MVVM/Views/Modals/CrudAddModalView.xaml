@@ -30,6 +30,7 @@
                         HorizontalAlignment="Left"
                         Background="Blue"
                         Foreground="Azure"
+                        Command="{Binding Something}"
                         />
 
             </StackPanel>

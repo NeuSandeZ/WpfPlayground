@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\RiderProjects\SRC\Hotel\App.xaml
 11-638617823
 11413424753
-25566764700
+261176365153
 254-1370036479
 MVVM\Views\MainWindow.xaml;MVVM\Views\Modals\CrudAddModalView.xaml;MVVM\Views\Modals\TestXD.xaml;MVVM\Views\ReservationsListingView.xaml;MVVM\Views\TestViewModel.xaml;Themes\Generic.xaml;Utilities\MyDataTemplate.xaml;Utilities\Styles\ButtonStyle.xaml;Utilities\Styles\ImageStyle.xaml;Utilities\Styles\PageStyle.xaml;Utilities\Styles\TextStyle.xaml;
 
-False
+True
 

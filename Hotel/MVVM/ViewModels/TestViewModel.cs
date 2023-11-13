@@ -15,11 +15,11 @@ public class TestViewModel : ViewModelBase
         _navigationModalViewStore = navigationModalViewStore;
         
         AddViewModalCommand = new NavigateModalCommand(_navigationModalViewStore,
-            () => new TextXDViewModel());
+            () => new TextXDViewModel(_navigationModalViewStore));
         
         _navigationModalViewStore.CurrentViewModelChanged += OnCurrentViewModalChanged;
     }
-
+    
     private void OnCurrentViewModalChanged()
     {
         OnPropertyChanged(nameof(CurrentModalViewModel));

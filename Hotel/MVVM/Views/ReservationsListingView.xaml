@@ -17,11 +17,6 @@
      
      <Grid Background="Red" >
          
-         <modalControl:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
-             <!-- <modals:CrudAddModalView/> -->
-             <ContentControl Content="{Binding CurrentModalViewModel}"></ContentControl>
-         </modalControl:Modal>
-         
          <Grid>
              <StackPanel Orientation="Horizontal">
                  

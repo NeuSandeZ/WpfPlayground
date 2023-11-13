@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace Hotel.Commands;
 
 public class NavigateModalCommand : BaseCommand
-
 {
     private readonly NavigationModalViewStore _navigationModalViewStore;
     private readonly Func<ViewModelBase> _createViewModel;

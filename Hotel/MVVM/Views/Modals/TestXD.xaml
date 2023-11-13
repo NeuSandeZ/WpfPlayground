@@ -9,5 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Height="300" Width="300">
         <TextBlock> Dupa dupa dupa dupa </TextBlock>
+        <Button Width="100" Height="30" Content="Cos"
+                Command="{Binding Something}"/>
     </Grid>
 </UserControl>
