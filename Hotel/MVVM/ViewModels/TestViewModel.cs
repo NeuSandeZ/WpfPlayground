@@ -1,28 +1,19 @@
 ﻿using System.Windows.Input;
 using Hotel.Commands;
-using Hotel.Stores;
+using Hotel.Factories;
+using Hotel.Services.Interfaces;
 
 namespace Hotel.MVVM.ViewModels;
 
 public class TestViewModel : ViewModelBase
 {
-    private readonly NavigationModalViewStore _navigationModalViewStore;
-    public ViewModelBase CurrentModalViewModel => _navigationModalViewStore.CurrentViewModel;
-    public bool IsModalOpen => _navigationModalViewStore.IsOpenModal;
-    public ICommand AddViewModalCommand { get; }
-    public TestViewModel(NavigationModalViewStore navigationModalViewStore)
-    {
-        _navigationModalViewStore = navigationModalViewStore;
-        
-        AddViewModalCommand = new NavigateModalCommand(_navigationModalViewStore,
-            () => new TextXDViewModel(_navigationModalViewStore));
-        
-        _navigationModalViewStore.CurrentViewModelChanged += OnCurrentViewModalChanged;
-    }
+    private readonly INavigator _navigator;
+    public ICommand OpenModal { get; }
     
-    private void OnCurrentViewModalChanged()
+    public TestViewModel(INavigator navigator, IViewModelFactory viewModelFactory)
     {
-        OnPropertyChanged(nameof(CurrentModalViewModel));
-        OnPropertyChanged(nameof(IsModalOpen));
+        _navigator = navigator;
+
+        OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.TextXD);
     }
 }

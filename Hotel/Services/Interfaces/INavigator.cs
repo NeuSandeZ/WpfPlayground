@@ -6,10 +6,12 @@ namespace Hotel.Services.Interfaces;
 public enum ViewType
 {
    Reservation,
-   Test
+   Test,
+   TextXD,
+   AddCrud
 }
 
-public interface INavigator
+public interface INavigator : INavigatorModal
 {
     ViewModelBase CurrentViewModel { get; set; }
     event Action StateChanged;

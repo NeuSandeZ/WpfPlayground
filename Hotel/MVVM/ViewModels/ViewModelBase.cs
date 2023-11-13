@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
 

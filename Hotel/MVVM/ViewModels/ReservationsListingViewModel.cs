@@ -2,18 +2,22 @@
 using System.Windows;
 using System.Windows.Input;
 using Hotel.Commands;
+using Hotel.Factories;
 using Hotel.Infrastructure;
 using Hotel.MVVM.Views;
-using Hotel.Stores;
+using Hotel.Services.Interfaces;
 
 namespace Hotel.MVVM.ViewModels;
 
 public class ReservationsListingViewModel : ViewModelBase
 {
-    public ICommand AddViewModalCommand { get; }
-    public ReservationsListingViewModel(NavigationModalViewStore navigationModalViewStore)
+    private readonly INavigator _navigator;
+    public ICommand OpenModal { get; }
+    
+    public ReservationsListingViewModel(INavigator navigator, IViewModelFactory viewModelFactory)
     {
-        AddViewModalCommand = new NavigateModalCommand(navigationModalViewStore,
-            () => new CrudAddModalViewModel(navigationModalViewStore));
+        _navigator = navigator;
+
+        OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddCrud);
     }
 }

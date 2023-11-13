@@ -1,7 +1,8 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Hotel.MVVM.Views">
+    xmlns:local="clr-namespace:Hotel.MVVM.Views"
+    xmlns:nav="clr-namespace:Hotel.Services.Interfaces">
     
     <!-- <ResourceDictionary.MergedDictionaries> -->
     <!--     <ResourceDictionary Source="../Utilities/Styles/ButtonStyle.xaml"></ResourceDictionary> -->
@@ -38,8 +39,8 @@
                                 <Button Content="Add" 
                                         FontSize="16"
                                         Margin="0 0 10 0" 
-                                        Command="{Binding AddViewModalCommand}"
-                                        /><!-- Command="{Binding AddCommand, RelativeSource={RelativeSource AncestorType={x:Type local:CrudViewBase}}}" -->
+                                        Command="{Binding OpenModal}"
+                                        />
 
                                 <Button Content="Edit" 
                                         FontSize="16"

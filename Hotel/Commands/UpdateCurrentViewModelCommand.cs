@@ -5,10 +5,8 @@ using Hotel.Services.Interfaces;
 
 namespace Hotel.Commands;
 
-public class UpdateCurrentViewModelCommand : ICommand
+public class UpdateCurrentViewModelCommand : BaseCommand
 {
-    public event EventHandler CanExecuteChanged;
-
     private readonly INavigator _navigator;
     private readonly IViewModelFactory _viewModelFactory;
 
@@ -17,13 +15,8 @@ public class UpdateCurrentViewModelCommand : ICommand
         _navigator = navigator;
         _viewModelFactory = viewModelFactory;
     }
-
-    public bool CanExecute(object parameter)
-    {
-        return true;
-    }
-
-    public void Execute(object parameter)
+    
+    public override void Execute(object? parameter)
     {
         if(parameter is ViewType)
         {
@@ -32,4 +25,5 @@ public class UpdateCurrentViewModelCommand : ICommand
             _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
         }
     }
+    
 }

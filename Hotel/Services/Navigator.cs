@@ -21,6 +21,30 @@ public class Navigator : INavigator
             StateChanged?.Invoke();
         }
     }
-    
+    private ViewModelBase _currentModalViewModel;
+
+    public ViewModelBase CurrentModalViewModel
+    {
+        get => _currentModalViewModel;
+        set
+        {
+            _currentModalViewModel?.Dispose();
+
+            _currentModalViewModel = value;
+            StateModalChanged?.Invoke();
+        }
+    }
+
+    private bool _isModalOpen;
+
+    public bool IsModalOpen => CurrentModalViewModel != null;
+
+
+    public void Close()
+    {
+        CurrentModalViewModel = null;
+    }
+
+    public event Action StateModalChanged;
     public event Action StateChanged;
 }

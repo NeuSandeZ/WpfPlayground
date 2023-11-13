@@ -2,7 +2,6 @@
 using System.Windows;
 using Hotel.Factories;
 using Hotel.MVVM.ViewModels;
-using Hotel.Stores;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -39,12 +38,14 @@ public partial class App : System.Windows.Application
                 //ViewModels
                 services.AddTransient<ReservationsListingViewModel>();
                 services.AddTransient<TestViewModel>();
+                services.AddTransient<TextXDViewModel>();
+                services.AddTransient<CrudAddModalViewModel>();
                 
                 services.AddSingleton<CreateViewModel<ReservationsListingViewModel>>(services => services.GetRequiredService<ReservationsListingViewModel>);
                 services.AddSingleton<CreateViewModel<TestViewModel>>(services => services.GetRequiredService<TestViewModel>);
+                services.AddSingleton<CreateViewModel<TextXDViewModel>>(services => services.GetRequiredService<TextXDViewModel>);
+                services.AddSingleton<CreateViewModel<CrudAddModalViewModel>>(services => services.GetRequiredService<CrudAddModalViewModel>);
                 
-                
-                services.AddSingleton<NavigationModalViewStore>();
                 
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton(s => new MainWindow
