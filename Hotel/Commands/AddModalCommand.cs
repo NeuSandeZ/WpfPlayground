@@ -1,12 +1,31 @@
 ﻿using System;
 using System.Windows.Input;
+using Hotel.Factories;
+using Hotel.Services;
 
 namespace Hotel.Commands;
 
 public class AddModalCommand : BaseCommand
 {
-    public override void Execute(object? parameter)
+    public event EventHandler? CanExecuteChanged;
+
+    private readonly INavigator _navigator;
+    private readonly IViewModelFactory _viewModelFactory;
+
+    public AddModalCommand(INavigator navigator, IViewModelFactory viewModelFactory)
     {
-        throw new NotImplementedException();
+        _navigator = navigator;
+        _viewModelFactory = viewModelFactory;
+    }
+    
+
+    public override void Execute(object parameter)
+    {
+        if(parameter is ViewType)
+        {
+            ViewType viewType = (ViewType)parameter;
+
+            _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
+        }
     }
 }

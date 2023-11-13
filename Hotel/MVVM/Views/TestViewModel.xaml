@@ -9,11 +9,9 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     
-    <views:CrudViewBase.AddCommand>
-        <commands:AddModalCommand/>
-    </views:CrudViewBase.AddCommand>
-    
-    
+    <!-- <views:CrudViewBase.AddCommand> -->
+    <!--     <commands:AddModalCommand/> -->
+    <!-- </views:CrudViewBase.AddCommand> -->
     
     <Grid>
         

@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using System.Windows;
+using Hotel.Factories;
 using Hotel.Infrastructure;
 using Hotel.MVVM.ViewModels;
 using Hotel.Stores;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Hotel.Infrastructure.Extensions;
+using Hotel.Services;
 
 
 namespace Hotel;
@@ -33,9 +35,17 @@ public partial class App : System.Windows.Application
             {
                 services.AddInfrastructure(connectionString);
                 
-                // services.AddSingleton<INavigationService, NavigationService>();
-                services.AddSingleton<NavigationViewStore>();
-
+                
+                services.AddSingleton<IViewModelFactory, ViewModelFactory>();
+                services.AddSingleton<INavigator, Navigator>();
+                
+                services.AddTransient<ReservationsListingViewModel>();
+                services.AddTransient<TestViewModel>();
+                
+                services.AddSingleton<CreateViewModel<ReservationsListingViewModel>>(services => services.GetRequiredService<ReservationsListingViewModel>);
+                services.AddSingleton<CreateViewModel<TestViewModel>>(services => services.GetRequiredService<TestViewModel>);
+                
+                
                 services.AddSingleton<NavigationModalViewStore>(); // 
                 
                 services.AddSingleton<MainWindowViewModel>();
@@ -43,6 +53,7 @@ public partial class App : System.Windows.Application
                 {
                     DataContext = s.GetRequiredService<MainWindowViewModel>()
                 });
+                
             })
             .Build();
     }
@@ -50,11 +61,6 @@ public partial class App : System.Windows.Application
     protected override void OnStartup(StartupEventArgs e)
     {
         _host.Start();
-
-        var navigationModalStore = _host.Services.GetRequiredService<NavigationModalViewStore>();
-        var navigationStore = _host.Services.GetRequiredService<NavigationViewStore>();
-        
-        navigationStore.CurrentViewModel = new ReservationsListingViewModel(navigationModalStore);
 
         MainWindow = _host.Services.GetRequiredService<MainWindow>();
         MainWindow.Show();

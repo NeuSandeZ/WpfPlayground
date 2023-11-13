@@ -1,39 +1,39 @@
 ﻿using System.Windows.Input;
 using Hotel.Commands;
+using Hotel.Factories;
+using Hotel.Services;
 using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    private readonly NavigationViewStore _navigationViewStore;
     private readonly NavigationModalViewStore _navigationModalViewStore;
+    private readonly INavigator _navigator;
+    private readonly IViewModelFactory _viewModelFactory;
     
-    public ViewModelBase CurrentViewModel => _navigationViewStore.CurrentViewModel;
+    public ViewModelBase CurrentViewModel => _navigator.CurrentViewModel;
     public ViewModelBase CurrentModalViewModel => _navigationModalViewStore.CurrentViewModel;
     public bool IsModalOpen => _navigationModalViewStore.IsOpenModal;
-
-    public ICommand NavigateReservationCommand { get; }
-    public ICommand NavigateTestCommand { get; }
     
     public ICommand AddViewModalCommand { get; }
-
-    public MainWindowViewModel(NavigationViewStore navigationViewStore, NavigationModalViewStore navigationModalViewStore)
+    public ICommand UpdateCurrentViewModelCommand { get; }
+    
+    public MainWindowViewModel(NavigationModalViewStore navigationModalViewStore,
+        INavigator navigator, IViewModelFactory viewModelFactory)
     {
-        _navigationViewStore = navigationViewStore;
+        _navigator = navigator;
+        _viewModelFactory = viewModelFactory;
         _navigationModalViewStore = navigationModalViewStore;
-
-        NavigateReservationCommand = new NavigateCommand<ReservationsListingViewModel>(_navigationViewStore,
-            () => new ReservationsListingViewModel(_navigationModalViewStore));
         
-        NavigateTestCommand = new NavigateCommand<TestViewModel>(navigationViewStore, 
-            () => new TestViewModel(_navigationModalViewStore));
+        _navigator.StateChanged += OnCurrentViewModelChanged;
+        _navigationModalViewStore.CurrentViewModelChanged += OnCurrentViewModalChanged;
+        
+        UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
+        UpdateCurrentViewModelCommand.Execute(ViewType.Reservation);
         
         AddViewModalCommand = new NavigateModalCommand(_navigationModalViewStore,
             () => new CrudAddModalViewModel(_navigationModalViewStore));
-        
-        _navigationModalViewStore.CurrentViewModelChanged += OnCurrentViewModalChanged;
-        _navigationViewStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
     }
     
     private void OnCurrentViewModelChanged()
@@ -46,4 +46,10 @@ public class MainWindowViewModel : ViewModelBase
         OnPropertyChanged(nameof(CurrentModalViewModel));
         OnPropertyChanged(nameof(IsModalOpen));
     }
+    
+    // public override void Dispose()
+    // {
+    //     _navigator.StateChanged -= OnCurrentViewModelChanged;
+    //     base.Dispose();
+    // }
 }

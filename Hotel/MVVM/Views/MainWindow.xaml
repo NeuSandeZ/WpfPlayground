@@ -19,7 +19,7 @@
 
         xmlns:myCustomControls="clr-namespace:Hotel.Utilities.MyCustomControls"
         xmlns:modalControl="clr-namespace:ModalControl;assembly=ModalControl"
-        xmlns:modals="clr-namespace:Hotel.MVVM.Views.Modals">
+        xmlns:nav="clr-namespace:Hotel.Services">
 
     <Border Background="#212529">
         
@@ -47,7 +47,8 @@
                         <!--// Home //-->
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding NavigateReservationCommand }"
+                                                   Command="{Binding UpdateCurrentViewModelCommand}"
+                                                   CommandParameter="{x:Static nav:ViewType.Reservation}"
                                                    IsChecked="True">
 
                             <Grid>
@@ -65,7 +66,9 @@
                         <!--// Customer //-->
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding NavigateTestCommand }">
+                                                   Command="{Binding UpdateCurrentViewModelCommand}"
+                                                   CommandParameter="{x:Static nav:ViewType.Test}"
+                                                   >
 
                             <Grid>
 
@@ -82,7 +85,7 @@
                         <!--// Products //-->
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding }">
+                                                   Command="{Binding UpdateCurrentViewModelCommand }">
 
                             <Grid>
 
