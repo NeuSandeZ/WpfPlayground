@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using Hotel.Commands;
 using Hotel.Factories;
-using Hotel.Services;
+using Hotel.Services.Interfaces;
 using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
@@ -47,9 +47,9 @@ public class MainWindowViewModel : ViewModelBase
         OnPropertyChanged(nameof(IsModalOpen));
     }
     
-    // public override void Dispose()
-    // {
-    //     _navigator.StateChanged -= OnCurrentViewModelChanged;
-    //     base.Dispose();
-    // }
+    public override void Dispose()
+    {
+        _navigator.StateChanged -= OnCurrentViewModelChanged;
+        base.Dispose();
+    }
 }

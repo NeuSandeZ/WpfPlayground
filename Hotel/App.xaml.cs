@@ -1,17 +1,14 @@
-﻿using System;
-using System.Configuration;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using Hotel.Factories;
-using Hotel.Infrastructure;
 using Hotel.MVVM.ViewModels;
 using Hotel.Stores;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Hotel.Infrastructure.Extensions;
 using Hotel.Services;
+using Hotel.Services.Interfaces;
 
 
 namespace Hotel;
@@ -35,10 +32,11 @@ public partial class App : System.Windows.Application
             {
                 services.AddInfrastructure(connectionString);
                 
-                
+                // Services
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
                 services.AddSingleton<INavigator, Navigator>();
                 
+                //ViewModels
                 services.AddTransient<ReservationsListingViewModel>();
                 services.AddTransient<TestViewModel>();
                 
@@ -46,7 +44,7 @@ public partial class App : System.Windows.Application
                 services.AddSingleton<CreateViewModel<TestViewModel>>(services => services.GetRequiredService<TestViewModel>);
                 
                 
-                services.AddSingleton<NavigationModalViewStore>(); // 
+                services.AddSingleton<NavigationModalViewStore>();
                 
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton(s => new MainWindow
@@ -66,5 +64,13 @@ public partial class App : System.Windows.Application
         MainWindow.Show();
 
         base.OnStartup(e);
+    }
+
+    protected override void OnExit(ExitEventArgs e)
+    {
+        _host.StopAsync();
+        _host.Dispose();
+        
+        base.OnExit(e);
     }
 }

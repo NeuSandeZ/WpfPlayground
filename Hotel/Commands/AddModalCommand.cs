@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using Hotel.Factories;
-using Hotel.Services;
+using Hotel.Services.Interfaces;
 
 namespace Hotel.Commands;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using Hotel.MVVM.ViewModels;
-using Hotel.Services;
+using Hotel.Services.Interfaces;
 
 namespace Hotel.Factories;
 

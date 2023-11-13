@@ -8,7 +8,7 @@ public delegate TViewModel CreateViewModel<TViewModel>() where TViewModel : View
 
 public class ViewModelBase : INotifyPropertyChanged
 {
-    // public virtual void Dispose() { }
+    public virtual void Dispose() { }
     public event PropertyChangedEventHandler PropertyChanged;
 
     protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)

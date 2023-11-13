@@ -1,7 +1,7 @@
 ﻿using System;
 using Hotel.MVVM.ViewModels;
 
-namespace Hotel.Services;
+namespace Hotel.Services.Interfaces;
 
 public enum ViewType
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using Hotel.Factories;
-using Hotel.Services;
+using Hotel.Services.Interfaces;
 
 namespace Hotel.Commands;
 
@@ -11,7 +11,7 @@ public class UpdateCurrentViewModelCommand : ICommand
 
     private readonly INavigator _navigator;
     private readonly IViewModelFactory _viewModelFactory;
-    
+
     public UpdateCurrentViewModelCommand(INavigator navigator, IViewModelFactory viewModelFactory)
     {
         _navigator = navigator;

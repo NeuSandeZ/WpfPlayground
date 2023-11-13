@@ -19,7 +19,7 @@
 
         xmlns:myCustomControls="clr-namespace:Hotel.Utilities.MyCustomControls"
         xmlns:modalControl="clr-namespace:ModalControl;assembly=ModalControl"
-        xmlns:nav="clr-namespace:Hotel.Services">
+        xmlns:nav="clr-namespace:Hotel.Services.Interfaces">
 
     <Border Background="#212529">
         
