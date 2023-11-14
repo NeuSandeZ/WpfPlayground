@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
-namespace Hotel.MVVM.Views;
+﻿namespace Hotel.MVVM.Views;
 
 public partial class ReservationsListingView : CrudViewBase
 {

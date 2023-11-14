@@ -6,9 +6,10 @@ namespace Hotel.MVVM.ViewModels;
 
 public class CrudAddModalViewModel : ViewModelBase
 {
-    public ICommand CloseModal { get; }
     public CrudAddModalViewModel(INavigator navigator)
     {
         CloseModal = new CloseModal(navigator);
     }
+
+    public ICommand CloseModal { get; }
 }

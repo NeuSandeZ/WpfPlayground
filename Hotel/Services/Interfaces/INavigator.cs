@@ -5,10 +5,10 @@ namespace Hotel.Services.Interfaces;
 
 public enum ViewType
 {
-   Reservation,
-   Test,
-   TextXD,
-   AddCrud
+    Reservation,
+    Test,
+    TextXD,
+    AddCrud
 }
 
 public interface INavigator : INavigatorModal

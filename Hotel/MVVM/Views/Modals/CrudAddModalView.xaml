@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              Background="Transparent">
-    
+
     <Border CornerRadius="15" Background="azure" Width="230" Height="280">
         <Grid>
             <StackPanel>
@@ -17,21 +17,20 @@
 
                 <StackPanel Margin="30 0 30 10">
                     <TextBlock> Username </TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox />
                 </StackPanel>
 
                 <StackPanel Margin="30 10 30 10">
                     <TextBlock> Password </TextBlock>
-                    <PasswordBox></PasswordBox>
+                    <PasswordBox />
                 </StackPanel>
-                
+
                 <Button Content="Login"
                         Margin="30 10 10 10"
                         HorizontalAlignment="Left"
                         Background="Blue"
                         Foreground="Azure"
-                        Command="{Binding CloseModal}"
-                        />
+                        Command="{Binding CloseModal}" />
 
             </StackPanel>
         </Grid>

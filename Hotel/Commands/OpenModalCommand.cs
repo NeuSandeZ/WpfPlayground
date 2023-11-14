@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Input;
 using Hotel.Factories;
 using Hotel.Services.Interfaces;
 
@@ -7,10 +6,9 @@ namespace Hotel.Commands;
 
 public class OpenModalCommand : BaseCommand
 {
+    private readonly Func<ViewType> _customParameter;
     private readonly INavigator _navigator;
     private readonly IViewModelFactory _viewModelFactory;
-    
-    private readonly Func<ViewType> _customParameter;
 
     public OpenModalCommand(INavigator navigator, IViewModelFactory viewModelFactory, Func<ViewType> customParameter)
     {
@@ -18,11 +16,11 @@ public class OpenModalCommand : BaseCommand
         _viewModelFactory = viewModelFactory;
         _customParameter = customParameter;
     }
-    
+
     public override void Execute(object? parameter)
     {
         var myParameter = _customParameter();
-        if(myParameter is ViewType)
+        if (myParameter is ViewType)
         {
             var viewType = myParameter;
 

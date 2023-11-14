@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using Hotel.Factories;
+﻿using Hotel.Factories;
 using Hotel.Services.Interfaces;
 
 namespace Hotel.Commands;
@@ -15,15 +13,14 @@ public class UpdateCurrentViewModelCommand : BaseCommand
         _navigator = navigator;
         _viewModelFactory = viewModelFactory;
     }
-    
+
     public override void Execute(object? parameter)
     {
-        if(parameter is ViewType)
+        if (parameter is ViewType)
         {
-            ViewType viewType = (ViewType)parameter;
+            var viewType = (ViewType)parameter;
 
             _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
         }
     }
-    
 }

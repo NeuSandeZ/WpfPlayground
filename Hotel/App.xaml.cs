@@ -1,21 +1,20 @@
 ﻿using System.IO;
 using System.Windows;
 using Hotel.Factories;
+using Hotel.Infrastructure.Extensions;
 using Hotel.MVVM.ViewModels;
+using Hotel.Services;
+using Hotel.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Hotel.Infrastructure.Extensions;
-using Hotel.Services;
-using Hotel.Services.Interfaces;
-
 
 namespace Hotel;
 
 /// <summary>
 ///     Interaction logic for App.xaml
 /// </summary>
-public partial class App : System.Windows.Application
+public partial class App : Application
 {
     private readonly IHost _host;
 
@@ -26,33 +25,36 @@ public partial class App : System.Windows.Application
             .AddJsonFile("appsettings.json")
             .Build()
             .GetConnectionString("HotelDbContext");
-        
+
         _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
                 services.AddInfrastructure(connectionString);
-                
+
                 // Services
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
                 services.AddSingleton<INavigator, Navigator>();
-                
+
                 //ViewModels
                 services.AddTransient<ReservationsListingViewModel>();
                 services.AddTransient<TestViewModel>();
                 services.AddTransient<TextXDViewModel>();
                 services.AddTransient<CrudAddModalViewModel>();
-                
-                services.AddSingleton<CreateViewModel<ReservationsListingViewModel>>(services => services.GetRequiredService<ReservationsListingViewModel>);
-                services.AddSingleton<CreateViewModel<TestViewModel>>(services => services.GetRequiredService<TestViewModel>);
-                services.AddSingleton<CreateViewModel<TextXDViewModel>>(services => services.GetRequiredService<TextXDViewModel>);
-                services.AddSingleton<CreateViewModel<CrudAddModalViewModel>>(services => services.GetRequiredService<CrudAddModalViewModel>);
-                
-                
+
+                services.AddSingleton<CreateViewModel<ReservationsListingViewModel>>(services =>
+                    services.GetRequiredService<ReservationsListingViewModel>);
+                services.AddSingleton<CreateViewModel<TestViewModel>>(services =>
+                    services.GetRequiredService<TestViewModel>);
+                services.AddSingleton<CreateViewModel<TextXDViewModel>>(services =>
+                    services.GetRequiredService<TextXDViewModel>);
+                services.AddSingleton<CreateViewModel<CrudAddModalViewModel>>(services =>
+                    services.GetRequiredService<CrudAddModalViewModel>);
+
+
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton(s => new MainWindow
                 {
                     DataContext = s.GetRequiredService<MainWindowViewModel>()
                 });
-                
             })
             .Build();
     }
@@ -71,7 +73,7 @@ public partial class App : System.Windows.Application
     {
         _host.StopAsync();
         _host.Dispose();
-        
+
         base.OnExit(e);
     }
 }

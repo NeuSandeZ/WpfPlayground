@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using Hotel.Services.Interfaces;
+﻿using Hotel.Services.Interfaces;
 
 namespace Hotel.Commands;
 

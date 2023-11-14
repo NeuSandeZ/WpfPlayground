@@ -4,8 +4,7 @@ namespace Hotel.Domain.Entities;
 
 public class Tasks
 {
-    [Key]
-    public int Id { get; set; }
+    [Key] public int Id { get; set; }
 
     public string Description { get; set; } = default!;
     public DateTime DueTime { get; set; }

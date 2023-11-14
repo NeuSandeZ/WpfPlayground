@@ -2,16 +2,16 @@
 
 namespace Hotel.Domain.Entities;
 
-public class Staff 
+public class Staff
 {
-    [Key]
-    public int Id { get; set; }
-    [Required]
-    public string FullName { get; set; } = default!;
+    [Key] public int Id { get; set; }
+
+    [Required] public string FullName { get; set; } = default!;
+
     public string? Email { get; set; }
     public string? PhoneNumber { get; set; }
     public int? BankAccountNumber { get; set; }
-    
+
     public bool? IsDeleted { get; set; }
 
     public StaffRole StaffRole { get; set; } = default!;

@@ -1,30 +1,29 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Hotel.MVVM.Views"
-    xmlns:nav="clr-namespace:Hotel.Services.Interfaces">
-    
+    xmlns:local="clr-namespace:Hotel.MVVM.Views">
+
     <!-- <ResourceDictionary.MergedDictionaries> -->
     <!--     <ResourceDictionary Source="../Utilities/Styles/ButtonStyle.xaml"></ResourceDictionary> -->
     <!-- </ResourceDictionary.MergedDictionaries> -->
-    
-    
+
+
     <Style TargetType="{x:Type local:CrudViewBase}">
         <Setter Property="Template">
             <Setter.Value>
-                
+
                 <ControlTemplate TargetType="{x:Type local:CrudViewBase}">
-                    
+
                     <Grid Margin="0,0,0,0">
-                        
+
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="34"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="34" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Grid Margin="0,5,0 ,5">
-                            
+
                             <TextBox Height="40"
                                      Width="200"
                                      Text="Search..."
@@ -32,37 +31,36 @@
                                      Background="MediumPurple"
                                      FontSize="16"
                                      HorizontalAlignment="Left"
-                                     VerticalContentAlignment="Center"/>
-                            
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="40">
-                                
-                                <Button Content="Add" 
-                                        FontSize="16"
-                                        Margin="0 0 10 0" 
-                                        Command="{Binding OpenModal}"
-                                        />
+                                     VerticalContentAlignment="Center" />
 
-                                <Button Content="Edit" 
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="40">
+
+                                <Button Content="Add"
+                                        FontSize="16"
+                                        Margin="0 0 10 0"
+                                        Command="{Binding OpenModal}" />
+
+                                <Button Content="Edit"
                                         FontSize="16"
                                         Margin="0 0 10 0" />
-                                
-                                <Button Content="Delete" 
+
+                                <Button Content="Delete"
                                         FontSize="16"
                                         Margin="0 0 10 0" />
-                                
+
                             </StackPanel>
                         </Grid>
-                        
+
                         <StackPanel Grid.Row="1" Background="Azure">
                             <Label>Tu bedzie filtrowanie i sortownaie</Label>
                         </StackPanel>
-                        
-                        <ContentPresenter Grid.Row="2" Margin="0,5,0,5"/>
-                        
+
+                        <ContentPresenter Grid.Row="2" Margin="0,5,0,5" />
+
                     </Grid>
-                    
+
                 </ControlTemplate>
-                
+
             </Setter.Value>
         </Setter>
     </Style>

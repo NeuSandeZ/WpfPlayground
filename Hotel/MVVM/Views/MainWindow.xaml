@@ -3,13 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModels="clr-namespace:Hotel.MVVM.ViewModels"
         mc:Ignorable="d"
         Title="Hotel"
         Height="600"
         Width="auto"
         WindowStartupLocation="CenterScreen"
-        
+
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -22,13 +21,13 @@
         xmlns:nav="clr-namespace:Hotel.Services.Interfaces">
 
     <Border Background="#212529">
-        
+
         <Grid>
-            
+
             <modalControl:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
-                <ContentControl Content="{Binding CurrentModalViewModel}"></ContentControl>
+                <ContentControl Content="{Binding CurrentModalViewModel}" />
             </modalControl:Modal>
-            
+
             <Grid>
 
                 <Grid.ColumnDefinitions>
@@ -67,8 +66,7 @@
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
-                                                   CommandParameter="{x:Static nav:ViewType.Test}"
-                                                   >
+                                                   CommandParameter="{x:Static nav:ViewType.Test}">
 
                             <Grid>
 

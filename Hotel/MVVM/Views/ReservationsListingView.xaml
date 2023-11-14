@@ -1,33 +1,30 @@
-﻿ <views:CrudViewBase x:Class="Hotel.MVVM.Views.ReservationsListingView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:views="clr-namespace:Hotel.MVVM.Views" 
-             xmlns:modals="clr-namespace:Hotel.MVVM.Views.Modals"
-             xmlns:modalControl="clr-namespace:ModalControl;assembly=ModalControl"
-             xmlns:commands="clr-namespace:Hotel.Commands"
-             mc:Ignorable="d"
-             d:DesignHeight="600" d:DesignWidth="622"
-             Style="{StaticResource Page_Style}">
-     
-         <!-- <views:CrudViewBase.AddCommand> -->
-         <!--     <commands:AddViewModalCommand/> -->
-         <!-- </views:CrudViewBase.AddCommand> -->
-     
-     <Grid Background="Red" >
-         
-         <Grid>
-             <StackPanel Orientation="Horizontal">
-                 
-                 <Button> isOpen </Button>
-                 <DatePicker VerticalContentAlignment="Center"></DatePicker>
-                 <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
-                 <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
-                 <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
-             </StackPanel>
-         </Grid>
-         
-     </Grid>
-     
+﻿<views:CrudViewBase x:Class="Hotel.MVVM.Views.ReservationsListingView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:views="clr-namespace:Hotel.MVVM.Views"
+                    mc:Ignorable="d"
+                    d:DesignHeight="600" d:DesignWidth="622"
+                    Style="{StaticResource Page_Style}">
+
+    <!-- <views:CrudViewBase.AddCommand> -->
+    <!--     <commands:AddViewModalCommand/> -->
+    <!-- </views:CrudViewBase.AddCommand> -->
+
+    <Grid Background="Red">
+
+        <Grid>
+            <StackPanel Orientation="Horizontal">
+
+                <Button> isOpen </Button>
+                <DatePicker VerticalContentAlignment="Center" />
+                <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
+                <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
+                <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+
 </views:CrudViewBase>

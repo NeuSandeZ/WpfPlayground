@@ -11,13 +11,13 @@
     <DataTemplate DataType="{x:Type viewModels:TestViewModel}">
         <views:TestViewModel />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModels:CrudAddModalViewModel}">
-        <modals:CrudAddModalView/>
+        <modals:CrudAddModalView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModels:TextXDViewModel}">
-        <modals:TestXD/>
+        <modals:TestXD />
     </DataTemplate>
 
 </ResourceDictionary>
