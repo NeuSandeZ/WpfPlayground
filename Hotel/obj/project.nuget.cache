@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "e7B0OuGT36iF1zsR4oq1qwuHp0/J0UQK+wpGKmz8Z84IzNC4qdR8TIwfCi7s5eQWjp+dm5+KTLro4oLTVXPh4g==",
+  "dgSpecHash": "CIe1M+rAfF728VMZWwAAUK5WCO+NG8hueGzlJuzxh7VjwSL6sOELoEWHx2WdSD+Etf1quRJn2/lSxMKvkRfncw==",
   "success": true,
   "projectFilePath": "D:\\RiderProjects\\SRC\\Hotel\\Hotel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\smile\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\materialdesigncolors\\3.0.0-ci435\\materialdesigncolors.3.0.0-ci435.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\materialdesignthemes\\5.0.0-ci435\\materialdesignthemes.5.0.0-ci435.nupkg.sha512",

@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Threading;
+using Hotel.Application.Extensions;
 using Hotel.Factories;
 using Hotel.Infrastructure.Extensions;
 using Hotel.MVVM.ViewModels;
@@ -14,7 +16,7 @@ namespace Hotel;
 /// <summary>
 ///     Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
     private readonly IHost _host;
 
@@ -29,6 +31,7 @@ public partial class App : Application
         _host = Host.CreateDefaultBuilder().ConfigureServices(services =>
             {
                 services.AddInfrastructure(connectionString);
+                services.AddApplication();
 
                 // Services
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
@@ -75,5 +78,10 @@ public partial class App : Application
         _host.Dispose();
 
         base.OnExit(e);
+    }
+
+    private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+    {
+        throw new System.NotImplementedException();
     }
 }

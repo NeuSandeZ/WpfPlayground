@@ -12,16 +12,20 @@
     <!--     <commands:AddViewModalCommand/> -->
     <!-- </views:CrudViewBase.AddCommand> -->
 
-    <Grid Background="Red">
+    <Grid>
 
         <Grid>
             <StackPanel Orientation="Horizontal">
-
-                <Button> isOpen </Button>
-                <DatePicker VerticalContentAlignment="Center" />
-                <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
-                <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
-                <TextBlock Foreground="Azure" Background="Red" Style="{StaticResource Text_Style}" Margin="10 0 0 0"> ACCOUNT LISTING VIEW </TextBlock>
+               <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Reservations}">
+                   <DataGrid.Columns>
+                       <DataGridTextColumn Header="CheckInDate" Binding="{Binding CheckInDate}"/>
+                       <DataGridTextColumn Header="CheckOutDate" Binding="{Binding CheckOutDate}"/>
+                       <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}"/>
+                       <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}"/>
+                       <DataGridTextColumn Header="PhoneNumber" Binding="{Binding GuestPhoneNumber}"/>
+                       <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}"/>
+                   </DataGrid.Columns>
+               </DataGrid>
             </StackPanel>
         </Grid>
 

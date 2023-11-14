@@ -627,7 +627,8 @@
       },
       "Hotel.Application/1.0.0": {
         "dependencies": {
-          "Hotel.Domain": "1.0.0"
+          "Hotel.Domain": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
         },
         "runtime": {
           "Hotel.Application.dll": {}

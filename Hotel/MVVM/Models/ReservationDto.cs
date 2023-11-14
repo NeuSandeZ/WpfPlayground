@@ -8,6 +8,6 @@ public class ReservationDto
     public string GuestPhoneNumber { get; set; }
     public DateTime CheckInDate { get; set; }
     public DateTime CheckOutDate { get; set; }
-    public int TotalCost { get; set; }
+    public int? TotalCost { get; set; }
     public string FloorAndRoomNumber { get; set; }
 }
