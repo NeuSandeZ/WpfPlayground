@@ -70,10 +70,10 @@
 
                             <Grid>
 
-                                <Image Source="\Utilities\Images\img_customer.png"
+                                <Image Source="\Utilities\Images\img_product.png"
                                        Style="{StaticResource Image_Style}" />
 
-                                <TextBlock Text="Customer"
+                                <TextBlock Text="Rooms"
                                            Style="{StaticResource Text_Style}" />
 
                             </Grid>
@@ -84,13 +84,13 @@
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand }">
-
+                            
                             <Grid>
 
-                                <Image Source="\Utilities\Images\img_product.png"
+                                <Image Source="\Utilities\Images\img_customer.png"
                                        Style="{StaticResource Image_Style}" />
 
-                                <TextBlock Text="Rooms"
+                                <TextBlock Text="Guests"
                                            Style="{StaticResource Text_Style}" />
 
                             </Grid>

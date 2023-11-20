@@ -12,7 +12,7 @@ public class Room
 
     public bool IsAvailable { get; set; }
 
-    public RoomStatus RoomStatus { get; set; } = default!;
+    public RoomStatus? RoomStatus { get; set; } = default!;
     public int RoomStatusId { get; set; }
 
     public List<Reservation> Reservations { get; set; } = new();

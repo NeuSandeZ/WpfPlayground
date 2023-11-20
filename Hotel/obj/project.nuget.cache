@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "CIe1M+rAfF728VMZWwAAUK5WCO+NG8hueGzlJuzxh7VjwSL6sOELoEWHx2WdSD+Etf1quRJn2/lSxMKvkRfncw==",
+  "dgSpecHash": "+RnVq9/R2MJLBEZb7QFdDWGXN3HgGX3vD8IQWpJn3VXEHweZbw0tTr8+lKCPizySljhKVx6lZOVXN/Uf6YRfew==",
   "success": true,
   "projectFilePath": "D:\\RiderProjects\\SRC\\Hotel\\Hotel.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\smile\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
@@ -11,7 +13,7 @@
     "C:\\Users\\smile\\.nuget\\packages\\materialdesigncolors\\3.0.0-ci435\\materialdesigncolors.3.0.0-ci435.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\materialdesignthemes\\5.0.0-ci435\\materialdesignthemes.5.0.0-ci435.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\smile\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.0\\microsoft.data.sqlclient.sni.runtime.5.1.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.13\\microsoft.entityframeworkcore.7.0.13.nupkg.sha512",

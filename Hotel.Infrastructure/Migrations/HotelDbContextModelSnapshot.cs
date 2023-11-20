@@ -22,7 +22,7 @@ namespace Hotel.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Address", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Guest", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Guest", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +82,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Guests");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Payment", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -106,7 +106,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.PaymentType", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.PaymentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -123,7 +123,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("PaymentTypes");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Reservation", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Reservation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +158,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Reservations");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Room", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -188,7 +188,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.RoomStatus", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.RoomStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -205,7 +205,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("RoomStatus");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.RoomType", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.RoomType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -222,7 +222,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("RoomTypes");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Staff", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -261,7 +261,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Staves");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.StaffRole", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.StaffRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -278,7 +278,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("StaffRoles");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Tasks", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Tasks", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -306,18 +306,18 @@ namespace Hotel.Infrastructure.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Guest", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Guest", b =>
                 {
-                    b.HasOne("Hotel.Infrastructure.Entities.Address", "Address")
+                    b.HasOne("Hotel.Domain.Entities.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Payment", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Payment", b =>
                 {
-                    b.HasOne("Hotel.Infrastructure.Entities.PaymentType", "PaymentType")
+                    b.HasOne("Hotel.Domain.Entities.PaymentType", "PaymentType")
                         .WithMany()
                         .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -326,15 +326,15 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("PaymentType");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Reservation", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Reservation", b =>
                 {
-                    b.HasOne("Hotel.Infrastructure.Entities.Guest", "Guest")
+                    b.HasOne("Hotel.Domain.Entities.Guest", "Guest")
                         .WithMany()
                         .HasForeignKey("GuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Hotel.Infrastructure.Entities.Room", "Room")
+                    b.HasOne("Hotel.Domain.Entities.Room", "Room")
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -345,9 +345,9 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Room", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Room", b =>
                 {
-                    b.HasOne("Hotel.Infrastructure.Entities.RoomStatus", "RoomStatus")
+                    b.HasOne("Hotel.Domain.Entities.RoomStatus", "RoomStatus")
                         .WithMany()
                         .HasForeignKey("RoomStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -356,15 +356,15 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("RoomStatus");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Staff", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>
                 {
-                    b.HasOne("Hotel.Infrastructure.Entities.Address", "Address")
+                    b.HasOne("Hotel.Domain.Entities.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Hotel.Infrastructure.Entities.StaffRole", "StaffRole")
+                    b.HasOne("Hotel.Domain.Entities.StaffRole", "StaffRole")
                         .WithMany()
                         .HasForeignKey("StaffRoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -375,9 +375,9 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("StaffRole");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Tasks", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Tasks", b =>
                 {
-                    b.HasOne("Hotel.Infrastructure.Entities.Staff", "Staff")
+                    b.HasOne("Hotel.Domain.Entities.Staff", "Staff")
                         .WithMany()
                         .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -386,7 +386,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("Staff");
                 });
 
-            modelBuilder.Entity("Hotel.Infrastructure.Entities.Room", b =>
+            modelBuilder.Entity("Hotel.Domain.Entities.Room", b =>
                 {
                     b.Navigation("Reservations");
                 });

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
-using System.Windows.Threading;
 using Hotel.Application.Extensions;
+using Hotel.Application.ReservationListingDto;
 using Hotel.Factories;
 using Hotel.Infrastructure.Extensions;
 using Hotel.MVVM.ViewModels;
@@ -32,16 +32,24 @@ public partial class App : System.Windows.Application
             {
                 services.AddInfrastructure(connectionString);
                 services.AddApplication();
-
+                
                 // Services
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
                 services.AddSingleton<INavigator, Navigator>();
+                
+                // Models 
+
+                services.AddTransient<ReservationDto>();
+
 
                 //ViewModels
+                
                 services.AddTransient<ReservationsListingViewModel>();
                 services.AddTransient<TestViewModel>();
                 services.AddTransient<TextXDViewModel>();
-                services.AddTransient<CrudAddModalViewModel>();
+                services.AddTransient<AddReservationViewModel>();
+                
+                //ViewModels Factory
 
                 services.AddSingleton<CreateViewModel<ReservationsListingViewModel>>(services =>
                     services.GetRequiredService<ReservationsListingViewModel>);
@@ -49,9 +57,9 @@ public partial class App : System.Windows.Application
                     services.GetRequiredService<TestViewModel>);
                 services.AddSingleton<CreateViewModel<TextXDViewModel>>(services =>
                     services.GetRequiredService<TextXDViewModel>);
-                services.AddSingleton<CreateViewModel<CrudAddModalViewModel>>(services =>
-                    services.GetRequiredService<CrudAddModalViewModel>);
-
+                services.AddSingleton<CreateViewModel<AddReservationViewModel>>(services =>
+                    services.GetRequiredService<AddReservationViewModel>);
+                
 
                 services.AddSingleton<MainWindowViewModel>();
                 services.AddSingleton(s => new MainWindow
@@ -78,10 +86,5 @@ public partial class App : System.Windows.Application
         _host.Dispose();
 
         base.OnExit(e);
-    }
-
-    private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-    {
-        throw new System.NotImplementedException();
     }
 }

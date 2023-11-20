@@ -6,17 +6,8 @@ namespace Hotel.MVVM.Views;
 
 public partial class ReservationsListingView : CrudViewBase
 {
-    private readonly ReservationsListingViewModel _reservationsListingViewModel;
-
-    public ReservationsListingView(ReservationsListingViewModel reservationsListingViewModel)
+    public ReservationsListingView()
     {
-        _reservationsListingViewModel = reservationsListingViewModel;
         InitializeComponent();
-    }
-
-    protected override async void OnInitialized(EventArgs e)
-    {
-        base.OnInitialized(e);
-        await _reservationsListingViewModel.LoadDataAsync();
     }
 }

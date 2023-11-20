@@ -8,7 +8,7 @@ public class TextXDViewModel : ViewModelBase
 {
     public TextXDViewModel(INavigator navigator)
     {
-        CloseModal = new CloseModal(navigator);
+        // AddReservationCommand = new AddReservationCommand(navigator);
     }
 
     public ICommand CloseModal { get; }

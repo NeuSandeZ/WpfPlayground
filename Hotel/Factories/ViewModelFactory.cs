@@ -6,14 +6,14 @@ namespace Hotel.Factories;
 
 public class ViewModelFactory : IViewModelFactory
 {
-    private readonly CreateViewModel<CrudAddModalViewModel> _createAddModalView;
+    private readonly CreateViewModel<AddReservationViewModel> _createAddModalView;
     private readonly CreateViewModel<ReservationsListingViewModel> _createReservationViewModel;
     private readonly CreateViewModel<TestViewModel> _createTestViewModel;
     private readonly CreateViewModel<TextXDViewModel> _creatTestXDViewModel;
 
     public ViewModelFactory(CreateViewModel<TestViewModel> createTestViewModel,
         CreateViewModel<ReservationsListingViewModel> createReservationViewModel,
-        CreateViewModel<CrudAddModalViewModel> createAddModalView,
+        CreateViewModel<AddReservationViewModel> createAddModalView,
         CreateViewModel<TextXDViewModel> creatTestXdViewModel)
     {
         _createTestViewModel = createTestViewModel;

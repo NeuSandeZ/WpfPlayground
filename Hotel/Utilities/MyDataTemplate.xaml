@@ -12,8 +12,8 @@
         <views:TestViewModel />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:CrudAddModalViewModel}">
-        <modals:CrudAddModalView />
+    <DataTemplate DataType="{x:Type viewModels:AddReservationViewModel}">
+        <modals:AddReservationView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:TextXDViewModel}">

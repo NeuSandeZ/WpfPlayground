@@ -22,7 +22,6 @@
                        <DataGridTextColumn Header="CheckOutDate" Binding="{Binding CheckOutDate}"/>
                        <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}"/>
                        <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}"/>
-                       <DataGridTextColumn Header="PhoneNumber" Binding="{Binding GuestPhoneNumber}"/>
                        <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}"/>
                    </DataGrid.Columns>
                </DataGrid>

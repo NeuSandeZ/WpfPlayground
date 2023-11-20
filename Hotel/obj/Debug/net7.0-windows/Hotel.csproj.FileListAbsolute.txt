@@ -83,14 +83,12 @@ D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Application.pdb
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Infrastructure.pdb
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\Hotel.Domain.pdb
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.csproj.AssemblyReference.cache
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\CrudAddModalView.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\ButtonStyle.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\ImageStyle.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\PageStyle.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\TextStyle.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\App.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.g.cs
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\CrudAddModalView.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\ReservationsListingView.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TestViewModel.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\App.g.cs
@@ -116,3 +114,8 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.genruntimeconfig.cache
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\ref\Hotel.dll
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\TestXD.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\TestXD.baml
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddReservationView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddReservationView.g.cs
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\AutoMapper.dll
+D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

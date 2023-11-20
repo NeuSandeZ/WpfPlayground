@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Hotel.MVVM.Views.Modals.AddReservationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Background="Transparent">
+
+    <Border CornerRadius="15" Background="azure" Width="500" Height="700">
+        <Grid>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center"
+                           Text="Add Reservation"
+                           FontWeight="Medium"
+                           FontSize="30"
+                           Margin="0 20 0 20" />
+
+                <StackPanel Orientation="Horizontal" Margin="30 0 30 10">
+                    <TextBlock VerticalAlignment="Center" Margin="0 0 10 0"> Check In Date </TextBlock>
+                    <DatePicker SelectedDate="{Binding CheckInDate}" />
+                    <TextBlock VerticalAlignment="Center"  Margin="30 0 10 0"> Check Out Date </TextBlock>
+                    <DatePicker SelectedDate="{Binding CheckOutDate}" />
+                </StackPanel>
+                
+                <TextBlock HorizontalAlignment="Left"
+                           Text="Room details"
+                           FontWeight="Medium"
+                           FontSize="20"
+                           Margin="30 20 0 20" />
+
+                <StackPanel Orientation="Horizontal" Margin="30 10 30 10">
+                    <TextBlock> Available rooms </TextBlock>
+                    <ComboBox ItemsSource="{Binding AvailableRooms, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Margin="5 0 0 0"
+                              DisplayMemberPath="RoomCode"  
+                              SelectedValuePath="RoomId"  
+                              SelectedValue="{Binding Path=SelectedRoomId,Mode=TwoWay}"
+                              />
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="Guest details"
+                               FontWeight="Medium"
+                               FontSize="20"
+                               Margin="30 20 0 20" />
+
+                    <StackPanel Margin="30 0 0 20">
+                        <TextBlock > First name </TextBlock>
+                        <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    </StackPanel>
+                    
+                    <StackPanel Margin="30 0 0 20">
+                        <TextBlock > Last name </TextBlock>
+                        <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="200"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Margin="30 0 10 0"> Total Cost:  </TextBlock>
+                    <TextBox Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5 0 10 0"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Add"
+                            Margin="30 10 10 10"
+                            HorizontalAlignment="Left"
+                            Background="Blue"
+                            Foreground="Azure"
+                            Command="{Binding AddReservationCommand}" />
+                    
+                    <Button Content="Cancel"
+                            Margin="10 10 10 10"
+                            HorizontalAlignment="Left"
+                            Background="Blue"
+                            Foreground="Azure"
+                            Command="{Binding CloseModalCommand}" />
+                    
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
