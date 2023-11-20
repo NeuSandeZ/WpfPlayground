@@ -6,7 +6,8 @@ namespace Hotel.Services.Interfaces;
 public enum ViewType
 {
     Reservation,
-    Test,
+    Guest,
+    Rooms,
     TextXD,
     AddCrud
 }

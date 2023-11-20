@@ -5,14 +5,14 @@
  using System.Threading.Tasks;
  using System.Windows.Input;
  using CommunityToolkit.Mvvm.ComponentModel;
- using Hotel.Application.Services.Interfaces;
+using Hotel.Application.DTOS.ReservationListingDto;
+using Hotel.Application.Services.Interfaces;
  using Hotel.Commands;
  using Hotel.Domain.Entities;
  using Hotel.Domain.IRepositories;
  using Hotel.Factories;
  using Hotel.Infrastructure;
  using Hotel.Services.Interfaces;
- using ReservationDto = Hotel.Application.ReservationListingDto.ReservationDto;
  
  namespace Hotel.MVVM.ViewModels;
  
@@ -27,6 +27,7 @@
          _navigator = navigator;
          _reservationListingService = reservationListingService;
          
+         //TODO Sending query to database everytime i regrab that view is a bad idea, prolly have to figure out how to load it asynchronously and cache it
          GetAllReservations();
  
          OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddCrud);

@@ -18,8 +18,8 @@
             <StackPanel Orientation="Horizontal">
                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Reservations}">
                    <DataGrid.Columns>
-                       <DataGridTextColumn Header="CheckInDate" Binding="{Binding CheckInDate}"/>
-                       <DataGridTextColumn Header="CheckOutDate" Binding="{Binding CheckOutDate}"/>
+                       <DataGridTextColumn Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}"/>
+                       <DataGridTextColumn Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}"/>
                        <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}"/>
                        <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}"/>
                        <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}"/>

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Hotel.Application.ReservationListingDto;
+using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Domain.Entities;
 using Hotel.Domain.IRepositories;

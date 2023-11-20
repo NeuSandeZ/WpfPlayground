@@ -6,36 +6,39 @@ namespace Hotel.Factories;
 
 public class ViewModelFactory : IViewModelFactory
 {
-    private readonly CreateViewModel<AddReservationViewModel> _createAddModalView;
+    //VMS
     private readonly CreateViewModel<ReservationsListingViewModel> _createReservationViewModel;
-    private readonly CreateViewModel<TestViewModel> _createTestViewModel;
-    private readonly CreateViewModel<TextXDViewModel> _creatTestXDViewModel;
+    private readonly CreateViewModel<GuestViewModel> _createGuestViewModel;
+    private readonly CreateViewModel<RoomsViewModel> _createRoomsViewModel;
+    
+    //MODALS
+    private readonly CreateViewModel<AddReservationViewModel> _createAddModalView;
+    private readonly CreateViewModel<AddGuestViewModel> _creatTestXDViewModel;
 
-    public ViewModelFactory(CreateViewModel<TestViewModel> createTestViewModel,
+    public ViewModelFactory(CreateViewModel<GuestViewModel> createTestViewModel,
         CreateViewModel<ReservationsListingViewModel> createReservationViewModel,
         CreateViewModel<AddReservationViewModel> createAddModalView,
-        CreateViewModel<TextXDViewModel> creatTestXdViewModel)
+        CreateViewModel<AddGuestViewModel> creatTestXdViewModel,
+        CreateViewModel<RoomsViewModel> createRoomsViewModel)
     {
-        _createTestViewModel = createTestViewModel;
+        _createGuestViewModel = createTestViewModel;
         _createReservationViewModel = createReservationViewModel;
         _createAddModalView = createAddModalView;
         _creatTestXDViewModel = creatTestXdViewModel;
+        _createRoomsViewModel = createRoomsViewModel;
     }
 
     public ViewModelBase CreateViewModel(ViewType viewType)
     {
-        switch (viewType)
+        return viewType switch
         {
-            case ViewType.Reservation:
-                return _createReservationViewModel();
-            case ViewType.Test:
-                return _createTestViewModel();
-            case ViewType.TextXD:
-                return _creatTestXDViewModel();
-            case ViewType.AddCrud:
-                return _createAddModalView();
-            default:
-                throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType");
-        }
+            ViewType.Reservation => _createReservationViewModel(),
+            ViewType.Guest => _createGuestViewModel(),
+            ViewType.Rooms => _createRoomsViewModel(),
+            ViewType.TextXD => _creatTestXDViewModel(),
+            ViewType.AddCrud => _createAddModalView(),
+            
+            _ => throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType")
+        };
     }
 }

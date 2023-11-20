@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Hotel.Application.ReservationListingDto;
+using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Domain.Entities;
 
 namespace Hotel.Application.Mappings;
@@ -8,7 +8,7 @@ public class ReservationMappingProfile : Profile
 {
     public ReservationMappingProfile()
     {
-        CreateMap<Domain.Entities.Reservation, ReservationDto>()
+        CreateMap<Reservation, ReservationDto>()
             .ForMember(a => a.GuestFullName,
                 c => c.MapFrom(src =>
                     $"{src.Guest.FirstName + " " + src.Guest.LastName}"

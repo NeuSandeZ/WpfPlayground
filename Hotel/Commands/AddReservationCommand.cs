@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Hotel.Application.ReservationListingDto;
+using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.MVVM.ViewModels;
 using Hotel.Services.Interfaces;
@@ -32,8 +32,11 @@ public class AddReservationCommand : BaseCommand
              TotalCost = _reservationViewModel.TotalCost,
              RoomId = _reservationViewModel.SelectedRoomId
          };
-        
-         _reservationListingService.CreateReservation(addReservationDto);
+         
+         //TODO: Probably this isn't the best way to do that, Fire and forget?
+         Task.Run(() => _reservationListingService.CreateReservation(addReservationDto));
+         
+         // _reservationListingService.CreateReservation(addReservationDto);
          _navigator.Close();
      }
 }

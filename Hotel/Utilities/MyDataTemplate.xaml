@@ -8,16 +8,20 @@
         <views:ReservationsListingView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:TestViewModel}">
-        <views:TestViewModel />
+    <DataTemplate DataType="{x:Type viewModels:GuestViewModel}">
+        <views:GuestView />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type viewModels:RoomsViewModel}">
+        <views:RoomsView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type viewModels:AddReservationViewModel}">
         <modals:AddReservationView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:TextXDViewModel}">
-        <modals:TestXD />
+    <DataTemplate DataType="{x:Type viewModels:AddGuestViewModel}">
+        <modals:AddGuestsView />
     </DataTemplate>
 
 </ResourceDictionary>

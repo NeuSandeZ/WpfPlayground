@@ -1,5 +1,4 @@
-﻿using Hotel.Application.ReservationListingDto;
-using Hotel.Domain.Entities;
+﻿using Hotel.Application.DTOS.ReservationListingDto;
 
 namespace Hotel.Application.Services.Interfaces;
 

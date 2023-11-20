@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using Hotel.Application.Extensions;
-using Hotel.Application.ReservationListingDto;
+using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Factories;
 using Hotel.Infrastructure.Extensions;
 using Hotel.MVVM.ViewModels;
@@ -45,18 +45,21 @@ public partial class App : System.Windows.Application
                 //ViewModels
                 
                 services.AddTransient<ReservationsListingViewModel>();
-                services.AddTransient<TestViewModel>();
-                services.AddTransient<TextXDViewModel>();
+                services.AddTransient<GuestViewModel>();
+                services.AddTransient<RoomsViewModel>();
+                services.AddTransient<AddGuestViewModel>();
                 services.AddTransient<AddReservationViewModel>();
                 
                 //ViewModels Factory
 
                 services.AddSingleton<CreateViewModel<ReservationsListingViewModel>>(services =>
                     services.GetRequiredService<ReservationsListingViewModel>);
-                services.AddSingleton<CreateViewModel<TestViewModel>>(services =>
-                    services.GetRequiredService<TestViewModel>);
-                services.AddSingleton<CreateViewModel<TextXDViewModel>>(services =>
-                    services.GetRequiredService<TextXDViewModel>);
+                services.AddSingleton<CreateViewModel<GuestViewModel>>(services =>
+                    services.GetRequiredService<GuestViewModel>);
+                services.AddSingleton<CreateViewModel<RoomsViewModel>>(services =>
+                    services.GetRequiredService<RoomsViewModel>);
+                services.AddSingleton<CreateViewModel<AddGuestViewModel>>(services =>
+                    services.GetRequiredService<AddGuestViewModel>);
                 services.AddSingleton<CreateViewModel<AddReservationViewModel>>(services =>
                     services.GetRequiredService<AddReservationViewModel>);
                 

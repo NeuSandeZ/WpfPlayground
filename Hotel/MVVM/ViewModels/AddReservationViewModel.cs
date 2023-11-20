@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Hotel.Application.ReservationListingDto;
+using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
 using Hotel.Domain.Entities;

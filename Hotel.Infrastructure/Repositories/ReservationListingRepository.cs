@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using Hotel.Application.ReservationListingDto;
 using Hotel.Domain.Entities;
 using Hotel.Domain.IRepositories;
 using Microsoft.EntityFrameworkCore;

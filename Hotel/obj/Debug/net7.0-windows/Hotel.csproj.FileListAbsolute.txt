@@ -90,7 +90,6 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\Styles\TextStyle.b
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\App.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\ReservationsListingView.g.cs
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TestViewModel.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\App.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel_Content.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
@@ -98,7 +97,6 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel_MarkupCompile.cache
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel_MarkupCompile.lref
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\ReservationsListingView.baml
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TestViewModel.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Themes\Generic.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Utilities\MyDataTemplate.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.g.resources
@@ -112,10 +110,14 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\refint\Hotel.dll
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.pdb
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\Hotel.genruntimeconfig.cache
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\ref\Hotel.dll
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\TestXD.g.cs
-D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\TestXD.baml
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\CommunityToolkit.Mvvm.dll
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddReservationView.baml
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddReservationView.g.cs
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\AutoMapper.dll
 D:\RiderProjects\SRC\Hotel\bin\Debug\net7.0-windows\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\GuestView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\RoomsView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\GuestView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\RoomsView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddGuestsView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddGuestsView.g.cs
