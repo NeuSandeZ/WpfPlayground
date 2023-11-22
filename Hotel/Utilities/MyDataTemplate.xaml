@@ -1,9 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewModels="clr-namespace:Hotel.MVVM.ViewModels"
+                    xmlns:viewModelModals="clr-namespace:Hotel.MVVM.ViewModels.Modals"
                     xmlns:views="clr-namespace:Hotel.MVVM.Views"
-                    xmlns:modals="clr-namespace:Hotel.MVVM.Views.Modals">
+                    xmlns:viewsModals="clr-namespace:Hotel.MVVM.Views.Modals"
+                    >
 
+    
+    <!-- ViewModels -->
     <DataTemplate DataType="{x:Type viewModels:ReservationsListingViewModel}">
         <views:ReservationsListingView />
     </DataTemplate>
@@ -15,13 +19,19 @@
     <DataTemplate DataType="{x:Type viewModels:RoomsViewModel}">
         <views:RoomsView />
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type viewModels:PaymentViewModel}">
+        <views:PaymentView />
+    </DataTemplate>
+    
+    <!-- Modals -->
 
-    <DataTemplate DataType="{x:Type viewModels:AddReservationViewModel}">
-        <modals:AddReservationView />
+    <DataTemplate DataType="{x:Type viewModelModals:AddReservationViewModel}">
+        <viewsModals:AddReservationView />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type viewModels:AddGuestViewModel}">
-        <modals:AddGuestsView />
+    <DataTemplate DataType="{x:Type viewModelModals:AddGuestViewModel}">
+        <viewsModals:AddGuestsView />
     </DataTemplate>
 
 </ResourceDictionary>

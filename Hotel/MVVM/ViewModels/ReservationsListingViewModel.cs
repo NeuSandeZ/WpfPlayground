@@ -5,6 +5,7 @@
  using System.Threading.Tasks;
  using System.Windows.Input;
  using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
  using Hotel.Commands;
@@ -46,6 +47,21 @@ using Hotel.Application.Services.Interfaces;
          {
              _reservations = value;
              OnPropertyChanged(nameof(Reservations));
+         }
+     }
+
+     private ReservationDto _selectedReservation;
+     public ReservationDto SelectedReservation
+     {
+         get { return _selectedReservation; }
+         set
+         {
+             _selectedReservation = value;
+             
+             //TODO sending messenger, Do i have to register it in DI? Probably yes
+             var reservationDto = WeakReferenceMessenger.Default.Send(SelectedReservation);
+
+             OnPropertyChanged(nameof(SelectedReservation));
          }
      }
  

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.MVVM.ViewModels;
+using Hotel.MVVM.ViewModels.Modals;
 using Hotel.Services.Interfaces;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 

@@ -8,7 +8,7 @@ public class Navigator : INavigator
 {
     private ViewModelBase _currentModalViewModel;
     private ViewModelBase _currentViewModel;
-
+    
     private bool _isModalOpen;
 
     public ViewModelBase CurrentViewModel

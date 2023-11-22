@@ -8,6 +8,7 @@ public enum ViewType
     Reservation,
     Guest,
     Rooms,
+    Payments,
     TextXD,
     AddCrud
 }

@@ -10,7 +10,7 @@ using Hotel.Infrastructure;
 using Hotel.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotel.MVVM.ViewModels;
+namespace Hotel.MVVM.ViewModels.Modals;
 
 public class AddReservationViewModel : ViewModelBase
 {

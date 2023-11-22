@@ -16,7 +16,7 @@
 
         <Grid>
             <StackPanel Orientation="Horizontal">
-               <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Reservations}">
+               <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}" ItemsSource="{Binding Reservations}">
                    <DataGrid.Columns>
                        <DataGridTextColumn Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}"/>
                        <DataGridTextColumn Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}"/>

@@ -12,7 +12,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<IReservationListingService, ReservationListingService>();
         services.AddScoped<IGuestsListingService, GuestsListingService>();
         
-        //TODO check if i have to register GuestMappingProfile as it is in the same assembly
         services.AddAutoMapper(typeof(ReservationMappingProfile), typeof(GuestMappingProfile));
     }
 }

@@ -108,7 +108,7 @@
                                 <Image Source="\Utilities\Images\img_order.png"
                                        Style="{StaticResource Image_Style}" />
 
-                                <TextBlock Text="Orders"
+                                <TextBlock Text="Tasks"
                                            Style="{StaticResource Text_Style}" />
 
                             </Grid>
@@ -118,14 +118,15 @@
                         <!--// Transactions //-->
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding }">
+                                                   Command="{Binding UpdateCurrentViewModelCommand}"
+                                                   CommandParameter="{x:Static nav:ViewType.Payments}">
 
                             <Grid>
 
                                 <Image Source="\Utilities\Images\img_transaction.png"
                                        Style="{StaticResource Image_Style}" />
 
-                                <TextBlock Text="Transactions"
+                                <TextBlock Text="Payments"
                                            Style="{StaticResource Text_Style}" />
 
                             </Grid>

@@ -1,10 +1,12 @@
 ﻿using System.IO;
 using System.Windows;
+using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.Extensions;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Factories;
 using Hotel.Infrastructure.Extensions;
 using Hotel.MVVM.ViewModels;
+using Hotel.MVVM.ViewModels.Modals;
 using Hotel.Services;
 using Hotel.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -34,14 +36,10 @@ public partial class App : System.Windows.Application
                 services.AddApplication();
                 
                 // Services
+                
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
                 services.AddSingleton<INavigator, Navigator>();
                 
-                // Models 
-
-                services.AddTransient<ReservationDto>();
-
-
                 //ViewModels
                 
                 services.AddTransient<ReservationsListingViewModel>();
@@ -49,6 +47,7 @@ public partial class App : System.Windows.Application
                 services.AddTransient<RoomsViewModel>();
                 services.AddTransient<AddGuestViewModel>();
                 services.AddTransient<AddReservationViewModel>();
+                services.AddTransient<PaymentViewModel>();
                 
                 //ViewModels Factory
 
@@ -62,6 +61,8 @@ public partial class App : System.Windows.Application
                     services.GetRequiredService<AddGuestViewModel>);
                 services.AddSingleton<CreateViewModel<AddReservationViewModel>>(services =>
                     services.GetRequiredService<AddReservationViewModel>);
+                services.AddSingleton<CreateViewModel<PaymentViewModel>>(services =>
+                    services.GetRequiredService<PaymentViewModel>);
                 
 
                 services.AddSingleton<MainWindowViewModel>();

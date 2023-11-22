@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\RiderProjects\SRC\Hotel\App.xaml
-12-1551770269
+13801704823
 11413424753
-28907251769
+312014589123
 2571820659597
-MVVM\Views\GuestView.xaml;MVVM\Views\MainWindow.xaml;MVVM\Views\Modals\AddGuestsView.xaml;MVVM\Views\Modals\AddReservationView.xaml;MVVM\Views\ReservationsListingView.xaml;MVVM\Views\RoomsView.xaml;Themes\Generic.xaml;Utilities\MyDataTemplate.xaml;Utilities\Styles\ButtonStyle.xaml;Utilities\Styles\ImageStyle.xaml;Utilities\Styles\PageStyle.xaml;Utilities\Styles\TextStyle.xaml;
+MVVM\Views\GuestView.xaml;MVVM\Views\MainWindow.xaml;MVVM\Views\Modals\AddGuestsView.xaml;MVVM\Views\Modals\AddReservationView.xaml;MVVM\Views\PaymentView.xaml;MVVM\Views\ReservationsListingView.xaml;MVVM\Views\RoomsView.xaml;Themes\Generic.xaml;Utilities\MyDataTemplate.xaml;Utilities\Styles\ButtonStyle.xaml;Utilities\Styles\ImageStyle.xaml;Utilities\Styles\PageStyle.xaml;Utilities\Styles\TextStyle.xaml;
 
 False
 
