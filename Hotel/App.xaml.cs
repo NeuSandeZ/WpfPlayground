@@ -9,6 +9,7 @@ using Hotel.MVVM.ViewModels;
 using Hotel.MVVM.ViewModels.Modals;
 using Hotel.Services;
 using Hotel.Services.Interfaces;
+using Hotel.Stores;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -39,6 +40,8 @@ public partial class App : System.Windows.Application
                 
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
                 services.AddSingleton<INavigator, Navigator>();
+
+                services.AddSingleton<MessengerCurrentViewStorage>();
                 
                 //ViewModels
                 

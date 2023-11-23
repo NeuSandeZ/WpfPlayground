@@ -14,25 +14,32 @@ using Hotel.Application.Services.Interfaces;
  using Hotel.Factories;
  using Hotel.Infrastructure;
  using Hotel.Services.Interfaces;
- 
- namespace Hotel.MVVM.ViewModels;
+using Hotel.Stores;
+
+namespace Hotel.MVVM.ViewModels;
  
  public class ReservationsListingViewModel : ViewModelBase
  {
      private readonly INavigator _navigator;
      private readonly IReservationListingService _reservationListingService;
+     private readonly MessengerCurrentViewStorage _messengerCurrentViewStorage;
      
-     public ReservationsListingViewModel(INavigator navigator, IViewModelFactory viewModelFactory,
-         IReservationListingService reservationListingService)
+     public ReservationsListingViewModel(INavigator navigator,
+         IViewModelFactory viewModelFactory,
+         IReservationListingService reservationListingService,
+         MessengerCurrentViewStorage messengerCurrentViewStorage)
      {
          _navigator = navigator;
          _reservationListingService = reservationListingService;
-         
+         _messengerCurrentViewStorage = messengerCurrentViewStorage;
+
          //TODO Sending query to database everytime i regrab that view is a bad idea, prolly have to figure out how to load it asynchronously and cache it
          GetAllReservations();
  
          OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddCrud);
      }
+
+     public bool IsTemporaryViewModelOpened => _messengerCurrentViewStorage.IsTemporaryViewModelOpened;
  
      public ICommand OpenModal { get; }
      
@@ -57,10 +64,8 @@ using Hotel.Application.Services.Interfaces;
          set
          {
              _selectedReservation = value;
-             
-             //TODO sending messenger, Do i have to register it in DI? Probably yes
-             var reservationDto = WeakReferenceMessenger.Default.Send(SelectedReservation);
-
+             Console.WriteLine("Sending reservation dto");
+             WeakReferenceMessenger.Default.Send(SelectedReservation);
              OnPropertyChanged(nameof(SelectedReservation));
          }
      }

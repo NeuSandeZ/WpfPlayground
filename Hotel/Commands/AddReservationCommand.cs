@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
@@ -20,9 +21,16 @@ public class AddReservationCommand : BaseCommand
         _navigator = navigator;
         _reservationViewModel = reservationViewModel;
         _reservationListingService = reservationListingService;
+
+        _reservationViewModel.PropertyChanged += OnModelPropertyChanged;
     }
     
-     public override void Execute(object? parameter)
+    public override bool CanExecute(object? parameter)
+    {
+        return !string.IsNullOrEmpty(_reservationViewModel.FirstName) && base.CanExecute(parameter);
+    }
+
+    public override void Execute(object? parameter)
      {
          var addReservationDto = new AddReservationDto()
          {
@@ -40,4 +48,12 @@ public class AddReservationCommand : BaseCommand
          // _reservationListingService.CreateReservation(addReservationDto);
          _navigator.Close();
      }
+    
+    private void OnModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(AddReservationViewModel.FirstName))
+        {
+            OnCanExecutedChanged();
+        }
+    }
 }

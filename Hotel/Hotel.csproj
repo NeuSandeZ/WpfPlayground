@@ -26,7 +26,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Stores\"/>
         <Folder Include="Utilities\Fonts\"/>
         <Folder Include="Utilities\Images\"/>
     </ItemGroup>

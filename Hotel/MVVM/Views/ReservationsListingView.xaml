@@ -4,6 +4,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:views="clr-namespace:Hotel.MVVM.Views"
+                    xmlns:converters="clr-namespace:Hotel.Utilities.Converters"
                     mc:Ignorable="d"
                     d:DesignHeight="600" d:DesignWidth="622"
                     Style="{StaticResource Page_Style}">
@@ -12,22 +13,38 @@
     <!--     <commands:AddViewModalCommand/> -->
     <!-- </views:CrudViewBase.AddCommand> -->
 
-    <Grid>
+    <UserControl.Resources>
+        <converters:StandardConverter x:Key="StandardConverter" />
+    </UserControl.Resources>
 
+
+    <Grid>
         <Grid>
-            <StackPanel Orientation="Horizontal">
-               <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}" ItemsSource="{Binding Reservations}">
-                   <DataGrid.Columns>
-                       <DataGridTextColumn Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}"/>
-                       <DataGridTextColumn Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}"/>
-                       <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}"/>
-                       <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}"/>
-                       <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}"/>
-                   </DataGrid.Columns>
-               </DataGrid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" /> 
+            </Grid.RowDefinitions>
+            
+            <TextBlock
+                Background="Brown"
+                Visibility="{Binding IsTemporaryViewModelOpened,Converter={StaticResource StandardConverter}}">
+                CHOOSE RESERVATION YOU WANT TO PAY FOR
+            </TextBlock>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+                <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}"
+                          ItemsSource="{Binding Reservations}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}" />
+                        <DataGridTextColumn Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}" />
+                        <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}" />
+                        <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}" />
+                        <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
         </Grid>
-
     </Grid>
 
 </views:CrudViewBase>

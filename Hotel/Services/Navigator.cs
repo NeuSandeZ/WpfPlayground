@@ -6,10 +6,9 @@ namespace Hotel.Services;
 
 public class Navigator : INavigator
 {
-    private ViewModelBase _currentModalViewModel;
-    private ViewModelBase _currentViewModel;
-    
     private bool _isModalOpen;
+
+    private ViewModelBase _currentViewModel;
 
     public ViewModelBase CurrentViewModel
     {
@@ -23,6 +22,7 @@ public class Navigator : INavigator
         }
     }
 
+    private ViewModelBase _currentModalViewModel;
     public ViewModelBase CurrentModalViewModel
     {
         get => _currentModalViewModel;
@@ -34,15 +34,23 @@ public class Navigator : INavigator
             StateModalChanged?.Invoke();
         }
     }
-
     public bool IsModalOpen => CurrentModalViewModel != null;
 
-
+    // private ViewModelBase _temporaryViewModel;
+    // public ViewModelBase TemporaryViewModel
+    // {
+    //     get { return _temporaryViewModel; }
+    //     set
+    //     {
+    //         _temporaryViewModel = value;
+    //         StateChanged?.Invoke();
+    //     }
+    // }
     public void Close()
     {
         CurrentModalViewModel = null;
     }
-
+    
     public event Action StateModalChanged;
     public event Action StateChanged;
 }

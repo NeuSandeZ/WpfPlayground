@@ -10,7 +10,6 @@ namespace Hotel.Factories;
 public delegate TViewModel CreateViewModel<TViewModel>() where TViewModel : ViewModelBase;
 public class ViewModelFactory : IViewModelFactory
 {
-    private readonly INavigator _navigator;
     //VMS
     private readonly CreateViewModel<ReservationsListingViewModel> _createReservationViewModel;
     private readonly CreateViewModel<GuestViewModel> _createGuestViewModel;
@@ -26,31 +25,14 @@ public class ViewModelFactory : IViewModelFactory
         CreateViewModel<AddReservationViewModel> createAddModalView,
         CreateViewModel<AddGuestViewModel> creatTestXdViewModel,
         CreateViewModel<RoomsViewModel> createRoomsViewModel,
-        CreateViewModel<PaymentViewModel> createPaymentViewModel, 
-        INavigator navigator)
+        CreateViewModel<PaymentViewModel> createPaymentViewModel)
     {
-        WeakReferenceMessenger.Default.Register<string>(this, Open);
-        
         _createGuestViewModel = createTestViewModel;
         _createReservationViewModel = createReservationViewModel;
         _createAddModalView = createAddModalView;
         _creatTestXDViewModel = creatTestXdViewModel;
         _createRoomsViewModel = createRoomsViewModel;
         _createPaymentViewModel = createPaymentViewModel;
-        _navigator = navigator;
-    }
-
-    private void Open(object recipient, string message)
-    {
-        if (message == "Open")
-        {
-           _navigator.CurrentViewModel = _createReservationViewModel();
-        }
-
-        if (message == "Close")
-        {
-            _navigator.CurrentViewModel = _createPaymentViewModel();
-        }
     }
     public ViewModelBase CreateViewModel(ViewType viewType)
     {

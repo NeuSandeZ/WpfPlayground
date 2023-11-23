@@ -1,13 +1,13 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Hotel.MVVM.Views">
+    xmlns:local="clr-namespace:Hotel.MVVM.Views"
+    xmlns:converters="clr-namespace:Hotel.Utilities.Converters">
 
     <!-- <ResourceDictionary.MergedDictionaries> -->
     <!--     <ResourceDictionary Source="../Utilities/Styles/ButtonStyle.xaml"></ResourceDictionary> -->
     <!-- </ResourceDictionary.MergedDictionaries> -->
-
-
+    
     <Style TargetType="{x:Type local:CrudViewBase}">
         <Setter Property="Template">
             <Setter.Value>
