@@ -20,4 +20,9 @@ public class HotelDbContext : DbContext
     public DbSet<Staff> Staves { get; set; }
     public DbSet<StaffRole> StaffRoles { get; set; }
     public DbSet<Tasks> Tasks { get; set; }
+    public DbSet<ReservationStatus> ReservationsStatus { get; set; }
+    public DbSet<RoomAmenity> Amenities { get; set; }
+    public DbSet<CheckIns> CheckIns { get; set; }
+    public DbSet<CheckOuts> CheckOuts { get; set; }
+    public DbSet<RoomPromotions> RoomPromotions { get; set; }
 }

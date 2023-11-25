@@ -6,8 +6,10 @@ namespace Hotel.MVVM.ViewModels.Modals;
 
 public class AddGuestViewModel : ViewModelBase
 {
-    public AddGuestViewModel(INavigator navigator)
+    private readonly GuestViewModel _guestViewModel;
+    public AddGuestViewModel(INavigator navigator, GuestViewModel guestViewModel)
     {
+        _guestViewModel = guestViewModel;
         CloseModal = new CloseModalCommand(navigator);
     }
 
