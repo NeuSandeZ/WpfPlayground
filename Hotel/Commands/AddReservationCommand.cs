@@ -42,9 +42,10 @@ public class AddReservationCommand : BaseCommand
              RoomId = _reservationViewModel.SelectedRoomId
          };
          
+         _reservationViewModel.PropertyChanged -= OnModelPropertyChanged;
+         
          //TODO: Probably this isn't the best way to do that, Fire and forget?
          Task.Run(() => _reservationListingService.CreateReservation(addReservationDto));
-         
          // _reservationListingService.CreateReservation(addReservationDto);
          _navigator.Close();
      }

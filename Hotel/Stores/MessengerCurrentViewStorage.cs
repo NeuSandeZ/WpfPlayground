@@ -6,7 +6,7 @@ using Hotel.Services.Interfaces;
 
 namespace Hotel.Stores;
 
-public class MessengerCurrentViewStorage
+public class MessengerCurrentViewStorage : IRecipient<string>
 {
     private readonly INavigator _navigator;
     private readonly IViewModelFactory _viewModelFactory;
@@ -15,27 +15,24 @@ public class MessengerCurrentViewStorage
     {
         _navigator = navigator;
         _viewModelFactory = viewModelFactory;
-
-        Console.WriteLine("Catching commands in messenger");
-        WeakReferenceMessenger.Default.Register<string>(this,Open);
+        
+        WeakReferenceMessenger.Default.Register(this);
     }
-    
+
     private ViewModelBase? TemporaryViewModel { get; set; }
     public bool IsTemporaryViewModelOpened => TemporaryViewModel != null;
     
-    private void Open(object recipient, string message)
+    public void Receive(string message)
     {
         switch (message)
         {
             case "Open":
                 TemporaryViewModel = _navigator.CurrentViewModel;
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Reservation);
-                Console.WriteLine("Open triggered");
                 break;
             case "Close":
                 _navigator.CurrentViewModel = TemporaryViewModel;
                 TemporaryViewModel = null;
-                Console.WriteLine("Close triggered");
                 break;
         }
     }

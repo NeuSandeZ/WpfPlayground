@@ -64,7 +64,6 @@ namespace Hotel.MVVM.ViewModels;
          set
          {
              _selectedReservation = value;
-             Console.WriteLine("Sending reservation dto");
              WeakReferenceMessenger.Default.Send(SelectedReservation);
              OnPropertyChanged(nameof(SelectedReservation));
          }

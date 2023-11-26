@@ -4,10 +4,11 @@ using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Commands;
 using Hotel.Services.Interfaces;
+using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
 
-public class PaymentViewModel : ViewModelBase
+public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
 {
     private DateTime _checkInDate;
     public DateTime CheckInDate 
@@ -33,20 +34,20 @@ public class PaymentViewModel : ViewModelBase
     }
     public PaymentViewModel()
     {
-        Console.WriteLine("Payment view model");
-        
-        TestCommand = new TestCommand("Open");
-        
-        WeakReferenceMessenger.Default.Register<PaymentViewModel, ReservationDto>(this, (recipient, message) =>
-        {
-            CheckInDate = message.CheckInDate;
-            CheckOutDate = message.CheckOutDate;
-
-            Console.WriteLine("Register and sending close");
-            WeakReferenceMessenger.Default.Send<string>("Close");
-        });
-         
+        TestCommand = new TestCommand("Open", this);
     }
-    
     public ICommand TestCommand { get; }
+    public void Receive(ReservationDto message)
+    {
+        CheckInDate = message.CheckInDate;
+        CheckOutDate = message.CheckOutDate;
+        
+        WeakReferenceMessenger.Default.Send<string>("Close");
+        WeakReferenceMessenger.Default.UnregisterAll(this);
+    }
+
+    public void RegisterMessenger()
+    {
+        WeakReferenceMessenger.Default.Register(this);
+    }
 }

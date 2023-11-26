@@ -1,19 +1,23 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.Messaging;
+using Hotel.MVVM.ViewModels;
 using Hotel.Services.Interfaces;
 
 namespace Hotel.Commands;
 
 public class TestCommand : BaseCommand
 {
-    private readonly string _dupa;
+    private readonly string _switchCase;
+    private readonly PaymentViewModel _paymentViewModel;
 
-    public TestCommand(string dupa)
+    public TestCommand(string switchCase, PaymentViewModel paymentViewModel)
     {
-        _dupa = dupa;
+        _switchCase = switchCase;
+        _paymentViewModel = paymentViewModel;
     }
     public override void Execute(object? parameter)
     {
-        WeakReferenceMessenger.Default.Send<string>(_dupa);
+        _paymentViewModel.RegisterMessenger();
+        WeakReferenceMessenger.Default.Send(_switchCase);
     }
 }
