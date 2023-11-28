@@ -23,9 +23,21 @@ public class GuestsListingService : IGuestsListingService
         return _mapper.Map<IEnumerable<GuestDto>>(allGuests);
     }
 
+    public GuestDto GetOneGuest(string email)
+    {
+        var oneGuest = _guestsListingsRepository.GetOneGuest(email);
+        return _mapper.Map<GuestDto>(oneGuest);
+    }
+
     public async Task CreateGuest(GuestDto guestDto)
     {
         var guest = _mapper.Map<Guest>(guestDto);
         await _guestsListingsRepository.CreateGuest(guest);
+    }
+
+    public async Task EditGuest(GuestDto editedGuest)
+    {
+        var guest = _mapper.Map<Guest>(editedGuest);
+        await _guestsListingsRepository.EditGuest(guest);
     }
 }

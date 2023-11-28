@@ -85,7 +85,7 @@
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
                                                    CommandParameter="{x:Static nav:ViewType.Guest}">
-                            
+
                             <Grid>
 
                                 <Image Source="\Utilities\Images\img_customer.png"

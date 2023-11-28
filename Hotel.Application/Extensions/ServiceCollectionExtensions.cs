@@ -11,7 +11,9 @@ public static class ServiceCollectionExtension
     {
         services.AddScoped<IReservationListingService, ReservationListingService>();
         services.AddScoped<IGuestsListingService, GuestsListingService>();
-        
-        services.AddAutoMapper(typeof(ReservationMappingProfile), typeof(GuestMappingProfile));
+        services.AddScoped<IRoomListingService, RoomListingService>();
+
+        services.AddAutoMapper(typeof(ReservationMappingProfile),
+            typeof(GuestMappingProfile), typeof(RoomMappingProfile));
     }
 }

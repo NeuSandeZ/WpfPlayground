@@ -23,7 +23,6 @@ public class OpenModalCommand : BaseCommand
         if (myParameter is ViewType)
         {
             var viewType = myParameter;
-
             _navigator.CurrentModalViewModel = _viewModelFactory.CreateViewModel(viewType);
         }
     }

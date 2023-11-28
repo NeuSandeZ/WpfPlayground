@@ -21,7 +21,7 @@ public class GuestMappingProfile : Profile
 
         CreateMap<GuestDto, Guest>()
             .ForMember(dest => dest.Address, opt =>
-                opt.MapFrom(src => new Address()
+                opt.MapFrom(src => new Address
                 {
                     City = src.City,
                     Street = src.Street,

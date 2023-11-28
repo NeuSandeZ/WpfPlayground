@@ -1,6 +1,4 @@
-﻿using Hotel.Application.Services;
-using Hotel.Application.Services.Interfaces;
-using Hotel.Domain.IRepositories;
+﻿using Hotel.Domain.IRepositories;
 using Hotel.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,5 +13,6 @@ public static class ServiceCollectionExtension
 
         services.AddScoped<IReservationListingRepository, ReservationListingRepository>();
         services.AddScoped<IGuestsListingsRepository, GuestsListingRepository>();
+        services.AddScoped<IRoomListingRepository, RoomListingRepository>();
     }
 }

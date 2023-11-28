@@ -8,14 +8,15 @@ namespace Hotel.Application.Services;
 
 public class ReservationListingService : IReservationListingService
 {
-    private readonly IReservationListingRepository _reservationListingRepository;
     private readonly IMapper _mapper;
+    private readonly IReservationListingRepository _reservationListingRepository;
 
     public ReservationListingService(IReservationListingRepository reservationListingRepository, IMapper mapper)
     {
         _reservationListingRepository = reservationListingRepository;
         _mapper = mapper;
     }
+
     public async Task<IEnumerable<ReservationDto>> GetAllReservations()
     {
         var reservations = await _reservationListingRepository.GetAllReservations();

@@ -14,9 +14,13 @@ public class Reservation
 
     public Room Room { get; set; } = default!;
     public int RoomId { get; set; }
-
     public Guest Guest { get; set; } = default!;
     public int GuestId { get; set; }
+
+    public ReservationStatus? ReservationStatus { get; set; } = default!;
+    public int? ReservationStatusId { get; set; }
+
+    [Required] public string ReservationNumber { get; set; }
 
     public bool? IsDeleted { get; set; }
 }

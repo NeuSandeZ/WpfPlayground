@@ -18,10 +18,10 @@
                 <StackPanel Orientation="Horizontal" Margin="30 0 30 10">
                     <TextBlock VerticalAlignment="Center" Margin="0 0 10 0"> Check In Date </TextBlock>
                     <DatePicker SelectedDate="{Binding CheckInDate}" />
-                    <TextBlock VerticalAlignment="Center"  Margin="30 0 10 0"> Check Out Date </TextBlock>
+                    <TextBlock VerticalAlignment="Center" Margin="30 0 10 0"> Check Out Date </TextBlock>
                     <DatePicker SelectedDate="{Binding CheckOutDate}" />
                 </StackPanel>
-                
+
                 <TextBlock HorizontalAlignment="Left"
                            Text="Room details"
                            FontWeight="Medium"
@@ -30,13 +30,13 @@
 
                 <StackPanel Orientation="Horizontal" Margin="30 10 30 10">
                     <TextBlock> Available rooms </TextBlock>
-                    <ComboBox ItemsSource="{Binding AvailableRooms, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Margin="5 0 0 0"
-                              DisplayMemberPath="RoomCode"  
-                              SelectedValuePath="RoomId"  
-                              SelectedValue="{Binding Path=SelectedRoomId,Mode=TwoWay}"
-                              />
+                    <ComboBox ItemsSource="{Binding AvailableRooms, UpdateSourceTrigger=PropertyChanged}"
+                              VerticalAlignment="Bottom" Margin="5 0 0 0"
+                              DisplayMemberPath="RoomCode"
+                              SelectedValuePath="RoomId"
+                              SelectedValue="{Binding Path=SelectedRoomId,Mode=TwoWay}" />
                 </StackPanel>
-                
+
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Left"
                                Text="Guest details"
@@ -45,19 +45,21 @@
                                Margin="30 20 0 20" />
 
                     <StackPanel Margin="30 0 0 20">
-                        <TextBlock > First name </TextBlock>
-                        <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <TextBlock> First name </TextBlock>
+                        <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    
+
                     <StackPanel Margin="30 0 0 20">
-                        <TextBlock > Last name </TextBlock>
-                        <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="200"></TextBox>
+                        <TextBlock> Last name </TextBlock>
+                        <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"
+                                 HorizontalAlignment="Left" Width="200" />
                     </StackPanel>
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Margin="30 0 10 0"> Total Cost:  </TextBlock>
-                    <TextBox Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5 0 10 0"></TextBox>
+                    <TextBox Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
+                             Margin="5 0 10 0" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -67,14 +69,14 @@
                             Background="Blue"
                             Foreground="Azure"
                             Command="{Binding AddReservationCommand}" />
-                    
+
                     <Button Content="Cancel"
                             Margin="10 10 10 10"
                             HorizontalAlignment="Left"
                             Background="Blue"
                             Foreground="Azure"
                             Command="{Binding CloseModalCommand}" />
-                    
+
                 </StackPanel>
 
             </StackPanel>

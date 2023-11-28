@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using Hotel.Domain.Entities;
+﻿using Hotel.Domain.Entities;
 
 namespace Hotel.Domain.IRepositories;
 

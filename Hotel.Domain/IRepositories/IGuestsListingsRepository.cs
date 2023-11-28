@@ -5,5 +5,7 @@ namespace Hotel.Domain.IRepositories;
 public interface IGuestsListingsRepository
 {
     Task<IEnumerable<Guest>> GetAllGuests();
-    Task CreateGuest(Guest reservation);
+    Guest GetOneGuest(string email);
+    Task CreateGuest(Guest guest);
+    Task EditGuest(Guest guest);
 }

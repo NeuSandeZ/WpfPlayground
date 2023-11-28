@@ -1,6 +1,5 @@
 ﻿using System;
 using Hotel.MVVM.ViewModels;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Hotel.Services.Interfaces;
 
@@ -10,8 +9,8 @@ public enum ViewType
     Guest,
     Rooms,
     Payments,
-    TextXD,
     AddCrud,
+    AddGuest
 }
 
 public interface INavigator : INavigatorModal

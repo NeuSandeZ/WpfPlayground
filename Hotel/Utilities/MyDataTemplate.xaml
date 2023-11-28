@@ -3,10 +3,9 @@
                     xmlns:viewModels="clr-namespace:Hotel.MVVM.ViewModels"
                     xmlns:viewModelModals="clr-namespace:Hotel.MVVM.ViewModels.Modals"
                     xmlns:views="clr-namespace:Hotel.MVVM.Views"
-                    xmlns:viewsModals="clr-namespace:Hotel.MVVM.Views.Modals"
-                    >
+                    xmlns:viewsModals="clr-namespace:Hotel.MVVM.Views.Modals">
 
-    
+
     <!-- ViewModels -->
     <DataTemplate DataType="{x:Type viewModels:ReservationsListingViewModel}">
         <views:ReservationsListingView />
@@ -15,15 +14,15 @@
     <DataTemplate DataType="{x:Type viewModels:GuestViewModel}">
         <views:GuestView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModels:RoomsViewModel}">
         <views:RoomsView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModels:PaymentViewModel}">
         <views:PaymentView />
     </DataTemplate>
-    
+
     <!-- Modals -->
 
     <DataTemplate DataType="{x:Type viewModelModals:AddReservationViewModel}">

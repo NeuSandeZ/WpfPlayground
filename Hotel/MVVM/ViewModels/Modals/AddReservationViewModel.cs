@@ -1,106 +1,102 @@
 ﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
-using Hotel.Domain.Entities;
-using Hotel.Infrastructure;
 using Hotel.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace Hotel.MVVM.ViewModels.Modals;
 
 public class AddReservationViewModel : ViewModelBase
 {
     private readonly IReservationListingService _reservationListingService;
-    
+    private readonly ReservationsListingViewModel _reservationsListing;
+
     private DateTime _checkInDate;
+
+    private DateTime _checkOutDate;
+
+    private string _firstName;
+
+    private string _lastName;
+
+    private int _selectedRoomId;
+
+    private string _totalCost;
+
+    public AddReservationViewModel(INavigator navigator, IReservationListingService reservationListingService)
+    {
+        _reservationListingService = reservationListingService;
+
+        AddReservationCommand = new AddReservationCommand(navigator, this, _reservationListingService);
+        CloseModalCommand = new CloseModalCommand(navigator);
+
+        GetAvailableRooms();
+    }
+
     public DateTime CheckInDate
     {
         get => _checkInDate;
         set
         {
             _checkInDate = value;
-            OnPropertyChanged(nameof(CheckInDate));
+            OnPropertyChanged();
         }
     }
 
-    private DateTime _checkOutDate;
     public DateTime CheckOutDate
     {
-        get { return _checkOutDate; }
+        get => _checkOutDate;
         set
         {
             _checkOutDate = value;
-            OnPropertyChanged(nameof(CheckOutDate));
+            OnPropertyChanged();
         }
     }
-
-    private string _firstName;
 
     public string FirstName
     {
-        get { return _firstName; }
+        get => _firstName;
         set
         {
             _firstName = value;
-            OnPropertyChanged(nameof(FirstName));
+            OnPropertyChanged();
         }
     }
-
-    private string _lastName;
 
     public string LastName
     {
-        get { return _lastName; }
+        get => _lastName;
         set
         {
             _lastName = value;
-            OnPropertyChanged(nameof(LastName));
+            OnPropertyChanged();
         }
     }
 
-    private string _totalCost;
-
     public string TotalCost
     {
-        get
-        {
-            return _totalCost;
-            // CheckOutDate.Subtract(CheckInDate).TotalDays.ToString();
-        }
+        get => _totalCost;
+        // CheckOutDate.Subtract(CheckInDate).TotalDays.ToString();
         set
         {
             _totalCost = value;
             OnPropertyChanged(nameof(CheckOutDate));
         }
     }
-    
-    private int _selectedRoomId;
 
     public int SelectedRoomId
     {
-        get { return _selectedRoomId; }
+        get => _selectedRoomId;
         set
         {
             _selectedRoomId = value;
-            OnPropertyChanged(nameof(SelectedRoomId));
+            OnPropertyChanged();
         }
     }
-    
-    public IQueryable<AvailableRoomsDto> AvailableRooms { get; set; }
 
-    public AddReservationViewModel(INavigator navigator,IReservationListingService reservationListingService)
-    {
-        _reservationListingService = reservationListingService;
-        
-        AddReservationCommand = new AddReservationCommand(navigator, this, _reservationListingService );
-        CloseModalCommand = new CloseModalCommand(navigator);
-        
-        GetAvailableRooms();
-    }
+    public IQueryable<AvailableRoomsDto> AvailableRooms { get; set; }
 
     public ICommand AddReservationCommand { get; }
     public ICommand CloseModalCommand { get; }

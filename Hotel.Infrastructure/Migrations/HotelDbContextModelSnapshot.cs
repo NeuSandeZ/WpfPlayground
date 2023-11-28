@@ -195,6 +195,13 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ReservationNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ReservationStatusId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
@@ -204,6 +211,8 @@ namespace Hotel.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GuestId");
+
+                    b.HasIndex("ReservationStatusId");
 
                     b.HasIndex("RoomId");
 
@@ -218,7 +227,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ReservationsStatus")
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -238,11 +247,11 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<int>("FloorNumber")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
-
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<int>("PricePerNight")
+                        .HasColumnType("int");
 
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
@@ -250,9 +259,14 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<int>("RoomStatusId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RoomTypeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoomStatusId");
+
+                    b.HasIndex("RoomTypeId");
 
                     b.ToTable("Rooms");
                 });
@@ -479,6 +493,10 @@ namespace Hotel.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Hotel.Domain.Entities.ReservationStatus", "ReservationStatus")
+                        .WithMany()
+                        .HasForeignKey("ReservationStatusId");
+
                     b.HasOne("Hotel.Domain.Entities.Room", "Room")
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
@@ -486,6 +504,8 @@ namespace Hotel.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Guest");
+
+                    b.Navigation("ReservationStatus");
 
                     b.Navigation("Room");
                 });
@@ -498,7 +518,13 @@ namespace Hotel.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Hotel.Domain.Entities.RoomType", "RoomType")
+                        .WithMany()
+                        .HasForeignKey("RoomTypeId");
+
                     b.Navigation("RoomStatus");
+
+                    b.Navigation("RoomType");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>

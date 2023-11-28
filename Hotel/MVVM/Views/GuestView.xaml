@@ -15,19 +15,20 @@
 
         <Grid>
             <StackPanel Orientation="Horizontal">
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding GuestDtos}">
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding GuestDtos}"
+                          SelectedItem="{Binding SelectedGuest}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="First name" IsReadOnly="True" Binding="{Binding FirstName}"/>
-                        <DataGridTextColumn Header="Last name" IsReadOnly="True" Binding="{Binding LastName}"/>
-                        <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
-                        <DataGridTextColumn Header="Phone number" Binding="{Binding PhoneNumber}"/>
-                        <DataGridTextColumn Header="City" Binding="{Binding City}"/>
-                        <DataGridTextColumn Header="Street" Binding="{Binding Street}"/>
-                        <DataGridTextColumn Header="Postal code" Binding="{Binding PostalCode}"/>
+                        <DataGridTextColumn Header="First name" IsReadOnly="True" Binding="{Binding FirstName}" />
+                        <DataGridTextColumn Header="Last name" IsReadOnly="True" Binding="{Binding LastName}" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                        <DataGridTextColumn Header="Phone number" Binding="{Binding PhoneNumber}" />
+                        <DataGridTextColumn Header="City" Binding="{Binding City}" />
+                        <DataGridTextColumn Header="Street" Binding="{Binding Street}" />
+                        <DataGridTextColumn Header="Postal code" Binding="{Binding PostalCode}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
         </Grid>
-        
+
     </Grid>
 </views:CrudViewBase>

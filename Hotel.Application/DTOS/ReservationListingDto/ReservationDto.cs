@@ -7,4 +7,7 @@ public class ReservationDto
     public int? TotalCost { get; set; }
     public string GuestFullName { get; set; }
     public string FloorAndRoomNumber { get; set; }
+
+    public string ReservationStatus { get; set; }
+    public string ReservationNumber { get; set; }
 }

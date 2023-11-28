@@ -1,9 +1,7 @@
 ﻿using System.Windows.Input;
-using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Commands;
 using Hotel.Factories;
 using Hotel.Services.Interfaces;
-using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
 
@@ -19,7 +17,7 @@ public class MainWindowViewModel : ViewModelBase
 
         _navigator.StateChanged += OnCurrentViewModelChanged;
         _navigator.StateModalChanged += OnCurrentViewModalChanged;
-        
+
         UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, viewModelFactory);
         UpdateCurrentViewModelCommand.Execute(ViewType.Reservation);
     }

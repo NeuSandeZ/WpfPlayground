@@ -3,19 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Hotel.MVVM.Views"
-             xmlns:nav="clr-namespace:Hotel.Services.Interfaces"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <Border>
-            <Grid>
+
+    <Border Margin="5" Background="Azure" CornerRadius="10">
+        <Grid Margin="10">
+            <StackPanel>
+
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Height="50" Background="Azure" Margin="0 10 0 10" Text="{Binding CheckInDate}"></TextBlock>
-                    <TextBlock Height="50" Background="Azure" Margin="10 10 0 10" Text="{Binding CheckOutDate}"></TextBlock>
-                    <Button 
-                        Command="{Binding TestCommand}" Content="TEST"/>
+                    <TextBlock Margin="0 13 18 0"> Check in date:</TextBlock>
+                    <DatePicker Background="Azure" Margin="0 10 0 10" IsEnabled="False"
+                                SelectedDate="{Binding CheckInDate}" />
                 </StackPanel>
-            </Grid>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 13 10 0"> Check out date: </TextBlock>
+                    <DatePicker Background="Azure" Margin="0 10 0 10" IsEnabled="False"
+                                SelectedDate="{Binding CheckOutDate}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 10 10 0"> Total cost:  </TextBlock>
+                    <TextBlock Background="Azure" Margin="0 10 0 10" IsEnabled="False" Text="{Binding TotalCost}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 10 10 0"> Guest fullname:  </TextBlock>
+                    <TextBlock Background="Azure" Margin="0 10 0 10" IsEnabled="False" Text="{Binding GuestFullname}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 10 10 0"> Room number:  </TextBlock>
+                    <TextBlock Background="Azure" Margin="0 10 0 10" IsEnabled="False"
+                               Text="{Binding FloorAndRoomNumber}" />
+                </StackPanel>
+
+                <Button
+                    Command="{Binding TestCommand}" Content="TEST" />
+            </StackPanel>
+        </Grid>
     </Border>
 </UserControl>

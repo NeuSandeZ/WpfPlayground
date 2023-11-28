@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             >
+             xmlns:converters="clr-namespace:Hotel.Utilities.Converters">
 
     <Application.Resources>
 
@@ -21,6 +21,10 @@
                 <ResourceDictionary Source="Utilities/MyDataTemplate.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
+
+            <converters:StandardConverter x:Key="StandardConverter" />
+            <converters:InversedConverter x:Key="InversedConverter" />
+
         </ResourceDictionary>
 
     </Application.Resources>

@@ -10,10 +10,13 @@ public class Room
 
     [Required] public int FloorNumber { get; set; }
 
-    public bool IsAvailable { get; set; }
+    public int PricePerNight { get; set; }
 
     public RoomStatus? RoomStatus { get; set; } = default!;
-    public int RoomStatusId { get; set; }
+    public int RoomStatusId { get; set; } = 3;
+
+    public RoomType? RoomType { get; set; } = default!;
+    public int? RoomTypeId { get; set; }
 
     public List<Reservation> Reservations { get; set; } = new();
 

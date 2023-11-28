@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Threading.Tasks;
 
 namespace Hotel.Commands;
 
@@ -10,7 +8,7 @@ public abstract class AsyncCommandBase : BaseCommand
 
     public bool IsExecuting
     {
-        get { return _isExecuting; }
+        get => _isExecuting;
         set
         {
             _isExecuting = value;

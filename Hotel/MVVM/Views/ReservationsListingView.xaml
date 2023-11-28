@@ -22,9 +22,9 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" /> 
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+
             <TextBlock
                 Background="Brown"
                 Visibility="{Binding IsTemporaryViewModelOpened,Converter={StaticResource StandardConverter}}">
@@ -41,6 +41,8 @@
                         <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}" />
                         <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}" />
                         <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}" />
+                        <DataGridTextColumn Header="Reservation status" Binding="{Binding ReservationStatus}" />
+                        <DataGridTextColumn Header="Reservation number" Binding="{Binding ReservationNumber}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

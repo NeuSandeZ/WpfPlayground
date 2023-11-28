@@ -15,9 +15,11 @@ public class ReservationMappingProfile : Profile
                 ))
             .ForMember(a => a.FloorAndRoomNumber,
                 c =>
-                    c.MapFrom(src => $"{src.Room.FloorNumber + "" + src.Room.RoomNumber}"));
+                    c.MapFrom(src => $"{src.Room.FloorNumber + "" + src.Room.RoomNumber}"))
+            .ForMember(a => a.ReservationStatus,
+                c =>
+                    c.MapFrom(src => src.ReservationStatus.Status));
 
-        
 
         CreateMap<Room, AvailableRoomsDto>()
             .ForMember(dest => dest.RoomId,
@@ -29,8 +31,8 @@ public class ReservationMappingProfile : Profile
             .ForMember(dest => dest.FloorNumber,
                 opt => opt.MapFrom(src =>
                     src.FloorNumber));
-            
-        
+
+
         CreateMap<AddReservationDto, Reservation>()
             .ForMember(dest => dest.CheckInDate,
                 opt => opt.MapFrom(src => src.CheckInDate))
@@ -40,14 +42,20 @@ public class ReservationMappingProfile : Profile
                 opt => opt.MapFrom(src => string.IsNullOrEmpty(src.TotalCost) ? (int?)null : int.Parse(src.TotalCost)))
             .ForMember(dest => dest.Guest,
                 opt => opt.MapFrom(src => new Guest
-            {
-                FirstName = src.FirstName,
-                LastName = src.LastName
-            }))
-            .ForMember(dest => dest.RoomId, 
+                {
+                    FirstName = src.FirstName,
+                    LastName = src.LastName
+                }))
+            .ForMember(dest => dest.RoomId,
                 opt =>
                     opt.MapFrom(src => src.RoomId
-            ))
+                    ))
+            .ForMember(dest => dest.ReservationStatusId,
+                opt => opt.MapFrom(
+                    src => src.ReservationStatusId))
+            .ForMember(dest => dest.ReservationNumber,
+                opt => opt.MapFrom(
+                    src => src.ReservationNumber))
             .ForMember(dest => dest.IsDeleted, opt => opt.Ignore());
     }
 }

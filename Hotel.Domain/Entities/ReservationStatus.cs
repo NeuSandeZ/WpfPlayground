@@ -6,5 +6,5 @@ public class ReservationStatus
 {
     [Key] public int Id { get; set; }
 
-    [Required] public string ReservationsStatus { get; set; } = default!;
+    public string Status { get; set; } = default!;
 }
