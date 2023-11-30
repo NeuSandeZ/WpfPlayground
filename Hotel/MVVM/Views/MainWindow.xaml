@@ -43,8 +43,6 @@
                     <StackPanel Height="400"
                                 Width="228">
 
-                        <!--// Home //-->
-
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
                                                    CommandParameter="{x:Static nav:ViewType.Reservation}"
@@ -61,8 +59,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-
-                        <!--// Customer //-->
+                        
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -79,8 +76,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-
-                        <!--// Products //-->
+                        
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -97,8 +93,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-
-                        <!--// Orders //-->
+                        
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding }">
@@ -114,8 +109,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-
-                        <!--// Transactions //-->
+                        
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -132,8 +126,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-
-                        <!--// Shipments //-->
+                        
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding }">
@@ -149,8 +142,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-
-                        <!--// Settings //-->
+                        
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding }">

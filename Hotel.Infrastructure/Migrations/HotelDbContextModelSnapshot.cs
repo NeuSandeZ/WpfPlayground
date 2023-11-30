@@ -151,9 +151,14 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<int>("PaymentTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PaymentTypeId");
+
+                    b.HasIndex("ReservationId");
 
                     b.ToTable("Payments");
                 });
@@ -482,7 +487,15 @@ namespace Hotel.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Hotel.Domain.Entities.Reservation", "Reservation")
+                        .WithMany()
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("PaymentType");
+
+                    b.Navigation("Reservation");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Reservation", b =>

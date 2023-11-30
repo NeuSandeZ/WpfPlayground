@@ -8,31 +8,32 @@ using Hotel.Commands;
 using Hotel.Factories;
 using Hotel.MVVM.ViewModels.Modals;
 using Hotel.Services.Interfaces;
+using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
 
 public class GuestViewModel : ViewModelBase
 {
-    private readonly AddGuestViewModel _addGuestViewModel;
     private readonly IGuestsListingService _guestsListingService;
     private readonly INavigator _navigator;
     private readonly IViewModelFactory _viewModelFactory;
+    private readonly MessengerCurrentViewStorage _messengerCurrentViewStorage;
 
     private ObservableCollection<GuestDto> _guestDtos;
 
     private GuestDto _selectedGuest;
-
+    
     public GuestViewModel(INavigator navigator, IViewModelFactory viewModelFactory,
-        IGuestsListingService guestsListingService, AddGuestViewModel addGuestViewModel)
+        IGuestsListingService guestsListingService, MessengerCurrentViewStorage messengerCurrentViewStorage)
     {
         _navigator = navigator;
         _viewModelFactory = viewModelFactory;
         _guestsListingService = guestsListingService;
-        _addGuestViewModel = addGuestViewModel;
+        _messengerCurrentViewStorage = messengerCurrentViewStorage;
 
         GetAllGuests();
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddGuest);
-        EditCommand = new EditGuestCommand(navigator, viewModelFactory, _guestsListingService, this);
+        EditCommand = new EditGuestCommand(navigator, _guestsListingService, this);
     }
 
     public ObservableCollection<GuestDto> GuestDtos
@@ -41,7 +42,7 @@ public class GuestViewModel : ViewModelBase
         set
         {
             _guestDtos = value;
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(GuestDtos));
         }
     }
 
@@ -51,10 +52,14 @@ public class GuestViewModel : ViewModelBase
         set
         {
             _selectedGuest = value;
-            OnPropertyChanged();
+            if (_messengerCurrentViewStorage.IsTemporaryViewModelOpened)
+            {
+                WeakReferenceMessenger.Default.Send(SelectedGuest);
+            }
+            OnPropertyChanged(nameof(SelectedGuest));
         }
     }
-
+    
     public ICommand OpenModal { get; }
     public ICommand EditCommand { get; }
 

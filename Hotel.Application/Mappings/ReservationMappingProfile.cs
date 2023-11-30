@@ -9,6 +9,9 @@ public class ReservationMappingProfile : Profile
     public ReservationMappingProfile()
     {
         CreateMap<Reservation, ReservationDto>()
+            .ForMember(a => a.ReservationId,
+                c =>
+                    c.MapFrom(src => src.Id))
             .ForMember(a => a.GuestFullName,
                 c => c.MapFrom(src =>
                     $"{src.Guest.FirstName + " " + src.Guest.LastName}"
@@ -18,7 +21,10 @@ public class ReservationMappingProfile : Profile
                     c.MapFrom(src => $"{src.Room.FloorNumber + "" + src.Room.RoomNumber}"))
             .ForMember(a => a.ReservationStatus,
                 c =>
-                    c.MapFrom(src => src.ReservationStatus.Status));
+                    c.MapFrom(src => src.ReservationStatus.Status))
+            .ForMember(a => a.TotalCost,
+                c =>
+                    c.MapFrom(src => src.TotalCost));
 
 
         CreateMap<Room, AvailableRoomsDto>()
@@ -30,22 +36,21 @@ public class ReservationMappingProfile : Profile
                     src.RoomNumber))
             .ForMember(dest => dest.FloorNumber,
                 opt => opt.MapFrom(src =>
-                    src.FloorNumber));
+                    src.FloorNumber))
+            .ForMember(dest => dest.PricePerNight,
+                opt => opt.MapFrom(src =>
+                    src.PricePerNight));
 
-
+        
         CreateMap<AddReservationDto, Reservation>()
             .ForMember(dest => dest.CheckInDate,
                 opt => opt.MapFrom(src => src.CheckInDate))
             .ForMember(dest => dest.CheckOutDate
                 , opt => opt.MapFrom(src => src.CheckOutDate))
             .ForMember(dest => dest.TotalCost,
-                opt => opt.MapFrom(src => string.IsNullOrEmpty(src.TotalCost) ? (int?)null : int.Parse(src.TotalCost)))
-            .ForMember(dest => dest.Guest,
-                opt => opt.MapFrom(src => new Guest
-                {
-                    FirstName = src.FirstName,
-                    LastName = src.LastName
-                }))
+                opt => opt.MapFrom(src => string.IsNullOrEmpty(src.TotalCost) ? (int?)null : int.Parse(src.TotalCost.Replace("$",""))))
+            .ForMember(dest => dest.GuestId,
+                opt => opt.MapFrom(src => src.GuestId))
             .ForMember(dest => dest.RoomId,
                 opt =>
                     opt.MapFrom(src => src.RoomId

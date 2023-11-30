@@ -12,13 +12,11 @@ public class EditGuestCommand : BaseCommand, IRecipient<string>
     private readonly IGuestsListingService _guestsListingService;
     private readonly GuestViewModel _guestViewModel;
     private readonly INavigator _navigator;
-    private readonly IViewModelFactory _viewModelFactory;
 
-    public EditGuestCommand(INavigator navigator, IViewModelFactory viewModelFactory,
+    public EditGuestCommand(INavigator navigator,
         IGuestsListingService guestsListingService, GuestViewModel guestViewModel)
     {
         _navigator = navigator;
-        _viewModelFactory = viewModelFactory;
         _guestViewModel = guestViewModel;
         _guestsListingService = guestsListingService;
     }

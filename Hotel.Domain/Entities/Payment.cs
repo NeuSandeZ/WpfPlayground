@@ -6,9 +6,12 @@ public class Payment
 {
     [Key] public int Id { get; set; }
 
-    public DateTime PaymentDate { get; set; }
+    public DateTime PaymentDate { get; set; } 
     public int Amount { get; set; }
 
     public PaymentType PaymentType { get; set; } = default!;
     public int PaymentTypeId { get; set; }
+
+    public Reservation Reservation { get; set; }
+    public int ReservationId { get; set; }
 }

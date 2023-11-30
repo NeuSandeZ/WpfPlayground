@@ -6,5 +6,7 @@ public class AvailableRoomsDto
     public int RoomNumber { get; set; }
     public int FloorNumber { get; set; }
 
+    public int PricePerNight { get; set; }
+
     public string RoomCode => $"{FloorNumber + " " + RoomNumber}";
 }

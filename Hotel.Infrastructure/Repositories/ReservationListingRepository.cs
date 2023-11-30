@@ -21,6 +21,7 @@ public class ReservationListingRepository : IReservationListingRepository
             .Include(a => a.ReservationStatus)
             .Select(r => new Reservation
             {
+                Id = r.Id,
                 CheckInDate = r.CheckInDate,
                 CheckOutDate = r.CheckOutDate,
                 TotalCost = r.TotalCost,
@@ -59,7 +60,8 @@ public class ReservationListingRepository : IReservationListingRepository
                 Id = src.Id,
                 RoomNumber = src.RoomNumber,
                 FloorNumber = src.FloorNumber,
-                RoomStatusId = src.RoomStatusId
+                RoomStatusId = src.RoomStatusId,
+                PricePerNight = src.PricePerNight
             })
             .ToList();
     }

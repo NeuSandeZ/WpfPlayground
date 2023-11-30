@@ -31,21 +31,20 @@
                 CHOOSE RESERVATION YOU WANT TO PAY FOR
             </TextBlock>
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-
+            <Grid Grid.Row="1">
                 <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}"
                           ItemsSource="{Binding Reservations}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}" />
-                        <DataGridTextColumn Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}" />
-                        <DataGridTextColumn Header="TotalCost" Binding="{Binding TotalCost}" />
-                        <DataGridTextColumn Header="RoomCode" Binding="{Binding FloorAndRoomNumber}" />
-                        <DataGridTextColumn Header="Guest" Binding="{Binding GuestFullName}" />
-                        <DataGridTextColumn Header="Reservation status" Binding="{Binding ReservationStatus}" />
-                        <DataGridTextColumn Header="Reservation number" Binding="{Binding ReservationNumber}" />
+                        <DataGridTextColumn Width="*" Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}" />
+                        <DataGridTextColumn Width="*" Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}" />
+                        <DataGridTextColumn Width="*" Header="TotalCost" Binding="{Binding TotalCost}" />
+                        <DataGridTextColumn Width="*" Header="RoomCode" Binding="{Binding FloorAndRoomNumber}" />
+                        <DataGridTextColumn Width="*" Header="Guest" Binding="{Binding GuestFullName}" />
+                        <DataGridTextColumn Width="*" Header="Reservation status" Binding="{Binding ReservationStatus}" />
+                        <DataGridTextColumn Width="*" Header="Reservation number" Binding="{Binding ReservationNumber}" />
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 

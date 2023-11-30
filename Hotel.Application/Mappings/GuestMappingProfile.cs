@@ -9,6 +9,8 @@ public class GuestMappingProfile : Profile
     public GuestMappingProfile()
     {
         CreateMap<Guest, GuestDto>()
+            .ForMember(dest => dest.GuestId,
+                opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.City,
                 membo => membo.MapFrom(
                     src => src.Address.City))
@@ -20,12 +22,12 @@ public class GuestMappingProfile : Profile
                     src => src.Address.PostalCode));
 
         CreateMap<GuestDto, Guest>()
-            .ForMember(dest => dest.Address, opt =>
-                opt.MapFrom(src => new Address
-                {
-                    City = src.City,
-                    Street = src.Street,
-                    PostalCode = src.PostalCode
-                }));
+        .ForMember(dest => dest.Address, opt =>
+            opt.MapFrom(src => new Address
+            {
+                City = src.City,
+                Street = src.Street,
+                PostalCode = src.PostalCode
+            }));
     }
 }

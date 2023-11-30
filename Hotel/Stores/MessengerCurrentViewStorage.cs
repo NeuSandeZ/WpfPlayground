@@ -14,8 +14,6 @@ public class MessengerCurrentViewStorage : IRecipient<string>
     {
         _navigator = navigator;
         _viewModelFactory = viewModelFactory;
-
-        // WeakReferenceMessenger.Default.Register(this);
     }
 
     private ViewModelBase? TemporaryViewModel { get; set; }
@@ -28,6 +26,16 @@ public class MessengerCurrentViewStorage : IRecipient<string>
             case "Open":
                 TemporaryViewModel = _navigator.CurrentViewModel;
                 _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Reservation);
+                break;
+            case "OpenGuests":
+                TemporaryViewModel = _navigator.CurrentModalViewModel;
+                _navigator.CurrentModalViewModel = null;
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Guest);
+                break;
+            case "CloseGuests":
+                _navigator.CurrentModalViewModel = TemporaryViewModel;
+                WeakReferenceMessenger.Default.UnregisterAll(this);
+                TemporaryViewModel = null;
                 break;
             case "Close":
                 _navigator.CurrentViewModel = TemporaryViewModel;

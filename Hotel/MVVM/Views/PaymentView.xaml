@@ -4,43 +4,104 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
 
-    <Border Margin="5" Background="Azure" CornerRadius="10">
-        <Grid Margin="10">
-            <StackPanel>
+    <Border Margin="10" CornerRadius="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 13 18 0"> Check in date:</TextBlock>
-                    <DatePicker Background="Azure" Margin="0 10 0 10" IsEnabled="False"
-                                SelectedDate="{Binding CheckInDate}" />
-                </StackPanel>
+            <Border Background="Azure" CornerRadius="15">
+                <Grid Margin="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 13 10 0"> Check out date: </TextBlock>
-                    <DatePicker Background="Azure" Margin="0 10 0 10" IsEnabled="False"
-                                SelectedDate="{Binding CheckOutDate}" />
-                </StackPanel>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 10 10 0"> Total cost:  </TextBlock>
-                    <TextBlock Background="Azure" Margin="0 10 0 10" IsEnabled="False" Text="{Binding TotalCost}" />
-                </StackPanel>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Check in date:" />
+                    </TextBlock>
+                    <DatePicker Grid.Row="0" Grid.Column="1" Background="Azure" IsEnabled="False"
+                                SelectedDate="{Binding CheckInDate}" Margin="5 0 0 0" />
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 10 10 0"> Guest fullname:  </TextBlock>
-                    <TextBlock Background="Azure" Margin="0 10 0 10" IsEnabled="False" Text="{Binding GuestFullname}" />
-                </StackPanel>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Check out date:" />
+                    </TextBlock>
+                    <DatePicker Grid.Row="1" Grid.Column="1" Background="Azure" IsEnabled="False"
+                                SelectedDate="{Binding CheckOutDate}" Margin="5 0 0 0" />
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 10 10 0"> Room number:  </TextBlock>
-                    <TextBlock Background="Azure" Margin="0 10 0 10" IsEnabled="False"
-                               Text="{Binding FloorAndRoomNumber}" />
-                </StackPanel>
+                    <TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Payment date:" />
+                    </TextBlock>
+                    <DatePicker Grid.Row="2" Grid.Column="1" Background="Azure"
+                                IsEnabled="{Binding PaymentDateEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedDate="{Binding PaymentDate, UpdateSourceTrigger=PropertyChanged}"
+                                Margin="5 0 0 0" />
 
-                <Button
-                    Command="{Binding TestCommand}" Content="TEST" />
-            </StackPanel>
+                    <TextBlock Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Payment type:" />
+                    </TextBlock>
+                    <ComboBox Grid.Row="3" Grid.Column="1"
+                              ItemsSource="{Binding PaymentTypes,UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="PaymentMethod"
+                              SelectedValuePath="Id"
+                              SelectedValue="{Binding Path=SelectedPaymentTypeId,Mode=TwoWay}" Margin="5 0 0 0" />
+
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Total cost:" />
+                    </TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Background="Azure" Margin="5 0 0 0" IsEnabled="False"
+                               Text="{Binding TotalCost}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                    <TextBlock Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Guest full name:" />
+                    </TextBlock>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Background="Azure" Margin="5 0 0 0" IsEnabled="False"
+                               Text="{Binding GuestFullname}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                    <TextBlock Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 5 0">
+                        <Run Text="Room number:" />
+                    </TextBlock>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Background="Azure" Margin="5 0 0 0" IsEnabled="False"
+                               Text="{Binding FloorAndRoomNumber}"
+                               HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                    <Button Grid.Row="7" Grid.ColumnSpan="2" Margin="0 0 0 10" Command="{Binding TestCommand}"
+                            Content="Choose reservation" />
+                    <Button Grid.Row="8" Grid.ColumnSpan="2" Command="{Binding PayForReservationCommand}" Content="Pay" />
+                </Grid>
+            </Border>
+
+            <Border Background="Azure" CornerRadius="15" Grid.Column="1" Margin="10 0 0 0 ">
+                <Grid Margin="0 10 0 10">
+                    <DataGrid Background="Azure" AutoGenerateColumns="False" ItemsSource="{Binding PaymentListingCollection}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Header="Amount" IsReadOnly="True" Binding="{Binding Amount}" />
+                            <DataGridTextColumn Width="*" Header="Payment date" IsReadOnly="True"
+                                                Binding="{Binding PaymentDate}" />
+                            <DataGridTextColumn Width="*" Header="Payment method" Binding="{Binding PaymentMethod}" />
+                            <DataGridTextColumn Width="*" Header="Reservation number"
+                                                Binding="{Binding ReservationNumber}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
         </Grid>
     </Border>
 </UserControl>

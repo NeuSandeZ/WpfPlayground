@@ -35,10 +35,9 @@ public class AddReservationCommand : BaseCommand
         {
             CheckInDate = _reservationViewModel.CheckInDate,
             CheckOutDate = _reservationViewModel.CheckOutDate,
-            FirstName = _reservationViewModel.FirstName,
-            LastName = _reservationViewModel.LastName,
             TotalCost = _reservationViewModel.TotalCost,
-            RoomId = _reservationViewModel.SelectedRoomId
+            RoomId = _reservationViewModel.SelectedRoomId,
+            GuestId = _reservationViewModel.SelectedGuestId
         };
 
         _reservationViewModel.PropertyChanged -= OnModelPropertyChanged;

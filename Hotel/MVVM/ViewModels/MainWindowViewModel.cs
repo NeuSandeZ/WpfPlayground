@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Hotel.Application.DTOS.GuestsListingDto;
 using Hotel.Commands;
 using Hotel.Factories;
 using Hotel.Services.Interfaces;

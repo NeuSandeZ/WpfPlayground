@@ -19,6 +19,7 @@ public class GuestsListingRepository : IGuestsListingsRepository
             .Include(a => a.Address)
             .Select(a => new Guest
             {
+                Id = a.Id,
                 FirstName = a.FirstName,
                 LastName = a.LastName,
                 Email = a.Email,
