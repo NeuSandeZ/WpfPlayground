@@ -23,6 +23,18 @@
         <views:PaymentView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewModels:CheckInsOutsViewModel}">
+        <views:CheckInsOutsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:StaffViewModel}">
+        <views:StaffView />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type viewModels:TasksViewModel}">
+        <views:TasksView />
+    </DataTemplate>
+
     <!-- Modals -->
 
     <DataTemplate DataType="{x:Type viewModelModals:AddReservationViewModel}">
@@ -31,6 +43,14 @@
 
     <DataTemplate DataType="{x:Type viewModelModals:AddGuestViewModel}">
         <viewsModals:AddGuestsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModelModals:AddRoomViewModel}">
+        <viewsModals:AddRoomView />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type viewModelModals:AddStaffViewModel}">
+        <viewsModals:AddStaffView />
     </DataTemplate>
 
 </ResourceDictionary>

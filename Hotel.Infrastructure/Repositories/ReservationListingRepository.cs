@@ -1,4 +1,5 @@
-﻿using Hotel.Domain.Entities;
+﻿using System.Collections;
+using Hotel.Domain.Entities;
 using Hotel.Domain.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -48,6 +49,10 @@ public class ReservationListingRepository : IReservationListingRepository
 
     public async Task CreateReservation(Reservation reservation)
     {
+        var room = _dbContext.Rooms.FirstOrDefault(a => a.Id == reservation.RoomId);
+        //TODO weird ID on DB
+        room.RoomStatusId = 1002;
+        _dbContext.Update(room);
         await _dbContext.AddAsync(reservation);
         await _dbContext.SaveChangesAsync();
     }

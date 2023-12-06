@@ -96,7 +96,8 @@
                         
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding }">
+                                                   Command="{Binding UpdateCurrentViewModelCommand}"
+                                                   CommandParameter="{x:Static nav:ViewType.Tasks}">
 
                             <Grid>
 
@@ -129,14 +130,15 @@
                         
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding }">
+                                                   Command="{Binding UpdateCurrentViewModelCommand}"
+                                                   CommandParameter="{x:Static nav:ViewType.CheckInsOuts}">
 
                             <Grid>
 
                                 <Image Source="\Utilities\Images\img_shipment.png"
                                        Style="{StaticResource Image_Style}" />
 
-                                <TextBlock Text="Arrivals"
+                                <TextBlock Text="Check-Ins/Outs"
                                            Style="{StaticResource Text_Style}" />
 
                             </Grid>
@@ -145,14 +147,15 @@
                         
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
-                                                   Command="{Binding }">
+                                                   Command="{Binding UpdateCurrentViewModelCommand}"
+                                                   CommandParameter="{x:Static nav:ViewType.Staff}">
 
                             <Grid>
 
                                 <Image Source="\Utilities\Images\img_setting.png"
                                        Style="{StaticResource Image_Style}" />
 
-                                <TextBlock Text="Settings"
+                                <TextBlock Text="Staff"
                                            Style="{StaticResource Text_Style}" />
 
                             </Grid>

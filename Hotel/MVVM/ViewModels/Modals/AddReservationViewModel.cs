@@ -11,7 +11,7 @@ using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels.Modals;
 
-//TODO block UI when user is choosing GUEST, also have to trigger IsChecked when user switches view using messenger for better UX
+//TODO block UI when user is choosing GUEST, also have to trigger IsChecked for specific view when user switches view using messenger for better UX
 public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
 {
     private readonly IReservationListingService _reservationListingService;
@@ -22,17 +22,17 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
     private DateTime _checkOutDate = DateTime.Now.Date;
     
     private int _selectedGuestId;
-
-    private string _firstName;
-
-    private string _lastName;
-
+    
     private int _selectedRoomId;
-
+    
+    private string _firstName;
+    
+    private string _lastName;
+    
     private string _totalCost;
-
+    
     private string _email;
-
+    
     private string _city;
     
     private string _street;

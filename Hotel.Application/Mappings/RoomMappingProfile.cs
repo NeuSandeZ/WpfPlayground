@@ -27,5 +27,7 @@ public class RoomMappingProfile : Profile
             .ForMember(dest => dest.RoomType,
                 opt => opt.MapFrom(
                     src => src.RoomType.Type));
+        
+        CreateMap<RoomType, RoomTypeDto>();
     }
 }

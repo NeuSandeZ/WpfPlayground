@@ -38,7 +38,6 @@ public partial class App : System.Windows.Application
 
                 services.AddSingleton<IViewModelFactory, ViewModelFactory>();
                 services.AddSingleton<INavigator, Navigator>();
-
                 services.AddSingleton<MessengerCurrentViewStorage>();
 
                 //ViewModels
@@ -49,6 +48,12 @@ public partial class App : System.Windows.Application
                 services.AddTransient<AddGuestViewModel>();
                 services.AddTransient<AddReservationViewModel>();
                 services.AddTransient<PaymentViewModel>();
+                services.AddTransient<RoomsViewModel>();
+                services.AddTransient<AddRoomViewModel>();
+                services.AddTransient<CheckInsOutsViewModel>();
+                services.AddTransient<StaffViewModel>();
+                services.AddTransient<TasksViewModel>();
+                services.AddTransient<AddStaffViewModel>();
 
                 //ViewModels Factory
 
@@ -62,8 +67,18 @@ public partial class App : System.Windows.Application
                     services.GetRequiredService<AddGuestViewModel>);
                 services.AddSingleton<CreateViewModel<AddReservationViewModel>>(services =>
                     services.GetRequiredService<AddReservationViewModel>);
+                services.AddSingleton<CreateViewModel<AddRoomViewModel>>(services =>
+                    services.GetRequiredService<AddRoomViewModel>);
+                services.AddSingleton<CreateViewModel<CheckInsOutsViewModel>>(services =>
+                    services.GetRequiredService<CheckInsOutsViewModel>);
                 services.AddSingleton<CreateViewModel<PaymentViewModel>>(services =>
                     services.GetRequiredService<PaymentViewModel>);
+                services.AddSingleton<CreateViewModel<StaffViewModel>>(services =>
+                    services.GetRequiredService<StaffViewModel>);
+                services.AddSingleton<CreateViewModel<TasksViewModel>>(services =>
+                    services.GetRequiredService<TasksViewModel>);
+                services.AddSingleton<CreateViewModel<AddStaffViewModel>>(services =>
+                    services.GetRequiredService<AddStaffViewModel>);
 
 
                 services.AddSingleton<MainWindowViewModel>();

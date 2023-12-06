@@ -1,0 +1,43 @@
+﻿<local:CrudViewBase x:Class="Hotel.MVVM.Views.StaffView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Hotel.MVVM.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <!-- <Grid.RowDefinitions> -->
+            <!--     <RowDefinition Height="Auto" /> -->
+            <!--     <RowDefinition Height="*" /> -->
+            <!-- </Grid.RowDefinitions> -->
+            <!-- -->
+            <!-- <TextBlock -->
+            <!--     Background="Brown" -->
+            <!--     Visibility="{Binding IsTemporaryViewModelOpened,Converter={StaticResource StandardConverter}}"> -->
+            <!--     CHOOSE RESERVATION YOU WANT TO PAY FOR -->
+            <!-- </TextBlock> -->
+
+            <Grid>
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding StaffListing}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" Header="Fullname" IsReadOnly="True" Binding="{Binding FullName}">
+                            <!-- <DataGridTextColumn.CellStyle> -->
+                            <!--     <Style TargetType="DataGridCell"> -->
+                            <!--         <Setter Property="Background" Value="Green" /> -->
+                            <!--     </Style> -->
+                            <!-- </DataGridTextColumn.CellStyle> -->
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Width="*" Header="Email" IsReadOnly="True" Binding="{Binding Email}" />
+                        <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding PhoneNumber}" />
+                        <DataGridTextColumn Width="*" Header="Staff role" Binding="{Binding Role}" />
+                        <DataGridTextColumn Width="*" Header="City" Binding="{Binding City}" />
+                        <DataGridTextColumn Width="*" Header="Postal code" Binding="{Binding PostalCode}" />
+                        <DataGridTextColumn Width="*" Header="Street" Binding="{Binding Street}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</local:CrudViewBase>

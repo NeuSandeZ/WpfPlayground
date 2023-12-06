@@ -25,4 +25,20 @@ public class HotelDbContext : DbContext
     public DbSet<CheckIns> CheckIns { get; set; }
     public DbSet<CheckOuts> CheckOuts { get; set; }
     public DbSet<RoomPromotions> RoomPromotions { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        
+        modelBuilder.Entity<CheckIns>()
+            .HasOne(a => a.Reservation)
+            .WithOne()
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<CheckIns>()
+            .HasOne(a => a.CheckOuts)
+            .WithOne(a => a.CheckIns)
+            .HasForeignKey<CheckOuts>(a => a.CheckInsId);
+        
+        base.OnModelCreating(modelBuilder);
+    }
 }

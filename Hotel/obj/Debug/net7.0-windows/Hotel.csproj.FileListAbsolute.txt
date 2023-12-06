@@ -123,3 +123,13 @@ D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddGuestsV
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddGuestsView.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\PaymentView.g.cs
 D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\PaymentView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\CheckInsOutsView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\CheckInsOutsView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddRoomView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddRoomView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\StaffView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TasksView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\StaffView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\TasksView.baml
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddStaffView.g.cs
+D:\RiderProjects\SRC\Hotel\obj\Debug\net7.0-windows\MVVM\Views\Modals\AddStaffView.baml

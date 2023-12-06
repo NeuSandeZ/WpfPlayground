@@ -6,8 +6,8 @@
                     xmlns:local="clr-namespace:Hotel.MVVM.Views"
                     mc:Ignorable="d"
                     d:DesignHeight="300" d:DesignWidth="300">
-    <Border Margin="5">
-        <Grid Margin="10">
+    <Border>
+        <Grid>
             <StackPanel Orientation="Horizontal">
 
                 <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}"

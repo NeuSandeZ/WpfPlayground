@@ -35,4 +35,15 @@ public class RoomListingRepository : IRoomListingRepository
             .AsNoTracking()
             .ToListAsync();
     }
+
+    public async Task CreateRoom(Room room)
+    {
+        _hotelDbContext.Rooms.Add(room);
+        await _hotelDbContext.SaveChangesAsync();
+    }
+
+    public IEnumerable<RoomType> GetRoomTypes()
+    {
+        return _hotelDbContext.RoomTypes.ToList();
+    }
 }

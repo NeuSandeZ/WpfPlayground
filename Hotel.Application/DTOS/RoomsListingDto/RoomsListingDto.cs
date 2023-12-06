@@ -7,4 +7,6 @@ public class RoomsListingDto
     public string PricePerNight { get; set; }
     public string RoomStatus { get; set; }
     public string RoomType { get; set; }
+
+    public int SelectedRoomTypeId { get; set; }
 }

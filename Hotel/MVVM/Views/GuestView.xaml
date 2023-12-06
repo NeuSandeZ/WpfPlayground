@@ -5,30 +5,31 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:views="clr-namespace:Hotel.MVVM.Views"
                     mc:Ignorable="d"
-                    d:DesignHeight="300" d:DesignWidth="*">
+                    d:DesignHeight="700" d:DesignWidth="700">
 
     <!-- <views:CrudViewBase.AddCommand> -->
     <!--     <commands:AddModalCommand/> -->
     <!-- </views:CrudViewBase.AddCommand> -->
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Grid>
-            <StackPanel Orientation="Horizontal">
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding GuestDtos}"
-                          SelectedItem="{Binding SelectedGuest}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="First name" IsReadOnly="True" Binding="{Binding FirstName}" />
-                        <DataGridTextColumn Header="Last name" IsReadOnly="True" Binding="{Binding LastName}" />
-                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
-                        <DataGridTextColumn Header="Phone number" Binding="{Binding PhoneNumber}" />
-                        <DataGridTextColumn Header="City" Binding="{Binding City}" />
-                        <DataGridTextColumn Header="Street" Binding="{Binding Street}" />
-                        <DataGridTextColumn Header="Postal code" Binding="{Binding PostalCode}" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+        <Grid Grid.Column="0">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding GuestDtos}"
+                      SelectedItem="{Binding SelectedGuest}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="First name" IsReadOnly="True" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Width="*" Header="Last name" IsReadOnly="True" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Email}" />
+                    <DataGridTextColumn Width="*" Header="Phone number" Binding="{Binding PhoneNumber}" />
+                    <DataGridTextColumn Width="*" Header="City" Binding="{Binding City}" />
+                    <DataGridTextColumn Width="*" Header="Street" Binding="{Binding Street}" />
+                    <DataGridTextColumn Width="*" Header="Postal code" Binding="{Binding PostalCode}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
-
+        
     </Grid>
 </views:CrudViewBase>

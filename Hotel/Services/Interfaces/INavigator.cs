@@ -9,13 +9,17 @@ public enum ViewType
     Guest,
     Rooms,
     Payments,
+    CheckInsOuts,
     AddCrud,
-    AddGuest
+    AddGuest,
+    AddRoom,
+    Staff,
+    Tasks,
+    AddStaff
 }
 
 public interface INavigator : INavigatorModal
 {
-    // ViewModelBase TemporaryViewModel { get; set; }
     ViewModelBase CurrentViewModel { get; set; }
     event Action StateChanged;
 }

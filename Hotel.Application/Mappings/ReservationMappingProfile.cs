@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Hotel.Application.DTOS.CheckInsOutsDto;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Domain.Entities;
 
@@ -61,6 +62,17 @@ public class ReservationMappingProfile : Profile
             .ForMember(dest => dest.ReservationNumber,
                 opt => opt.MapFrom(
                     src => src.ReservationNumber))
-            .ForMember(dest => dest.IsDeleted, opt => opt.Ignore());
+            .ForMember(dest => dest.IsDeleted,
+                opt => opt.Ignore());
+
+        CreateMap<Reservation, ReservationComboBoxDto>()
+            .ForMember(a => a.FloorAndRoomNumber,
+                c =>
+                    c.MapFrom(src => $"{src.Room.FloorNumber + "" + src.Room.RoomNumber}"))
+            .ForMember(a => a.ReservationId,
+                c =>
+                    c.MapFrom(src => src.Id)).ForMember(a => a.RoomId,
+                c =>
+                    c.MapFrom(src => src.RoomId));
     }
 }

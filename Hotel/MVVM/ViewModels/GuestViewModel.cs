@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.DTOS.GuestsListingDto;
+using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
 using Hotel.Factories;
@@ -20,7 +22,6 @@ public class GuestViewModel : ViewModelBase
     private readonly MessengerCurrentViewStorage _messengerCurrentViewStorage;
 
     private ObservableCollection<GuestDto> _guestDtos;
-
     private GuestDto _selectedGuest;
     
     public GuestViewModel(INavigator navigator, IViewModelFactory viewModelFactory,
@@ -30,8 +31,9 @@ public class GuestViewModel : ViewModelBase
         _viewModelFactory = viewModelFactory;
         _guestsListingService = guestsListingService;
         _messengerCurrentViewStorage = messengerCurrentViewStorage;
-
+     
         GetAllGuests();
+        
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddGuest);
         EditCommand = new EditGuestCommand(navigator, _guestsListingService, this);
     }
@@ -63,7 +65,7 @@ public class GuestViewModel : ViewModelBase
     public ICommand OpenModal { get; }
     public ICommand EditCommand { get; }
 
-    public async Task GetAllGuests()
+    private async Task GetAllGuests()
     {
         var guestDtos = await _guestsListingService.GetAllGuests();
         GuestDtos = new ObservableCollection<GuestDto>(guestDtos);
