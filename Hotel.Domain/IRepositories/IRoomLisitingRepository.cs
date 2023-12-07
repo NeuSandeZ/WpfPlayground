@@ -9,4 +9,8 @@ public interface IRoomListingRepository
     Task CreateRoom(Room room);
 
     IEnumerable<RoomType> GetRoomTypes();
+
+    void AddPromotion(RoomPromotions roomPromotions);
+    
+    void EditPromotion(RoomPromotions roomPromotions);
 }

@@ -17,10 +17,16 @@ public class RoomsViewModel : ViewModelBase
     public RoomsViewModel(IRoomListingService roomListingService, INavigator navigator, IViewModelFactory viewModelFactory)
     {
         _roomListingService = roomListingService;
+        
         OpenModal = new OpenModalCommand(navigator,viewModelFactory, () => ViewType.AddRoom);
+        AddPromotion = new AddPromotionCommand(this,_roomListingService);
 
         GetAllReservations();
     }
+
+    public ICommand AddPromotion { get; }
+    public ICommand OpenModal { get; }
+
 
     public ObservableCollection<RoomsListingDto> Rooms
     {
@@ -32,8 +38,30 @@ public class RoomsViewModel : ViewModelBase
         }
     }
 
-    public ICommand OpenModal { get; }
+    private RoomsListingDto _selectedRoom;
 
+    public RoomsListingDto SelectedRoom
+    {
+        get { return _selectedRoom; }
+        set
+        {
+            _selectedRoom = value;
+            OnPropertyChanged(nameof(SelectedRoom));
+        }
+    }
+
+    private string _discountAmount;
+
+    public string DiscountAmount
+    {
+        get { return _discountAmount; }
+        set
+        {
+            _discountAmount = value;
+            OnPropertyChanged(nameof(DiscountAmount));
+        }
+    }
+    
     private async Task GetAllReservations()
     {
         var roomsDto = await _roomListingService.GetAllRooms();

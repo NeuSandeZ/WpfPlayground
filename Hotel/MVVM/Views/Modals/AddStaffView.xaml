@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              Background="Transparent"
              d:DesignHeight="600" d:DesignWidth="600">
+    
     <Border CornerRadius="5" Background="LightBlue" Width="550" Height="550">
         <Grid Margin="10 0 0 0" Background="Transparent">
             

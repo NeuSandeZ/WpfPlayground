@@ -21,4 +21,7 @@ public class Room
     public List<Reservation> Reservations { get; set; } = new();
 
     public bool? IsDeleted { get; set; }
+
+    public RoomPromotions? RoomPromotions { get; set; }
+    public int? RoomPromotionsId { get; set; }
 }

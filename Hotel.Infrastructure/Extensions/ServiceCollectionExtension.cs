@@ -17,5 +17,6 @@ public static class ServiceCollectionExtension
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<ICheckInOutRepository, CheckInOutRepository>();
         services.AddScoped<IStaffRepository, StaffRepository>();
+        services.AddScoped<ITaskRepository, TaskRepository>();
     }
 }

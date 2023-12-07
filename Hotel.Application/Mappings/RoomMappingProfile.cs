@@ -18,9 +18,9 @@ public class RoomMappingProfile : Profile
             .ForMember(dest => dest.PricePerNight,
                 opt => opt.MapFrom(
                     src => src.PricePerNight.ToString()))
-            .ForMember(dest => dest.PricePerNight,
+            .ForMember(dest => dest.RoomPromotion,
                 opt => opt.MapFrom(
-                    src => src.PricePerNight.ToString()))
+                    src => src.RoomPromotions.DiscountAmount))
             .ForMember(dest => dest.RoomStatus,
                 opt => opt.MapFrom(
                     src => src.RoomStatus.CurrentState))

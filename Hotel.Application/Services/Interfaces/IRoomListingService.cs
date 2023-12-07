@@ -10,4 +10,7 @@ public interface IRoomListingService
     Task CreateRoom(RoomsListingDto roomsListingDto);
 
     IEnumerable<RoomTypeDto> GetRoomTypes();
+    
+    void AddPromotion(RoomPromotionDto promotionDto);
+    void EditPromotion(RoomPromotionDto promotionDto);
 }

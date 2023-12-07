@@ -15,7 +15,8 @@ public enum ViewType
     AddRoom,
     Staff,
     Tasks,
-    AddStaff
+    AddStaff,
+    AddTask
 }
 
 public interface INavigator : INavigatorModal

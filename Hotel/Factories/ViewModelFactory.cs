@@ -14,6 +14,7 @@ public class ViewModelFactory : IViewModelFactory
     private readonly CreateViewModel<AddGuestViewModel> _creatGuestViewModal;
     private readonly CreateViewModel<AddRoomViewModel> _createRoomViewModal;
     private readonly CreateViewModel<AddStaffViewModel> _createAddStaffViewModel;
+    private readonly CreateViewModel<AddTaskViewModel> _createAddTaskViewModel;
     
     //VMS
     private readonly CreateViewModel<ReservationsListingViewModel> _createReservationViewModel;
@@ -36,7 +37,8 @@ public class ViewModelFactory : IViewModelFactory
         CreateViewModel<CheckInsOutsViewModel> createCheckInsViewModel,
         CreateViewModel<StaffViewModel> createStaffViewModel, 
         CreateViewModel<TasksViewModel> createTasksViewModel,
-        CreateViewModel<AddStaffViewModel> createAddStaffViewModel)
+        CreateViewModel<AddStaffViewModel> createAddStaffViewModel,
+        CreateViewModel<AddTaskViewModel> createAddTaskViewModel)
     {
         _createGuestViewModel = createTestViewModel;
         _createReservationViewModel = createReservationViewModel;
@@ -49,6 +51,7 @@ public class ViewModelFactory : IViewModelFactory
         _createStaffViewModel = createStaffViewModel;
         _createTasksViewModel = createTasksViewModel;
         _createAddStaffViewModel = createAddStaffViewModel;
+        _createAddTaskViewModel = createAddTaskViewModel;
     }
 
     public ViewModelBase CreateViewModel(ViewType viewType)
@@ -66,6 +69,7 @@ public class ViewModelFactory : IViewModelFactory
             ViewType.AddRoom => _createRoomViewModal(),
             ViewType.Staff => _createStaffViewModel(),
             ViewType.Tasks => _createTasksViewModel(),
+            ViewType.AddTask => _createAddTaskViewModel(),
             _ => throw new ArgumentException("The ViewType does not have a ViewModel.", "viewType")
         };
     }

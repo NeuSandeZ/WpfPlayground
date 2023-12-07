@@ -34,6 +34,17 @@
             <Grid Grid.Row="1">
                 <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}"
                           ItemsSource="{Binding Reservations}">
+                    
+                    <!-- <DataGrid.Resources> -->
+                    <!--     <Style TargetType="DataGridRow"> -->
+                    <!--         <Style.Triggers> -->
+                    <!--             <Trigger Property="IsSelected" Value="True"> -->
+                    <!--                 <Setter Property="Background" Value="Yellow" /> -->
+                    <!--             </Trigger> -->
+                    <!--         </Style.Triggers> -->
+                    <!--     </Style> -->
+                    <!-- </DataGrid.Resources> -->
+                    
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="*" Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}">
                             <!-- <DataGridTextColumn.CellStyle> -->

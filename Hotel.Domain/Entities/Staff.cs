@@ -18,4 +18,6 @@ public class Staff
 
     public Address? Address { get; set; } = default!;
     public int? AddressId { get; set; } = default!;
+    
+    public List<Tasks> TasksList { get; set; } = new();
 }

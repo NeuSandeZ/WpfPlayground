@@ -20,9 +20,14 @@ public class RoomListingRepository : IRoomListingRepository
             .Include(a => a.RoomStatus)
             .Select(a => new Room
             {
+                Id = a.Id,
                 RoomNumber = a.RoomNumber,
                 FloorNumber = a.FloorNumber,
                 PricePerNight = a.PricePerNight,
+                RoomPromotions = new RoomPromotions()
+                {
+                    DiscountAmount = a.RoomPromotions.DiscountAmount
+                },
                 RoomStatus = new RoomStatus
                 {
                     CurrentState = a.RoomStatus.CurrentState
@@ -44,6 +49,23 @@ public class RoomListingRepository : IRoomListingRepository
 
     public IEnumerable<RoomType> GetRoomTypes()
     {
-        return _hotelDbContext.RoomTypes.ToList();
+        return _hotelDbContext.RoomTypes.AsNoTracking().ToList();
+    }
+
+    public void AddPromotion(RoomPromotions roomPromotions)
+    {
+        _hotelDbContext.Add(roomPromotions);
+        _hotelDbContext.SaveChanges();
+    }
+
+    public void EditPromotion(RoomPromotions roomPromotions)
+    {
+        var promotions = _hotelDbContext.RoomPromotions.FirstOrDefault(a => a.RoomId == roomPromotions.RoomId);
+        if (promotions != null)
+        {
+            promotions.DiscountAmount = roomPromotions.DiscountAmount;
+            _hotelDbContext.Update(promotions);
+        }
+        _hotelDbContext.SaveChanges();
     }
 }

@@ -54,6 +54,7 @@ public partial class App : System.Windows.Application
                 services.AddTransient<StaffViewModel>();
                 services.AddTransient<TasksViewModel>();
                 services.AddTransient<AddStaffViewModel>();
+                services.AddTransient<AddTaskViewModel>();
 
                 //ViewModels Factory
 
@@ -79,6 +80,8 @@ public partial class App : System.Windows.Application
                     services.GetRequiredService<TasksViewModel>);
                 services.AddSingleton<CreateViewModel<AddStaffViewModel>>(services =>
                     services.GetRequiredService<AddStaffViewModel>);
+                services.AddSingleton<CreateViewModel<AddTaskViewModel>>(services =>
+                    services.GetRequiredService<AddTaskViewModel>);
 
 
                 services.AddSingleton<MainWindowViewModel>();

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\RiderProjects\SRC\Hotel\App.xaml
-18-1579506214
+19-860755500
 11413424753
-53-780134334
+571864346111
 2571820659597
-MVVM\Views\CheckInsOutsView.xaml;MVVM\Views\GuestView.xaml;MVVM\Views\MainWindow.xaml;MVVM\Views\Modals\AddGuestsView.xaml;MVVM\Views\Modals\AddReservationView.xaml;MVVM\Views\Modals\AddRoomView.xaml;MVVM\Views\Modals\AddStaffView.xaml;MVVM\Views\PaymentView.xaml;MVVM\Views\ReservationsListingView.xaml;MVVM\Views\RoomsView.xaml;MVVM\Views\StaffView.xaml;MVVM\Views\TasksView.xaml;Themes\Generic.xaml;Utilities\MyDataTemplate.xaml;Utilities\Styles\ButtonStyle.xaml;Utilities\Styles\ImageStyle.xaml;Utilities\Styles\PageStyle.xaml;Utilities\Styles\TextStyle.xaml;
+MVVM\Views\CheckInsOutsView.xaml;MVVM\Views\GuestView.xaml;MVVM\Views\MainWindow.xaml;MVVM\Views\Modals\AddGuestsView.xaml;MVVM\Views\Modals\AddReservationView.xaml;MVVM\Views\Modals\AddRoomView.xaml;MVVM\Views\Modals\AddStaffView.xaml;MVVM\Views\Modals\AddTaskView.xaml;MVVM\Views\PaymentView.xaml;MVVM\Views\ReservationsListingView.xaml;MVVM\Views\RoomsView.xaml;MVVM\Views\StaffView.xaml;MVVM\Views\TasksView.xaml;Themes\Generic.xaml;Utilities\MyDataTemplate.xaml;Utilities\Styles\ButtonStyle.xaml;Utilities\Styles\ImageStyle.xaml;Utilities\Styles\PageStyle.xaml;Utilities\Styles\TextStyle.xaml;
 
 False
 

@@ -2,9 +2,8 @@
 
 namespace Hotel.Domain.Entities;
 
-public class RoomAmenity
+public class TaskStatus
 {
     [Key] public int Id { get; set; }
-    public string Amenity { get; set; }
-    public string Description { get; set; }
+    [Required] public string Status { get; set; }
 }

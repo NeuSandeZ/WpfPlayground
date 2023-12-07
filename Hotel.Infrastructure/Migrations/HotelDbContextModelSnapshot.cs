@@ -44,7 +44,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckIns", b =>
@@ -79,7 +79,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("CheckIns");
+                    b.ToTable("CheckIns", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckOuts", b =>
@@ -101,7 +101,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.HasIndex("CheckInsId")
                         .IsUnique();
 
-                    b.ToTable("CheckOuts");
+                    b.ToTable("CheckOuts", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Guest", b =>
@@ -136,7 +136,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Guests");
+                    b.ToTable("Guests", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Payment", b =>
@@ -165,7 +165,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("ReservationId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.PaymentType", b =>
@@ -182,7 +182,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentTypes");
+                    b.ToTable("PaymentTypes", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Reservation", b =>
@@ -226,7 +226,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.ReservationStatus", b =>
@@ -243,7 +243,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReservationsStatus");
+                    b.ToTable("ReservationsStatus", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Room", b =>
@@ -266,6 +266,9 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RoomPromotionsId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RoomStatusId")
                         .HasColumnType("int");
 
@@ -278,28 +281,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("RoomTypeId");
 
-                    b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("Hotel.Domain.Entities.RoomAmenity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Amenity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Amenities");
+                    b.ToTable("Rooms", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.RoomPromotions", b =>
@@ -314,9 +296,15 @@ namespace Hotel.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("RoomPromotions");
+                    b.HasIndex("RoomId")
+                        .IsUnique();
+
+                    b.ToTable("RoomPromotions", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.RoomStatus", b =>
@@ -333,7 +321,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomStatus");
+                    b.ToTable("RoomStatus", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.RoomType", b =>
@@ -350,7 +338,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomTypes");
+                    b.ToTable("RoomTypes", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>
@@ -386,7 +374,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("StaffRoleId");
 
-                    b.ToTable("Staves");
+                    b.ToTable("Staves", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.StaffRole", b =>
@@ -403,7 +391,24 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaffRoles");
+                    b.ToTable("StaffRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Hotel.Domain.Entities.TaskStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskStatus", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Tasks", b =>
@@ -421,17 +426,19 @@ namespace Hotel.Infrastructure.Migrations
                     b.Property<DateTime>("DueTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
-
                     b.Property<int>("StaffId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TaskStatusId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("StaffId");
 
-                    b.ToTable("Tasks");
+                    b.HasIndex("TaskStatusId");
+
+                    b.ToTable("Tasks", (string)null);
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckIns", b =>
@@ -542,6 +549,17 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("RoomType");
                 });
 
+            modelBuilder.Entity("Hotel.Domain.Entities.RoomPromotions", b =>
+                {
+                    b.HasOne("Hotel.Domain.Entities.Room", "Room")
+                        .WithOne("RoomPromotions")
+                        .HasForeignKey("Hotel.Domain.Entities.RoomPromotions", "RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Room");
+                });
+
             modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>
                 {
                     b.HasOne("Hotel.Domain.Entities.Address", "Address")
@@ -567,7 +585,15 @@ namespace Hotel.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Hotel.Domain.Entities.TaskStatus", "TaskStatus")
+                        .WithMany()
+                        .HasForeignKey("TaskStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Staff");
+
+                    b.Navigation("TaskStatus");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckIns", b =>
@@ -578,6 +604,8 @@ namespace Hotel.Infrastructure.Migrations
             modelBuilder.Entity("Hotel.Domain.Entities.Room", b =>
                 {
                     b.Navigation("Reservations");
+
+                    b.Navigation("RoomPromotions");
                 });
 #pragma warning restore 612, 618
         }

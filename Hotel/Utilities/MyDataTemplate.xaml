@@ -52,5 +52,9 @@
     <DataTemplate DataType="{x:Type viewModelModals:AddStaffViewModel}">
         <viewsModals:AddStaffView />
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type viewModelModals:AddTaskViewModel}">
+        <viewsModals:AddTaskView />
+    </DataTemplate>
 
 </ResourceDictionary>

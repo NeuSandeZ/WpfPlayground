@@ -51,4 +51,26 @@ public class RoomListingService : IRoomListingService
         var roomTypes = _roomListingRepository.GetRoomTypes();
         return _mapper.Map<IEnumerable<RoomTypeDto>>(roomTypes);
     }
+
+    public void AddPromotion(RoomPromotionDto promotionDto)
+    {
+        var room = new RoomPromotions()
+        {
+            DiscountAmount = promotionDto.DiscountAmount,
+            RoomId = promotionDto.RoomId
+        };
+
+        _roomListingRepository.AddPromotion(room);
+    }
+
+    public void EditPromotion(RoomPromotionDto promotionDto)
+    {
+        var room = new RoomPromotions()
+        {
+            DiscountAmount = promotionDto.DiscountAmount,
+            RoomId = promotionDto.RoomId
+        };
+
+        _roomListingRepository.EditPromotion(room);
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using Hotel.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using TaskStatus = Hotel.Domain.Entities.TaskStatus;
 
 namespace Hotel.Infrastructure;
 
@@ -21,7 +22,7 @@ public class HotelDbContext : DbContext
     public DbSet<StaffRole> StaffRoles { get; set; }
     public DbSet<Tasks> Tasks { get; set; }
     public DbSet<ReservationStatus> ReservationsStatus { get; set; }
-    public DbSet<RoomAmenity> Amenities { get; set; }
+    public DbSet<TaskStatus> TaskStatus { get; set; }
     public DbSet<CheckIns> CheckIns { get; set; }
     public DbSet<CheckOuts> CheckOuts { get; set; }
     public DbSet<RoomPromotions> RoomPromotions { get; set; }
@@ -38,6 +39,16 @@ public class HotelDbContext : DbContext
             .HasOne(a => a.CheckOuts)
             .WithOne(a => a.CheckIns)
             .HasForeignKey<CheckOuts>(a => a.CheckInsId);
+        
+        modelBuilder.Entity<RoomPromotions>()
+            .HasOne(a => a.Room)
+            .WithOne(a => a.RoomPromotions)
+            .HasForeignKey<RoomPromotions>(a => a.RoomId);
+
+        modelBuilder.Entity<Staff>()
+            .HasMany(a => a.TasksList)
+            .WithOne(a => a.Staff)
+            .HasForeignKey(a => a.StaffId);
         
         base.OnModelCreating(modelBuilder);
     }
