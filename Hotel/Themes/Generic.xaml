@@ -6,7 +6,6 @@
     <!-- <ResourceDictionary.MergedDictionaries> -->
     <!--     <ResourceDictionary Source="../Utilities/Styles/ButtonStyle.xaml"></ResourceDictionary> -->
     <!-- </ResourceDictionary.MergedDictionaries> -->
-
     <Style TargetType="{x:Type local:CrudViewBase}">
         <Setter Property="Template">
             <Setter.Value>
@@ -25,12 +24,14 @@
 
                             <TextBox Height="40"
                                      Width="200"
-                                     Text="Search..."
                                      Foreground="Azure"
                                      Background="MediumPurple"
                                      FontSize="16"
                                      HorizontalAlignment="Left"
-                                     VerticalContentAlignment="Center" />
+                                     Padding="4 0 0 0"
+                                     VerticalContentAlignment="Center"
+                                     Text="Search.."
+                                     />
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="40">
 
@@ -59,10 +60,11 @@
 
                             <StackPanel Background="Azure" Margin="5">
                                 <Label>Filtrowanie</Label>
-                                <ComboBox ItemsSource="{Binding FilterComboBoxList}"
-                                          SelectedValue="{Binding Path=FilterField, Mode=TwoWay}" Margin="5"/>
-                                <TextBox Margin="5" Text="{Binding FilterTexBoxInputField}"/>
-                                <Button Content="Filtruj" Margin="5" Command="{Binding FilterCommand}" />
+                                <ComboBox ItemsSource="{Binding SortComboBoxList}"
+                                          SelectedValue="{Binding Path=ChoosenFilterField, Mode=TwoWay}" Margin="5"/>
+                                <TextBox Margin="5" 
+                                         Text="{Binding FilterField, UpdateSourceTrigger=PropertyChanged}"
+                                />
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Background="Azure" Margin="5">

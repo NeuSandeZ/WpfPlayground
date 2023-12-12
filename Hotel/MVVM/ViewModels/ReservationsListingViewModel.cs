@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.DTOS.ReservationListingDto;
@@ -14,7 +15,7 @@ using Hotel.Stores;
 
 namespace Hotel.MVVM.ViewModels;
 
-public class ReservationsListingViewModel : SortingAndFilteringViewModel
+public sealed class ReservationsListingViewModel : SortingAndFilteringViewModel
 {
     private readonly MessengerCurrentViewStorage _messengerCurrentViewStorage;
     private readonly INavigator _navigator;
@@ -23,6 +24,9 @@ public class ReservationsListingViewModel : SortingAndFilteringViewModel
     private ObservableCollection<ReservationDto> _reservations;
 
     private ReservationDto _selectedReservation;
+    
+    private string _reservationsFilterField = string.Empty;
+
 
     public ReservationsListingViewModel(INavigator navigator,
         IViewModelFactory viewModelFactory,
@@ -36,15 +40,24 @@ public class ReservationsListingViewModel : SortingAndFilteringViewModel
         //TODO Sending query to database everytime i regrab that view is a bad idea, prolly have to figure out how to load it asynchronously and cache it
         GetAllReservations();
         
-        SortComboBoxList = new ObservableCollection<string>(GetComboBoxSortList());
-        FilterComboBoxList = new ObservableCollection<string>(GetComboBoxFilterList());
+        CollectionView = CollectionViewSource.GetDefaultView(Reservations);
+
+        SortComboBoxList = new ObservableCollection<string>(FilterComboBoxList());
 
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddCrud);
     }
-
+    
     public bool IsTemporaryViewModelOpened => _messengerCurrentViewStorage.IsTemporaryViewModelOpened;
 
+    public override string ChoosenFilterField { get; set; }
+    public override ICollectionView CollectionView { get; }
     public ICommand OpenModal { get; }
+    
+    private Dictionary<string, Func<ReservationDto, string>> FilterByColumn { get; } = new()
+    {
+        { "Fullname", a=> a.GuestFullName },
+        { "Status", a=> a.ReservationStatus }
+    };
 
     public ObservableCollection<ReservationDto> Reservations
     {
@@ -67,57 +80,39 @@ public class ReservationsListingViewModel : SortingAndFilteringViewModel
         }
     }
 
-    public async Task GetAllReservations()
+    private void GetAllReservations()
     {
-        var reservationDtos = await _reservationListingService.GetAllReservations();
+        var reservationDtos = _reservationListingService.GetAllReservations();
         Reservations = new ObservableCollection<ReservationDto>(reservationDtos);
     }
     
-    
-    private const string CHECKOUT_SORT_VALUE = "Check out";
-    private const string CHECKIN_SORT_VALUE = "Check in";
-    private const string GUESTFULLNAME_SORT_DESC_VALUE = "Guest fullname";
-    
-    public override List<string> GetComboBoxSortList()
+    protected override List<string> FilterComboBoxList()
     {
         return new List<string>()
         {
-            CHECKOUT_SORT_VALUE, CHECKIN_SORT_VALUE, GUESTFULLNAME_SORT_DESC_VALUE
+            "Fullname",
+            "Status"
         };
     }
     
-    public override void Sort()
+    protected override bool Filter(object obj)
     {
-        if (SortField == CHECKOUT_SORT_VALUE)
-        {
-            Reservations = new ObservableCollection<ReservationDto>(Reservations.OrderBy(x => x.CheckOutDate));
-        }
-        if (SortField == CHECKIN_SORT_VALUE)
-        {
-            Reservations = new ObservableCollection<ReservationDto>(Reservations.OrderBy(x => x.CheckInDate));
-        }
-        if(SortField == GUESTFULLNAME_SORT_DESC_VALUE)
-        {
-            Reservations = new ObservableCollection<ReservationDto>(Reservations.OrderBy(x => x.GuestFullName));
-        }
+        if (obj is not ReservationDto reservationDto) return false;
+        
+        FilterByColumn.TryGetValue(ChoosenFilterField, out var propertyAccessor);
+        var propertyValue = propertyAccessor(reservationDto);
+        return propertyValue?.Contains(FilterField, StringComparison.InvariantCultureIgnoreCase) ?? false;
     }
-
-    private const string GUESTFULLNAME_SORT_VALUE = "Guest fullname";
     
-    public override List<string> GetComboBoxFilterList()
+    public override string FilterField
     {
-        return new List<string>()
+        get { return _reservationsFilterField; }
+        set
         {
-            GUESTFULLNAME_SORT_VALUE
-        };
-    }
-
-    public override void Filter()
-    {
-        if (FilterField == GUESTFULLNAME_SORT_VALUE)
-        {
-            Reservations = new ObservableCollection<ReservationDto>(
-                Reservations.Where(x => x.GuestFullName.Contains(FilterTexBoxInputField, StringComparison.OrdinalIgnoreCase)));
+            _reservationsFilterField = value;
+            CollectionView.Filter = Filter;
+            OnPropertyChanged(nameof(FilterField));
+            CollectionView.Refresh();
         }
     }
 }

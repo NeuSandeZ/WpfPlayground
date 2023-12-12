@@ -14,9 +14,9 @@ public class ReservationListingRepository : IReservationListingRepository
         _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<Reservation>> GetAllReservations()
+    public IEnumerable<Reservation> GetAllReservations()
     {
-        return await _dbContext.Reservations
+        return _dbContext.Reservations
             .Include(a => a.Guest)
             .Include(a => a.Room)
             .Include(a => a.ReservationStatus)
@@ -44,7 +44,7 @@ public class ReservationListingRepository : IReservationListingRepository
                 ReservationNumber = r.ReservationNumber
             })
             .AsNoTracking()
-            .ToListAsync();
+            .ToList();
     }
 
     public async Task CreateReservation(Reservation reservation)

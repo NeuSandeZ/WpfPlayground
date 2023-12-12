@@ -17,9 +17,9 @@ public class ReservationListingService : IReservationListingService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ReservationDto>> GetAllReservations()
+    public IEnumerable<ReservationDto> GetAllReservations()
     {
-        var reservations = await _reservationListingRepository.GetAllReservations();
+        var reservations = _reservationListingRepository.GetAllReservations();
         return _mapper.Map<IEnumerable<ReservationDto>>(reservations);
     }
 

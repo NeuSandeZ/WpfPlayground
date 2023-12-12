@@ -4,7 +4,7 @@ namespace Hotel.Application.Services.Interfaces;
 
 public interface IReservationListingService
 {
-    Task<IEnumerable<ReservationDto>> GetAllReservations();
+    IEnumerable<ReservationDto> GetAllReservations();
 
     Task CreateReservation(AddReservationDto reservationDto);
 

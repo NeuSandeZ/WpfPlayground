@@ -4,7 +4,7 @@ namespace Hotel.Domain.IRepositories;
 
 public interface IReservationListingRepository
 {
-    Task<IEnumerable<Reservation>> GetAllReservations();
+    IEnumerable<Reservation> GetAllReservations();
 
     Task CreateReservation(Reservation reservation);
 
