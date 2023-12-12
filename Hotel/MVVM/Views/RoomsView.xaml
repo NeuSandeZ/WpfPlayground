@@ -5,7 +5,8 @@
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:local="clr-namespace:Hotel.MVVM.Views"
                     mc:Ignorable="d"
-                    d:DesignHeight="400" d:DesignWidth="700">
+                    d:DesignHeight="400" d:DesignWidth="700"
+                    Style="{StaticResource Page_Style}">
     <Border>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -26,7 +27,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             
-            <Border Grid.Column="1" CornerRadius="10" Background="AliceBlue"> 
+            <Border Grid.Column="1" CornerRadius="10" Background="AliceBlue" Margin="5 0 5 0"> 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>

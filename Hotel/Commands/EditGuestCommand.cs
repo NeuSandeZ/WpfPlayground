@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+﻿using System.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Factories;
 using Hotel.MVVM.ViewModels;
@@ -19,6 +20,8 @@ public class EditGuestCommand : BaseCommand, IRecipient<string>
         _navigator = navigator;
         _guestViewModel = guestViewModel;
         _guestsListingService = guestsListingService;
+
+        _guestViewModel.PropertyChanged += OnModelPropertyChanged;
     }
 
     public void Receive(string m)
@@ -38,11 +41,22 @@ public class EditGuestCommand : BaseCommand, IRecipient<string>
             IsAddButtonVisible = false
         };
         WeakReferenceMessenger.Default.UnregisterAll(this);
+        _guestViewModel.PropertyChanged -= OnModelPropertyChanged;
     }
 
     public override void Execute(object? parameter)
     {
         WeakReferenceMessenger.Default.Register(this);
         _guestViewModel.SendGuestDto();
+    }
+
+    public override bool CanExecute(object? parameter)
+    {
+        return _guestViewModel.SelectedGuest != null;
+    }
+    
+    private void OnModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(GuestViewModel.SelectedGuest)) OnCanExecutedChanged();
     }
 }

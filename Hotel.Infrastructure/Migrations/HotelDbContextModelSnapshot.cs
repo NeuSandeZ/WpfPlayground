@@ -44,7 +44,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckIns", b =>
@@ -79,7 +79,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("CheckIns", (string)null);
+                    b.ToTable("CheckIns");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckOuts", b =>
@@ -101,7 +101,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.HasIndex("CheckInsId")
                         .IsUnique();
 
-                    b.ToTable("CheckOuts", (string)null);
+                    b.ToTable("CheckOuts");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Guest", b =>
@@ -136,7 +136,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Guests", (string)null);
+                    b.ToTable("Guests");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Payment", b =>
@@ -165,7 +165,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("ReservationId");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.PaymentType", b =>
@@ -182,7 +182,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentTypes", (string)null);
+                    b.ToTable("PaymentTypes");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Reservation", b =>
@@ -201,6 +201,12 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.Property<int>("GuestId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsCheckedIn")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCheckedOut")
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
@@ -226,7 +232,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.ReservationStatus", b =>
@@ -243,7 +249,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReservationsStatus", (string)null);
+                    b.ToTable("ReservationsStatus");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Room", b =>
@@ -281,7 +287,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("RoomTypeId");
 
-                    b.ToTable("Rooms", (string)null);
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.RoomPromotions", b =>
@@ -304,7 +310,7 @@ namespace Hotel.Infrastructure.Migrations
                     b.HasIndex("RoomId")
                         .IsUnique();
 
-                    b.ToTable("RoomPromotions", (string)null);
+                    b.ToTable("RoomPromotions");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.RoomStatus", b =>
@@ -321,7 +327,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomStatus", (string)null);
+                    b.ToTable("RoomStatus");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.RoomType", b =>
@@ -338,7 +344,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoomTypes", (string)null);
+                    b.ToTable("RoomTypes");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>
@@ -374,7 +380,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("StaffRoleId");
 
-                    b.ToTable("Staves", (string)null);
+                    b.ToTable("Staves");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.StaffRole", b =>
@@ -391,7 +397,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaffRoles", (string)null);
+                    b.ToTable("StaffRoles");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.TaskStatus", b =>
@@ -408,7 +414,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskStatus", (string)null);
+                    b.ToTable("TaskStatus");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.Tasks", b =>
@@ -438,7 +444,7 @@ namespace Hotel.Infrastructure.Migrations
 
                     b.HasIndex("TaskStatusId");
 
-                    b.ToTable("Tasks", (string)null);
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("Hotel.Domain.Entities.CheckIns", b =>
@@ -580,7 +586,7 @@ namespace Hotel.Infrastructure.Migrations
             modelBuilder.Entity("Hotel.Domain.Entities.Tasks", b =>
                 {
                     b.HasOne("Hotel.Domain.Entities.Staff", "Staff")
-                        .WithMany()
+                        .WithMany("TasksList")
                         .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -606,6 +612,11 @@ namespace Hotel.Infrastructure.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("RoomPromotions");
+                });
+
+            modelBuilder.Entity("Hotel.Domain.Entities.Staff", b =>
+                {
+                    b.Navigation("TasksList");
                 });
 #pragma warning restore 612, 618
         }

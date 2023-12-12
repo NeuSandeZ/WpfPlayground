@@ -17,7 +17,9 @@ public class CheckInOutRepository : ICheckInOutRepository
     public IEnumerable<Reservation> GetAllReservationNumbers()
     {
         //TODO add filtering for reservation with check in date as today
-        return _dbContext.Reservations.Select(a => new Reservation()
+        return _dbContext.Reservations
+            .Where(a=> a.IsCheckedIn == false)
+            .Select(a => new Reservation()
             {
                 Id = a.Id,
                 ReservationNumber = a.ReservationNumber,
@@ -28,12 +30,19 @@ public class CheckInOutRepository : ICheckInOutRepository
                 },
                 RoomId = a.RoomId,
                 GuestId = a.GuestId
-            }).AsNoTracking()
+            })
+            .AsNoTracking()
             .ToList();
     }
 
     public void CreateCheckIn(CheckIns checkIn)
     {
+        var reservation = _dbContext.Reservations.FirstOrDefault(a => a.Id == checkIn.ReservationId);
+        if (reservation is not null)
+        {
+            reservation.IsCheckedIn = true;
+            _dbContext.Update(reservation);
+        }
         _dbContext.Add(checkIn);
         _dbContext.SaveChanges();
     }
@@ -62,12 +71,20 @@ public class CheckInOutRepository : ICheckInOutRepository
                 {
                     ReservationNumber = a.Reservation.ReservationNumber
                 }
-            }).AsTracking()
+            })
+            .AsTracking()
             .ToList();
     }
 
     public void CheckOut(CheckOuts checkOuts)
     {
+        var checkIn = _dbContext.CheckIns.FirstOrDefault(a => a.Id == checkOuts.CheckInsId);
+        var reservation = _dbContext.Reservations.FirstOrDefault(a => a.Id == checkIn.ReservationId);
+        if (reservation is not null)
+        {
+            reservation.IsCheckedOut = true;
+            _dbContext.Update(reservation);
+        }
         _dbContext.Add(checkOuts);
         _dbContext.SaveChanges();
     }
@@ -75,11 +92,11 @@ public class CheckInOutRepository : ICheckInOutRepository
     //TODO hardcode some date that matches my records in DB, also have to create some property to decrease value when checkIn is performed
     public int GetTodaysCheckIns()
     {
-        return _dbContext.Reservations.Count(a => a.CheckInDate.Date == DateTime.Now.Date);
+        return _dbContext.Reservations.Count(a => a.CheckInDate.Date == DateTime.Now.Date && a.IsCheckedIn == false);
     }
 
     public int GetTodaysCheckOuts()
     {
-        return _dbContext.Reservations.Count(a => a.CheckOutDate.Date == DateTime.Now.Date);
+        return _dbContext.Reservations.Count(a => a.CheckOutDate.Date == DateTime.Now.Date && a.IsCheckedOut == false);
     }
 }

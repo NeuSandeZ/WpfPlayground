@@ -20,6 +20,8 @@ public class Reservation
     public ReservationStatus? ReservationStatus { get; set; } = default!;
     public int? ReservationStatusId { get; set; }
 
+    public bool IsCheckedIn { get; set; } = false;
+    public bool IsCheckedOut { get; set; } = false;
     [Required] public string ReservationNumber { get; set; }
 
     public bool? IsDeleted { get; set; }

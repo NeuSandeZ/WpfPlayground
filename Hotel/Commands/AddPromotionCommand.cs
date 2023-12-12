@@ -1,4 +1,6 @@
-﻿using Hotel.Application.DTOS.RoomsListingDto;
+﻿using System;
+using System.Windows;
+using Hotel.Application.DTOS.RoomsListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.MVVM.ViewModels;
 using Hotel.Services.Interfaces;
@@ -18,19 +20,25 @@ public class AddPromotionCommand : BaseCommand
     
     public override void Execute(object? parameter)
     {
-        var promotionDto = new RoomPromotionDto()
+        try
         {
-            RoomId = _roomsViewModel.SelectedRoom.Id,
-            DiscountAmount = _roomsViewModel.DiscountAmount
-        };
-        
-        if ( _roomsViewModel.SelectedRoom.RoomPromotion is null)
-        {
-            _roomListingService.AddPromotion(promotionDto);
+            var promotionDto = new RoomPromotionDto()
+            {
+                RoomId = _roomsViewModel.SelectedRoom.Id,
+                DiscountAmount = _roomsViewModel.DiscountAmount
+            };
+            if ( _roomsViewModel.SelectedRoom.RoomPromotion is null)
+            {
+                _roomListingService.AddPromotion(promotionDto);
+            }
+            else
+            {
+                _roomListingService.EditPromotion(promotionDto);
+            }
         }
-        else
+        catch (Exception e)
         {
-            _roomListingService.EditPromotion(promotionDto);
+            MessageBox.Show("You have to choose promotion for discount!");
         }
     }
 }

@@ -17,7 +17,7 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50" />
-                            <RowDefinition Height="34" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
@@ -51,9 +51,28 @@
                             </StackPanel>
                         </Grid>
 
-                        <StackPanel Grid.Row="1" Background="Azure">
-                            <Label>Tu bedzie filtrowanie i sortownaie</Label>
-                        </StackPanel>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Background="Azure" Margin="5">
+                                <Label>Filtrowanie</Label>
+                                <ComboBox ItemsSource="{Binding FilterComboBoxList}"
+                                          SelectedValue="{Binding Path=FilterField, Mode=TwoWay}" Margin="5"/>
+                                <TextBox Margin="5" Text="{Binding FilterTexBoxInputField}"/>
+                                <Button Content="Filtruj" Margin="5" Command="{Binding FilterCommand}" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Background="Azure" Margin="5">
+                                <Label>Sortowanie</Label>
+                                <ComboBox ItemsSource="{Binding SortComboBoxList}"
+                                          SelectedValue="{Binding Path=SortField, Mode=TwoWay}" Margin="5"/>
+                                <Button Content="Sortuj" Command="{Binding SortCommand}" Margin="5"/>
+                            </StackPanel>
+
+                        </Grid>
 
                         <ContentPresenter Grid.Row="2" Margin="0,5,0,5" />
 

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using Hotel.Application.DTOS.GuestsListingDto;
+using Hotel.Application.DTOS.GuestsListingDto; 
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
@@ -12,7 +15,7 @@ using Hotel.Stores;
 namespace Hotel.MVVM.ViewModels.Modals;
 
 //TODO block UI when user is choosing GUEST, also have to trigger IsChecked for specific view when user switches view using messenger for better UX
-public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
+public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>, INotifyDataErrorInfo
 {
     private readonly IReservationListingService _reservationListingService;
     private readonly MessengerCurrentViewStorage _messengerCurrentViewStorage;
@@ -47,6 +50,8 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
         _reservationListingService = reservationListingService;
         _messengerCurrentViewStorage = messengerCurrentViewStorage;
 
+        _propertyNameToErrorsDictionary = new Dictionary<string, List<string>>();
+
         AddReservationCommand = new AddReservationCommand(navigator, this, _reservationListingService);
         CloseModalCommand = new CloseModalCommand(navigator);
         ChooseGuestCommand = new ChooseGuestCommand("OpenGuests", _messengerCurrentViewStorage, this);
@@ -61,6 +66,15 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
         {
             _checkInDate = value;
             OnPropertyChanged(nameof(CheckInDate));
+            
+            ClearErrors(nameof(CheckInDate));
+            ClearErrors(nameof(CheckOutDate));
+            
+            if (CheckOutDate < CheckInDate)
+            {
+                AddError("Check in date cannot be after the check out date.", nameof(CheckInDate));
+                OnErrorsChanged(nameof(CheckInDate));
+            }
         }
     }
 
@@ -70,11 +84,20 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
         set
         {
             _checkOutDate = value;
-            CalculateTotalCost();
             OnPropertyChanged(nameof(CheckOutDate));
+
+            ClearErrors(nameof(CheckOutDate));
+            ClearErrors(nameof(CheckInDate));
+            
+            if (CheckOutDate < CheckInDate)
+            {
+                AddError("Check out date cannot be before the check in date.", nameof(CheckOutDate));
+                OnErrorsChanged(nameof(CheckOutDate));
+            }
+            CalculateTotalCost();
         }
     }
-
+    
     public string FirstName
     {
         get => _firstName;
@@ -222,4 +245,34 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>
         WeakReferenceMessenger.Default.Send<string>("CloseGuests");
         WeakReferenceMessenger.Default.UnregisterAll(this);
     }
+
+    private readonly Dictionary<string, List<string>> _propertyNameToErrorsDictionary;
+    public IEnumerable GetErrors(string? propertyName)
+    {
+        return _propertyNameToErrorsDictionary.GetValueOrDefault(propertyName, new List<string>());
+    }
+
+    private void ClearErrors(string propertyName)
+    {
+        _propertyNameToErrorsDictionary.Remove(propertyName);
+        OnErrorsChanged(propertyName);
+    }
+    
+    private void AddError(string errorMessage, string propertyName)
+    {
+        if (!_propertyNameToErrorsDictionary.ContainsKey(propertyName))
+        {
+            _propertyNameToErrorsDictionary.Add(propertyName, new List<string>());
+        }
+        _propertyNameToErrorsDictionary[propertyName].Add(errorMessage);
+        OnErrorsChanged(propertyName);
+    }
+    
+    private void OnErrorsChanged(string propertyName)
+    {
+        ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+    }
+    
+    public bool HasErrors => _propertyNameToErrorsDictionary.Any();
+    public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 }

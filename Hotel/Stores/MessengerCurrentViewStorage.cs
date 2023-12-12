@@ -35,6 +35,7 @@ public class MessengerCurrentViewStorage : IRecipient<string>
             case "CloseGuests":
                 _navigator.CurrentModalViewModel = TemporaryViewModel;
                 WeakReferenceMessenger.Default.UnregisterAll(this);
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(ViewType.Reservation);
                 TemporaryViewModel = null;
                 break;
             case "Close":
