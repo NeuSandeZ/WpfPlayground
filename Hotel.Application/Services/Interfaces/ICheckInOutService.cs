@@ -5,11 +5,12 @@ namespace Hotel.Application.Services.Interfaces;
 
 public interface ICheckInOutService
 {
-    int GetTodaysCheckIns();
-    int GetTodaysCheckOuts();
-    IEnumerable<ReservationComboBoxDto> GetAllReservationNumbers();
+    Task<int> GetTodaysCheckIns();
+    Task<int> GetTodaysCheckOuts();
+    Task<IEnumerable<ReservationComboBoxDto>> GetAllReservationNumbers();
+    Task<IEnumerable<CheckInListingDto>> GetAllCheckIns();
+
     void CreateCheckIn(CheckInDto checkInDto);
-    IEnumerable<CheckInListingDto> GetAllCheckIns();
     
     void CheckOut(CheckOutDto selectedCheckOut);
 }

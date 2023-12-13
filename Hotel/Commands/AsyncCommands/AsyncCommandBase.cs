@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Hotel.Commands;
+namespace Hotel.Commands.AsyncCommands;
 
 public abstract class AsyncCommandBase : BaseCommand
 {

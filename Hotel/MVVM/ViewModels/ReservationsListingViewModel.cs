@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.DTOS.ReservationListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
+using Hotel.Commands.AsyncCommands;
 using Hotel.Factories;
 using Hotel.Services.Interfaces;
 using Hotel.Stores;
@@ -38,19 +39,17 @@ public sealed class ReservationsListingViewModel : SortingAndFilteringViewModel
         _messengerCurrentViewStorage = messengerCurrentViewStorage;
 
         //TODO Sending query to database everytime i regrab that view is a bad idea, prolly have to figure out how to load it asynchronously and cache it
-        GetAllReservations();
+        //TODO Finally managed to load it asynchronously but sending query to DB everytime i regrab this view is bad idea
+        new LoadReservationsAsyncCommand(reservationListingService, this).Execute(null);
         
-        CollectionView = CollectionViewSource.GetDefaultView(Reservations);
-
         SortComboBoxList = new ObservableCollection<string>(FilterComboBoxList());
 
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddCrud);
     }
     
     public bool IsTemporaryViewModelOpened => _messengerCurrentViewStorage.IsTemporaryViewModelOpened;
-
     public override string ChoosenFilterField { get; set; }
-    public override ICollectionView CollectionView { get; }
+    public override ICollectionView CollectionView { get; set; }
     public ICommand OpenModal { get; }
     
     private Dictionary<string, Func<ReservationDto, string>> FilterByColumn { get; } = new()
@@ -65,7 +64,8 @@ public sealed class ReservationsListingViewModel : SortingAndFilteringViewModel
         set
         {
             _reservations = value;
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(Reservations));
+            CollectionView = CollectionViewSource.GetDefaultView(Reservations);
         }
     }
 
@@ -80,11 +80,11 @@ public sealed class ReservationsListingViewModel : SortingAndFilteringViewModel
         }
     }
 
-    private void GetAllReservations()
-    {
-        var reservationDtos = _reservationListingService.GetAllReservations();
-        Reservations = new ObservableCollection<ReservationDto>(reservationDtos);
-    }
+    // private void GetAllReservations()
+    // {
+    //     var reservationDtos = _reservationListingService.GetAllReservations();
+    //     Reservations = new ObservableCollection<ReservationDto>(reservationDtos);
+    // }
     
     protected override List<string> FilterComboBoxList()
     {
@@ -110,8 +110,8 @@ public sealed class ReservationsListingViewModel : SortingAndFilteringViewModel
         set
         {
             _reservationsFilterField = value;
-            CollectionView.Filter = Filter;
             OnPropertyChanged(nameof(FilterField));
+            CollectionView.Filter = Filter;
             CollectionView.Refresh();
         }
     }

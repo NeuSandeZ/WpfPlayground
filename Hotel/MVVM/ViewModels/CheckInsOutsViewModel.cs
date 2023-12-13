@@ -6,6 +6,7 @@ using Hotel.Application.Services;
 using Hotel.Application.Services;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
+using Hotel.Commands.AsyncCommands;
 
 namespace Hotel.MVVM.ViewModels;
 
@@ -18,15 +19,12 @@ public class CheckInsOutsViewModel : ViewModelBase
         _checkInOutService = checkInOutService;
         CheckInCommand = new CheckInCommand(this,_checkInOutService);
         CheckOutCommand = new CheckOutCommand(_checkInOutService,this);
-
-        GetCheckIns();
-        GetCheckOuts();
-        GetAllCheckIns();
         
-        GetAllRoomsWithResarvationsAndGuests();
+        new LoadCheckInsAsyncCommand(_checkInOutService, this).Execute(null);
     }
     public ICommand CheckInCommand { get; }
     public ICommand CheckOutCommand { get; }
+    public ICommand LoadCheckInsAsyncCommand { get; }
 
     private IQueryable<ReservationComboBoxDto> _roomsGuestsReservations;
 
@@ -98,26 +96,5 @@ public class CheckInsOutsViewModel : ViewModelBase
             _selectedCheckIn = value;
             OnPropertyChanged(nameof(SelectedCheckIn));
         }
-    }
-
-    private void GetAllRoomsWithResarvationsAndGuests()
-    {
-        RoomsGuestsReservations = _checkInOutService.GetAllReservationNumbers().AsQueryable();
-    }
-
-    private void GetAllCheckIns()
-    {
-        var checkInListingDtos = _checkInOutService.GetAllCheckIns();
-        AllCheckIns = new ObservableCollection<CheckInListingDto>(checkInListingDtos) ;
-    }
-
-    private void GetCheckIns()
-    {
-        TodaysCheckIns = _checkInOutService.GetTodaysCheckIns().ToString();
-    }
-    
-    private void GetCheckOuts()
-    {
-        TodaysCheckOuts = _checkInOutService.GetTodaysCheckOuts().ToString();
     }
 }

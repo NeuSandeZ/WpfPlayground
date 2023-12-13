@@ -17,19 +17,19 @@ public class CheckInOutService : ICheckInOutService
         _mapper = mapper;
     }
     
-    public int GetTodaysCheckIns()
+    public async Task<int> GetTodaysCheckIns()
     {
-        return _checkInOutRepository.GetTodaysCheckIns();
+        return  await _checkInOutRepository.GetTodaysCheckIns();
     }
 
-    public int GetTodaysCheckOuts()
+    public async Task<int> GetTodaysCheckOuts()
     {
-        return _checkInOutRepository.GetTodaysCheckOuts();
+        return await _checkInOutRepository.GetTodaysCheckOuts();
     }
 
-    public IEnumerable<ReservationComboBoxDto> GetAllReservationNumbers()
+    public async Task<IEnumerable<ReservationComboBoxDto>> GetAllReservationNumbers()
     {
-        var allReservationNumbers = _checkInOutRepository.GetAllReservationNumbers();
+        var allReservationNumbers = await _checkInOutRepository.GetAllReservationNumbers();
         return _mapper.Map<IEnumerable<ReservationComboBoxDto>>(allReservationNumbers);
     }
 
@@ -39,9 +39,9 @@ public class CheckInOutService : ICheckInOutService
         _checkInOutRepository.CreateCheckIn(checkIn);
     }
 
-    public IEnumerable<CheckInListingDto> GetAllCheckIns()
+    public async Task<IEnumerable<CheckInListingDto>> GetAllCheckIns()
     {
-        var checkInsEnumerable = _checkInOutRepository.GetAllCheckIns();
+        var checkInsEnumerable = await _checkInOutRepository.GetAllCheckIns();
         return _mapper.Map<IEnumerable<CheckInListingDto>>(checkInsEnumerable);
     }
 

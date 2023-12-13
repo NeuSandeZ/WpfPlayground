@@ -14,10 +14,11 @@ public class CheckInOutRepository : ICheckInOutRepository
         _dbContext = dbContext;
     }
     
-    public IEnumerable<Reservation> GetAllReservationNumbers()
+    public async Task<IEnumerable<Reservation>> GetAllReservationNumbers()
     {
         //TODO add filtering for reservation with check in date as today
-        return _dbContext.Reservations
+        return await _dbContext.Reservations
+            .AsNoTracking()
             .Where(a=> a.IsCheckedIn == false)
             .Select(a => new Reservation()
             {
@@ -31,8 +32,7 @@ public class CheckInOutRepository : ICheckInOutRepository
                 RoomId = a.RoomId,
                 GuestId = a.GuestId
             })
-            .AsNoTracking()
-            .ToList();
+            .ToListAsync();
     }
 
     public void CreateCheckIn(CheckIns checkIn)
@@ -47,9 +47,9 @@ public class CheckInOutRepository : ICheckInOutRepository
         _dbContext.SaveChanges();
     }
 
-    public IEnumerable<CheckIns> GetAllCheckIns()
+    public async Task<IEnumerable<CheckIns>> GetAllCheckIns()
     {
-        return _dbContext.CheckIns.Select(a => new CheckIns()
+        return await _dbContext.CheckIns.AsNoTracking().Select(a => new CheckIns()
             {
                 Id = a.Id,
                 CheckInDate = a.CheckInDate,
@@ -72,8 +72,7 @@ public class CheckInOutRepository : ICheckInOutRepository
                     ReservationNumber = a.Reservation.ReservationNumber
                 }
             })
-            .AsTracking()
-            .ToList();
+            .ToListAsync();
     }
 
     public void CheckOut(CheckOuts checkOuts)
@@ -90,13 +89,13 @@ public class CheckInOutRepository : ICheckInOutRepository
     }
 
     //TODO hardcode some date that matches my records in DB, also have to create some property to decrease value when checkIn is performed
-    public int GetTodaysCheckIns()
+    public async Task<int> GetTodaysCheckIns()
     {
-        return _dbContext.Reservations.Count(a => a.CheckInDate.Date == DateTime.Now.Date && a.IsCheckedIn == false);
+        return await _dbContext.Reservations.AsNoTracking().CountAsync(a => a.CheckInDate.Date == DateTime.Now.Date && a.IsCheckedIn == false);
     }
 
-    public int GetTodaysCheckOuts()
+    public async Task<int> GetTodaysCheckOuts()
     {
-        return _dbContext.Reservations.Count(a => a.CheckOutDate.Date == DateTime.Now.Date && a.IsCheckedOut == false);
+        return await _dbContext.Reservations.AsNoTracking().CountAsync(a => a.CheckOutDate.Date == DateTime.Now.Date && a.IsCheckedOut == false);
     }
 }

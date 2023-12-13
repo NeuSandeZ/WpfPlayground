@@ -10,6 +10,6 @@ public abstract class SortingAndFilteringViewModel : ViewModelBase
     protected abstract List<string> FilterComboBoxList();
     public abstract string FilterField { get; set; }
     public abstract string ChoosenFilterField { get; set; }
-    public abstract ICollectionView CollectionView { get; }
+    public abstract ICollectionView CollectionView { get; set; }
     protected abstract bool Filter(object obj);
 }

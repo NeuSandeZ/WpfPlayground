@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using Hotel.Application.DTOS.GuestsListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.MVVM.ViewModels.Modals;
@@ -35,5 +36,6 @@ public class SaveGuestCommand : BaseCommand
 
         Task.Run(() => _guestsListingService.EditGuest(addGuestDto));
         _navigator.Close();
+        MessageBox.Show("Successfully edited!", "Success", MessageBoxButton.OK);
     }
 }

@@ -4,10 +4,11 @@ namespace Hotel.Domain.IRepositories;
 
 public interface ICheckInOutRepository
 {
-    IEnumerable<Reservation> GetAllReservationNumbers();
-    public int GetTodaysCheckIns();
-    public int GetTodaysCheckOuts();
+    Task<IEnumerable<Reservation>> GetAllReservationNumbers();
+    Task<int> GetTodaysCheckIns();
+    Task<int> GetTodaysCheckOuts();
+    Task<IEnumerable<CheckIns>> GetAllCheckIns();
+
     void CreateCheckIn(CheckIns checkIns);
-    IEnumerable<CheckIns> GetAllCheckIns();
     void CheckOut(CheckOuts checkOuts);
 }

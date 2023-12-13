@@ -30,7 +30,7 @@
                 Visibility="{Binding IsTemporaryViewModelOpened,Converter={StaticResource StandardConverter}}">
                 CHOOSE RESERVATION YOU WANT TO PAY FOR
             </TextBlock>
-
+            
             <Grid Grid.Row="1">
                 <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}"
                           ItemsSource="{Binding Reservations}">
