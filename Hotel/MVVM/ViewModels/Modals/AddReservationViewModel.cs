@@ -44,6 +44,9 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>, INot
     
     private string _phoneNumber;
     
+    private IQueryable<AvailableRoomsDto> _availableRooms;
+
+    
     public AddReservationViewModel(INavigator navigator, IReservationListingService reservationListingService,
         MessengerCurrentViewStorage messengerCurrentViewStorage)
     {
@@ -55,8 +58,6 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>, INot
         AddReservationCommand = new AddReservationCommand(navigator, this, _reservationListingService);
         CloseModalCommand = new CloseModalCommand(navigator);
         ChooseGuestCommand = new ChooseGuestCommand("OpenGuests", _messengerCurrentViewStorage, this);
-
-        GetAvailableRooms();
     }
 
     public DateTime CheckInDate
@@ -95,6 +96,7 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>, INot
                 OnErrorsChanged(nameof(CheckOutDate));
             }
             CalculateTotalCost();
+            GetAvailableRooms(_checkInDate, _checkOutDate);
         }
     }
     
@@ -201,22 +203,31 @@ public class AddReservationViewModel : ViewModelBase, IRecipient<GuestDto>, INot
         }
     }
 
-    public IQueryable<AvailableRoomsDto> AvailableRooms { get; set; }
+
+    public IQueryable<AvailableRoomsDto>  AvailableRooms   
+    {
+        get { return _availableRooms; }
+        set
+        {
+            _availableRooms = value;
+            OnPropertyChanged(nameof(AvailableRooms));
+        }
+    }
     public ICommand AddReservationCommand { get; }
     public ICommand ChooseGuestCommand { get; }
     public ICommand CloseModalCommand { get; }
 
 
-    private void GetAvailableRooms()
+    private void GetAvailableRooms(DateTime checkInDate, DateTime checkOutDate)
     {
-        AvailableRooms = _reservationListingService.GetAllRoomsWithRoomStatus().AsQueryable();
+        AvailableRooms = _reservationListingService.GetAllRoomsWithRoomStatus(checkInDate, checkOutDate).AsQueryable();
     }
 
     private void CalculateTotalCost()
     {
         if (AvailableRooms == null && SelectedRoomId < 0) return;
 
-        var selectedRoom = AvailableRooms.FirstOrDefault(room => room.RoomId == SelectedRoomId);
+        var selectedRoom = AvailableRooms?.FirstOrDefault(room => room.RoomId == SelectedRoomId);
         if (selectedRoom != null)
         {
             var span = CheckOutDate.Subtract(CheckInDate).Days;

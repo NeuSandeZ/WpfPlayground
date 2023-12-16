@@ -20,11 +20,20 @@ public class CheckInsOutsViewModel : ViewModelBase
         CheckInCommand = new CheckInCommand(this,_checkInOutService);
         CheckOutCommand = new CheckOutCommand(_checkInOutService,this);
         
+        LoadData();
+
+        Refresh = new ActionBaseCommand(() => LoadData());
+    }
+
+    private void LoadData()
+    {
         new LoadCheckInsAsyncCommand(_checkInOutService, this).Execute(null);
     }
+
     public ICommand CheckInCommand { get; }
     public ICommand CheckOutCommand { get; }
     public ICommand LoadCheckInsAsyncCommand { get; }
+    public ICommand Refresh { get; }
 
     private IQueryable<ReservationComboBoxDto> _roomsGuestsReservations;
 

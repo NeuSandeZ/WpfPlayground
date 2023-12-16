@@ -23,9 +23,11 @@ public class StaffViewModel : ViewModelBase
         GetAllStaffMembers();
         
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddStaff);
+        Refresh = new ActionBaseCommand(() => GetAllStaffMembers());
     }
 
     public ICommand OpenModal { get; set; }
+    public ICommand Refresh { get; set; }
 
     private ObservableCollection<StaffListingDto> _staffListing;
 

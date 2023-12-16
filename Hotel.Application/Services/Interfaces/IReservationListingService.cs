@@ -8,5 +8,5 @@ public interface IReservationListingService
 
     Task CreateReservation(AddReservationDto reservationDto);
 
-    IEnumerable<AvailableRoomsDto> GetAllRoomsWithRoomStatus();
+    IEnumerable<AvailableRoomsDto> GetAllRoomsWithRoomStatus(DateTime checkInDate, DateTime checkOutDate);
 }

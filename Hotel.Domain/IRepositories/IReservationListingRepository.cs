@@ -8,6 +8,6 @@ public interface IReservationListingRepository
 
     Task CreateReservation(Reservation reservation);
 
-    IEnumerable<Room> GetAllRoomsWithRoomStatus();
+    IEnumerable<Room> GetAllRoomsWithRoomStatus(DateTime checkInDate, DateTime checkOutDate);
 
 }

@@ -29,9 +29,9 @@ public class ReservationListingService : IReservationListingService
         await _reservationListingRepository.CreateReservation(reservation);
     }
 
-    public IEnumerable<AvailableRoomsDto> GetAllRoomsWithRoomStatus()
+    public IEnumerable<AvailableRoomsDto> GetAllRoomsWithRoomStatus(DateTime checkInDate, DateTime checkOutDate)
     {
-        var allRoomsWithRoomStatus = _reservationListingRepository.GetAllRoomsWithRoomStatus();
+        var allRoomsWithRoomStatus = _reservationListingRepository.GetAllRoomsWithRoomStatus(checkInDate, checkOutDate);
         return _mapper.Map<IEnumerable<AvailableRoomsDto>>(allRoomsWithRoomStatus);
     }
 }

@@ -23,9 +23,11 @@ public class TasksViewModel : ViewModelBase
         GetAllTasks();
 
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddTask);
+        Refresh = new ActionBaseCommand(() => GetAllTasks());
     }
 
     public ICommand OpenModal { get;}
+    public ICommand Refresh { get;}
 
     private ObservableCollection<TasksListingDto> _allTasks;
 

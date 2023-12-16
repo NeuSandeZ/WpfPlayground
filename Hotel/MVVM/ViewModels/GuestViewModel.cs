@@ -36,6 +36,7 @@ public class GuestViewModel : ViewModelBase
         
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddGuest);
         EditCommand = new EditGuestCommand(navigator, _guestsListingService, this);
+        Refresh = new ActionBaseCommand(() => GetAllGuests());
     }
 
     public ObservableCollection<GuestDto> GuestDtos
@@ -64,6 +65,7 @@ public class GuestViewModel : ViewModelBase
     
     public ICommand OpenModal { get; }
     public ICommand EditCommand { get; }
+    public ICommand Refresh { get; }
 
     private async Task GetAllGuests()
     {

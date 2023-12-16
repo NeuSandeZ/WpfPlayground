@@ -18,14 +18,17 @@ public class RoomsViewModel : ViewModelBase
     {
         _roomListingService = roomListingService;
         
+        GetAllReservations();
+
+        
         OpenModal = new OpenModalCommand(navigator,viewModelFactory, () => ViewType.AddRoom);
         AddPromotion = new AddPromotionCommand(this,_roomListingService);
-
-        GetAllReservations();
+        Refresh = new ActionBaseCommand(() => GetAllReservations());
     }
 
     public ICommand AddPromotion { get; }
     public ICommand OpenModal { get; }
+    public ICommand Refresh { get; }
 
 
     public ObservableCollection<RoomsListingDto> Rooms

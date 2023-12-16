@@ -57,17 +57,29 @@ public class ReservationListingRepository : IReservationListingRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public IEnumerable<Room> GetAllRoomsWithRoomStatus()
+    public IEnumerable<Room> GetAllRoomsWithRoomStatus(DateTime checkInDate, DateTime checkOutDate)
     {
-        return _dbContext.Rooms
-            .Select(src => new Room
-            {
-                Id = src.Id,
-                RoomNumber = src.RoomNumber,
-                FloorNumber = src.FloorNumber,
-                RoomStatusId = src.RoomStatusId,
-                PricePerNight = src.PricePerNight
-            })
-            .ToList();
+        var allRooms = _dbContext.Rooms.AsQueryable();
+
+        var roomsWithReservations = _dbContext.Reservations
+            .Where(r =>
+                (r.CheckInDate < checkOutDate && r.CheckOutDate > checkInDate)
+                || (r.CheckInDate >= checkInDate && r.CheckInDate < checkOutDate)
+                || (r.CheckOutDate > checkInDate && r.CheckOutDate <= checkOutDate))
+            .Select(r => r.RoomId)
+            .Distinct();
+
+        var availableRooms = allRooms.Where(room => !roomsWithReservations.Contains(room.Id));
+
+        var availableRoomsDto = availableRooms.Select(src => new Room
+        {
+            Id = src.Id,
+            RoomNumber = src.RoomNumber,
+            FloorNumber = src.FloorNumber,
+            RoomStatusId = src.RoomStatusId,
+            PricePerNight = src.PricePerNight
+        }).ToList();
+
+        return availableRoomsDto;
     }
 }
