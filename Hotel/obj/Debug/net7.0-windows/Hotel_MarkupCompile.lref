@@ -3,8 +3,6 @@ FD:\RiderProjects\SRC\Hotel\App.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\CheckInsOutsView.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\GuestView.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\MainWindow.xaml;;
-FD:\RiderProjects\SRC\Hotel\MVVM\Views\Modals\AddStaffView.xaml;;
-FD:\RiderProjects\SRC\Hotel\MVVM\Views\Modals\AddTaskView.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\PaymentView.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\ReservationsListingView.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\RoomsView.xaml;;
@@ -12,5 +10,4 @@ FD:\RiderProjects\SRC\Hotel\MVVM\Views\StaffView.xaml;;
 FD:\RiderProjects\SRC\Hotel\MVVM\Views\TasksView.xaml;;
 FD:\RiderProjects\SRC\Hotel\Themes\Generic.xaml;;
 FD:\RiderProjects\SRC\Hotel\Utilities\MyDataTemplate.xaml;;
-FD:\RiderProjects\SRC\Hotel\Utilities\Styles\TextStyle.xaml;;
 
