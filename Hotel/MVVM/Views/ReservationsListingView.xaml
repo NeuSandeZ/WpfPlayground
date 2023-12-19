@@ -30,11 +30,11 @@
                 Visibility="{Binding IsTemporaryViewModelOpened,Converter={StaticResource StandardConverter}}">
                 CHOOSE RESERVATION YOU WANT TO PAY FOR
             </TextBlock>
-            
+
             <Grid Grid.Row="1">
                 <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedReservation}"
-                          ItemsSource="{Binding Reservations}">
-                    
+                          ItemsSource="{Binding Items}">
+
                     <!-- <DataGrid.Resources> -->
                     <!--     <Style TargetType="DataGridRow"> -->
                     <!--         <Style.Triggers> -->
@@ -44,16 +44,18 @@
                     <!--         </Style.Triggers> -->
                     <!--     </Style> -->
                     <!-- </DataGrid.Resources> -->
-                    
+
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="*" Header="CheckInDate" IsReadOnly="True" Binding="{Binding CheckInDate}">
+                        <DataGridTextColumn Width="*" Header="CheckInDate" IsReadOnly="True"
+                                            Binding="{Binding CheckInDate}">
                             <!-- <DataGridTextColumn.CellStyle> -->
                             <!--     <Style TargetType="DataGridCell"> -->
                             <!--         <Setter Property="Background" Value="Green" /> -->
                             <!--     </Style> -->
                             <!-- </DataGridTextColumn.CellStyle> -->
                         </DataGridTextColumn>
-                        <DataGridTextColumn Width="*" Header="CheckOutDate" IsReadOnly="True" Binding="{Binding CheckOutDate}" />
+                        <DataGridTextColumn Width="*" Header="CheckOutDate" IsReadOnly="True"
+                                            Binding="{Binding CheckOutDate}" />
                         <DataGridTextColumn Width="*" Header="TotalCost" Binding="{Binding TotalCost}" />
                         <DataGridTextColumn Width="*" Header="RoomCode" Binding="{Binding FloorAndRoomNumber}" />
                         <DataGridTextColumn Width="*" Header="Guest" Binding="{Binding GuestFullName}" />

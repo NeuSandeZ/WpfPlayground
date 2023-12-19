@@ -1,11 +1,12 @@
-﻿using System.Windows.Input;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Input;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
 using Hotel.Services.Interfaces;
 
 namespace Hotel.MVVM.ViewModels.Modals;
 
-public class AddGuestViewModel : ViewModelBase
+public class AddGuestViewModel : ViewModelBaseWithINotify
 {
     private string _city;
 
@@ -35,6 +36,18 @@ public class AddGuestViewModel : ViewModelBase
         {
             _firstName = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(FirstName));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("First name cannot be empty or null.", nameof(FirstName));
+                OnErrorsChanged(nameof(FirstName));
+            }
+            else if (!Regex.IsMatch(value, "^[a-zA-Z]+$"))
+            {
+                AddError("First name must contain only letters.", nameof(FirstName));
+                OnErrorsChanged(nameof(FirstName));
+            }
         }
     }
 
@@ -45,6 +58,18 @@ public class AddGuestViewModel : ViewModelBase
         {
             _lastName = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(LastName));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("First name cannot be empty or null.", nameof(LastName));
+                OnErrorsChanged(nameof(LastName));
+            }
+            else if (!Regex.IsMatch(value, "^[a-zA-Z]+$"))
+            {
+                AddError("First name must contain only letters.", nameof(LastName));
+                OnErrorsChanged(nameof(LastName));
+            }
         }
     }
 
@@ -55,6 +80,18 @@ public class AddGuestViewModel : ViewModelBase
         {
             _email = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(Email));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("Email cannot be empty or null.", nameof(Email));
+                OnErrorsChanged(nameof(Email));
+            }
+            else if (!Regex.IsMatch(value, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                AddError("Invalid email format.", nameof(Email));
+                OnErrorsChanged(nameof(Email));
+            }
         }
     }
 
@@ -65,6 +102,20 @@ public class AddGuestViewModel : ViewModelBase
         {
             _phoneNumber = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(PhoneNumber));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("Phone number cannot be empty or null.", nameof(PhoneNumber));
+                OnErrorsChanged(nameof(PhoneNumber));
+            }
+            else if (!Regex.IsMatch(value, @"^\+[0-9]{1,4}[0-9]{6,}$"))
+            {
+                AddError(
+                    "Invalid phone number format. It should start with a '+' followed by country code and the actual number.",
+                    nameof(PhoneNumber));
+                OnErrorsChanged(nameof(PhoneNumber));
+            }
         }
     }
 
@@ -75,6 +126,13 @@ public class AddGuestViewModel : ViewModelBase
         {
             _city = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(City));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("City cannot be empty or null.", nameof(City));
+                OnErrorsChanged(nameof(City));
+            }
         }
     }
 
@@ -85,6 +143,13 @@ public class AddGuestViewModel : ViewModelBase
         {
             _street = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(Street));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("Street cannot be empty or null.", nameof(Street));
+                OnErrorsChanged(nameof(Street));
+            }
         }
     }
 
@@ -95,6 +160,19 @@ public class AddGuestViewModel : ViewModelBase
         {
             _postalCode = value;
             OnPropertyChanged();
+
+            ClearErrors(nameof(PostalCode));
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                AddError("Street cannot be empty or null.", nameof(PostalCode));
+                OnErrorsChanged(nameof(PostalCode));
+            }
+            else if (!Regex.IsMatch(value, @"^\d{2}-\d{3}$"))
+            {
+                AddError("Invalid postal code format. It should be in the format [2 numbers]-[3 numbers].",
+                    nameof(PostalCode));
+                OnErrorsChanged(nameof(PostalCode));
+            }
         }
     }
 

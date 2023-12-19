@@ -10,11 +10,11 @@
     <Border>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Rooms}" 
+
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Items}"
                       SelectedValuePath="."
                       SelectedValue="{Binding Path=SelectedRoom,Mode=TwoWay}">
                 <DataGrid.Columns>
@@ -26,25 +26,25 @@
                     <DataGridTextColumn Header="Room type" Binding="{Binding RoomType}" />
                 </DataGrid.Columns>
             </DataGrid>
-            
-            <Border Grid.Column="1" CornerRadius="10" Background="AliceBlue" Margin="5 0 5 0"> 
+
+            <Border Grid.Column="1" CornerRadius="10" Background="AliceBlue" Margin="5 0 5 0">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    
+
                     <Grid>
                         <StackPanel Margin="10">
-                            <TextBlock Text="Amount of discount"/>
-                            <TextBox Text="{Binding DiscountAmount, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Button Margin="0 10 0 0" Command="{Binding AddPromotion}" Content="Add or edit discount"/>  
+                            <TextBlock Text="Amount of discount" />
+                            <TextBox Text="{Binding DiscountAmount, UpdateSourceTrigger=PropertyChanged}" />
+                            <Button Margin="0 10 0 0" Command="{Binding AddPromotion}" Content="Add or edit discount" />
                         </StackPanel>
                     </Grid>
-                    
+
                 </Grid>
             </Border>
-            
+
         </Grid>
     </Border>
 </local:CrudViewBase>

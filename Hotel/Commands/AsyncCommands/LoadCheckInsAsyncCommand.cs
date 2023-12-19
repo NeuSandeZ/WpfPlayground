@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,25 +35,25 @@ public class LoadCheckInsAsyncCommand : AsyncCommandBase
             MessageBox.Show("Failed to load!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
-    
+
     private async Task GetAllRoomsWithResarvationsAndGuests()
     {
-       var roomsWithReservationsAndGuests = await _checkInOutService.GetAllReservationNumbers();
-       _insOutsViewModel.RoomsGuestsReservations = roomsWithReservationsAndGuests.AsQueryable();
+        var roomsWithReservationsAndGuests = await _checkInOutService.GetAllReservationNumbers();
+        _insOutsViewModel.RoomsGuestsReservations = roomsWithReservationsAndGuests.AsQueryable();
     }
 
     private async Task GetAllCheckIns()
     {
-        var checkInListingDtos =  await _checkInOutService.GetAllCheckIns();
-        _insOutsViewModel.AllCheckIns = new ObservableCollection<CheckInListingDto>(checkInListingDtos) ;
+        var checkInListingDtos = await _checkInOutService.GetAllCheckIns();
+        _insOutsViewModel.Items = new ObservableCollection<CheckInListingDto>(checkInListingDtos);
     }
 
     private async Task GetCheckIns()
     {
-       var checkIns = await _checkInOutService.GetTodaysCheckIns();
-       _insOutsViewModel.TodaysCheckIns = checkIns.ToString();
+        var checkIns = await _checkInOutService.GetTodaysCheckIns();
+        _insOutsViewModel.TodaysCheckIns = checkIns.ToString();
     }
-    
+
     private async Task GetCheckOuts()
     {
         var checkOuts = await _checkInOutService.GetTodaysCheckOuts();

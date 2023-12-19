@@ -13,7 +13,8 @@ public class LoadReservationsAsyncCommand : AsyncCommandBase
     private readonly IReservationListingService _reservationListingService;
     private readonly ReservationsListingViewModel _reservationsListingViewModel;
 
-    public LoadReservationsAsyncCommand(IReservationListingService reservationListingService, ReservationsListingViewModel reservationsListingViewModel)
+    public LoadReservationsAsyncCommand(IReservationListingService reservationListingService,
+        ReservationsListingViewModel reservationsListingViewModel)
     {
         _reservationListingService = reservationListingService;
         _reservationsListingViewModel = reservationsListingViewModel;
@@ -24,9 +25,9 @@ public class LoadReservationsAsyncCommand : AsyncCommandBase
         try
         {
             var allReservations = await _reservationListingService.GetAllReservations();
-            _reservationsListingViewModel.Reservations = new ObservableCollection<ReservationDto>(allReservations);
+            _reservationsListingViewModel.Items = new ObservableCollection<ReservationDto>(allReservations);
         }
-        catch (Exception )
+        catch (Exception)
         {
             MessageBox.Show("Failed to load reservations!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }

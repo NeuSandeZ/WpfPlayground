@@ -14,11 +14,11 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding GuestDtos}"
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Items}"
                       SelectedItem="{Binding SelectedGuest}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="First name" IsReadOnly="True" Binding="{Binding FirstName}" />
@@ -31,6 +31,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        
+
     </Grid>
 </views:CrudViewBase>

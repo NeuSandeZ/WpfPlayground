@@ -11,7 +11,7 @@ public class CheckOutCommand : BaseCommand
     private readonly ICheckInOutService _checkInOutService;
     private readonly CheckInsOutsViewModel _selectedCheckOut;
 
-    public CheckOutCommand(ICheckInOutService checkInOutService,CheckInsOutsViewModel selectedCheckOut)
+    public CheckOutCommand(ICheckInOutService checkInOutService, CheckInsOutsViewModel selectedCheckOut)
     {
         _checkInOutService = checkInOutService;
         _selectedCheckOut = selectedCheckOut;
@@ -21,12 +21,12 @@ public class CheckOutCommand : BaseCommand
 
     public override void Execute(object? parameter)
     {
-        var checkOut = new CheckOutDto()
+        var checkOut = new CheckOutDto
         {
             CheckInId = _selectedCheckOut.SelectedCheckIn.CheckInId,
             CheckOutDate = DateTime.Now
         };
-        
+
         _checkInOutService.CheckOut(checkOut);
         _selectedCheckOut.PropertyChanged -= OnModelPropertyChanged;
     }
@@ -35,7 +35,7 @@ public class CheckOutCommand : BaseCommand
     {
         return _selectedCheckOut.SelectedCheckIn != null && base.CanExecute(parameter);
     }
-    
+
     private void OnModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(CheckInsOutsViewModel.SelectedCheckIn)) OnCanExecutedChanged();

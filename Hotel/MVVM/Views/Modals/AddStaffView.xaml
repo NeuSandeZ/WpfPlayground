@@ -3,17 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Hotel.MVVM.Views.Modals"
              mc:Ignorable="d"
              Background="Transparent"
              d:DesignHeight="600" d:DesignWidth="600">
-    
+
     <Border CornerRadius="5" Background="LightBlue" Width="550" Height="550">
         <Grid Margin="10 0 0 0" Background="Transparent">
-            
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
 
             <TextBlock HorizontalAlignment="Center"
@@ -21,10 +20,10 @@
                        FontWeight="Medium"
                        FontSize="30"
                        Margin="0 20 0 20" />
-            
+
 
             <Grid Grid.Row="1" Margin="30 0 40 0">
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -45,7 +44,7 @@
 
 
                 <StackPanel Grid.Row="1">
-                    <TextBlock Text="Last name"/>
+                    <TextBlock Text="Last name" />
                     <Border CornerRadius="10" Background="Azure">
                         <TextBox Margin="10 0 10 0" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" />
                     </Border>
@@ -85,14 +84,14 @@
                         <TextBox Margin="10 0 10 0" Text="{Binding PostalCode, UpdateSourceTrigger=PropertyChanged}" />
                     </Border>
                 </StackPanel>
-                
+
                 <Grid Grid.Row="7">
-                    
+
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <StackPanel>
                         <TextBlock Text="Staff role" />
                         <Border CornerRadius="10" Background="Azure">
@@ -103,18 +102,20 @@
                                       SelectedValue="{Binding Path=SelectedRoleId,Mode=TwoWay}" />
                         </Border>
                     </StackPanel>
-                    
+
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
-                        <Button Content="Add" Command="{Binding AddStaffMemberCommand}" Background="Green" Margin="20 10 20 10"></Button>
-                        <Button Grid.Column="1" Content="Cancel" Command="{Binding CloseModal}" Background="Red" Margin="20 10 20 10"></Button>
+
+                        <Button Content="Add" Command="{Binding AddStaffMemberCommand}" Background="Green"
+                                Margin="20 10 20 10" />
+                        <Button Grid.Column="1" Content="Cancel" Command="{Binding CloseModal}" Background="Red"
+                                Margin="20 10 20 10" />
                     </Grid>
                 </Grid>
-                
+
             </Grid>
             <!-- <StackPanel Orientation="Horizontal"> -->
             <!--     <Button Content="Add" -->

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -13,10 +14,10 @@ using Hotel.Stores;
 namespace Hotel.MVVM.ViewModels;
 
 //TODO block UI when user is choosing RESERVATION, also have to trigger IsChecked when user switches view using messenger for better UX
-public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
+public class PaymentViewModel : SortingAndFilteringViewModel<PaymentListingDto>, IRecipient<ReservationDto>
 {
     private readonly IPaymentService _paymentService;
-    
+
     private DateTime _checkInDate;
 
     private DateTime _checkOutDate;
@@ -25,25 +26,26 @@ public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
 
     private string _guestFullname;
 
-    private string _totalCost;
-
-    private int _reservationId;
-    
-    private int _selectedPaymentTypeId;
-    
     private DateTime _paymentDate = DateTime.Now;
 
-    private ObservableCollection<PaymentListingDto> _paymentListingCollection;
+    private int _reservationId;
 
-    public PaymentViewModel(MessengerCurrentViewStorage messengerCurrentViewStorage,IPaymentService paymentService)
+    private int _selectedPaymentTypeId;
+
+    private string _totalCost;
+
+    public PaymentViewModel(MessengerCurrentViewStorage messengerCurrentViewStorage, IPaymentService paymentService)
     {
         _paymentService = paymentService;
-        
+
         TestCommand = new TestCommand("Open", this, messengerCurrentViewStorage);
         PayForReservationCommand = new PayForReservationCommand(this, paymentService);
 
         GetAllPaymentTypes();
         GetListingPayments();
+
+        FilterComboBoxList = new ObservableCollection<string>(LoadFilterComboBoxList());
+        SortComboBoxList = new ObservableCollection<string>(LoadSortComboBoxList());
     }
 
     public DateTime CheckInDate
@@ -95,20 +97,20 @@ public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
             OnPropertyChanged();
         }
     }
-    
+
     public int ReservationId
     {
-        get { return _reservationId; }
+        get => _reservationId;
         set
         {
             _reservationId = value;
-            OnPropertyChanged(nameof(ReservationId));
+            OnPropertyChanged();
         }
     }
-    
+
     public int SelectedPaymentTypeId
     {
-        get { return _selectedPaymentTypeId; }
+        get => _selectedPaymentTypeId;
         set
         {
             _selectedPaymentTypeId = value;
@@ -122,36 +124,35 @@ public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
                 PaymentDate = DateTime.Now;
                 PaymentDateEnabled = false;
             }
+
             OnPropertyChanged(nameof(PaymentDateEnabled));
-            OnPropertyChanged(nameof(SelectedPaymentTypeId));
-        }
-    }
-    
-    public DateTime PaymentDate
-    {
-        get { return _paymentDate; }
-        set
-        {
-            _paymentDate = value;
-            OnPropertyChanged(nameof(PaymentDate));
-        }
-    }
-    
-    public ObservableCollection<PaymentListingDto> PaymentListingCollection
-    {
-        get { return _paymentListingCollection; }
-        set
-        {
-            _paymentListingCollection = value;
-            OnPropertyChanged(nameof(PaymentListingCollection));
+            OnPropertyChanged();
         }
     }
 
-    public bool PaymentDateEnabled { get; set; } = false;
+    public DateTime PaymentDate
+    {
+        get => _paymentDate;
+        set
+        {
+            _paymentDate = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public bool PaymentDateEnabled { get; set; }
 
     public IQueryable<PaymentType> PaymentTypes { get; set; }
     public ICommand PayForReservationCommand { get; }
     public ICommand TestCommand { get; }
+
+    protected override Dictionary<string, Func<PaymentListingDto, string>> FilterByColumn { get; } = new()
+    {
+        { "Amount", a => a.Amount },
+        { "Payment date", a => a.PaymentDate },
+        { "Payment method", a => a.PaymentMethod },
+        { "Reservation number", a => a.ReservationNumber }
+    };
 
     public void Receive(ReservationDto message)
     {
@@ -164,6 +165,11 @@ public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
 
         WeakReferenceMessenger.Default.Send<string>("Close");
         WeakReferenceMessenger.Default.UnregisterAll(this);
+    }
+
+    ~PaymentViewModel()
+    {
+        DisposeFilter();
     }
 
     public void RegisterPaymentViewModel()
@@ -179,6 +185,32 @@ public class PaymentViewModel : ViewModelBase, IRecipient<ReservationDto>
     private void GetListingPayments()
     {
         var allPayments = _paymentService.GetAllPayments();
-        PaymentListingCollection = new ObservableCollection<PaymentListingDto>(allPayments);
+        Items = new ObservableCollection<PaymentListingDto>(allPayments);
+    }
+
+    protected override List<string> LoadFilterComboBoxList()
+    {
+        return new List<string>
+        {
+            "Amount",
+            "Payment date",
+            "Payment method",
+            "Reservation number"
+        };
+    }
+
+    protected override void Sort()
+    {
+        CollectionView.SortDescriptions.Clear();
+
+        var columnToSort = ChoosenSortField switch
+        {
+            "Amount" => nameof(PaymentListingDto.Amount),
+            "Payment date" => nameof(PaymentListingDto.PaymentDate),
+            "Payment method" => nameof(PaymentListingDto.PaymentMethod),
+            "Reservation number" => nameof(PaymentListingDto.ReservationNumber),
+            _ => null
+        };
+        SortByAscOrDesc(columnToSort);
     }
 }

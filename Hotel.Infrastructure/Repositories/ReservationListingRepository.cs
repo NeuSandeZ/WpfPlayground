@@ -71,14 +71,21 @@ public class ReservationListingRepository : IReservationListingRepository
 
         var availableRooms = allRooms.Where(room => !roomsWithReservations.Contains(room.Id));
 
-        var availableRoomsDto = availableRooms.Select(src => new Room
-        {
-            Id = src.Id,
-            RoomNumber = src.RoomNumber,
-            FloorNumber = src.FloorNumber,
-            RoomStatusId = src.RoomStatusId,
-            PricePerNight = src.PricePerNight
-        }).ToList();
+        var availableRoomsDto = availableRooms.Include(a=> a.RoomPromotions)
+            .Select(src => new Room
+            {
+                Id = src.Id,
+                RoomNumber = src.RoomNumber,
+                FloorNumber = src.FloorNumber,
+                RoomStatusId = src.RoomStatusId,
+                PricePerNight = src.PricePerNight,
+                RoomPromotions = new RoomPromotions()
+                {
+                    DiscountAmount = src.RoomPromotions.DiscountAmount
+                }
+            })
+            .AsNoTracking()
+            .ToList();
 
         return availableRoomsDto;
     }

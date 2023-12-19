@@ -1,33 +1,40 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Hotel.Application.DTOS.CheckInsOutsDto;
-using Hotel.Application.Services;
-using Hotel.Application.Services;
 using Hotel.Application.Services.Interfaces;
 using Hotel.Commands;
 using Hotel.Commands.AsyncCommands;
 
 namespace Hotel.MVVM.ViewModels;
 
-public class CheckInsOutsViewModel : ViewModelBase
+public class CheckInsOutsViewModel : SortingAndFilteringViewModel<CheckInListingDto>
 {
     private readonly ICheckInOutService _checkInOutService;
-    
+
+    private IQueryable<ReservationComboBoxDto> _roomsGuestsReservations;
+
+    private CheckInListingDto _selectedCheckIn;
+
+    private ReservationComboBoxDto _selectedReservation;
+
+    private string _todaysCheckIns;
+
+    private string _todaysCheckOuts;
+
     public CheckInsOutsViewModel(ICheckInOutService checkInOutService)
     {
         _checkInOutService = checkInOutService;
-        CheckInCommand = new CheckInCommand(this,_checkInOutService);
-        CheckOutCommand = new CheckOutCommand(_checkInOutService,this);
-        
+        CheckInCommand = new CheckInCommand(this, _checkInOutService);
+        CheckOutCommand = new CheckOutCommand(_checkInOutService, this);
+
         LoadData();
+        FilterComboBoxList = new ObservableCollection<string>(LoadFilterComboBoxList());
+        SortComboBoxList = new ObservableCollection<string>(LoadSortComboBoxList());
 
         Refresh = new ActionBaseCommand(() => LoadData());
-    }
-
-    private void LoadData()
-    {
-        new LoadCheckInsAsyncCommand(_checkInOutService, this).Execute(null);
     }
 
     public ICommand CheckInCommand { get; }
@@ -35,75 +42,95 @@ public class CheckInsOutsViewModel : ViewModelBase
     public ICommand LoadCheckInsAsyncCommand { get; }
     public ICommand Refresh { get; }
 
-    private IQueryable<ReservationComboBoxDto> _roomsGuestsReservations;
-
     public IQueryable<ReservationComboBoxDto> RoomsGuestsReservations
     {
-        get { return _roomsGuestsReservations; }
+        get => _roomsGuestsReservations;
         set
         {
             _roomsGuestsReservations = value;
-            OnPropertyChanged(nameof(RoomsGuestsReservations));
+            OnPropertyChanged();
         }
     }
-
-    private string _todaysCheckIns;
 
     public string TodaysCheckIns
     {
-        get { return _todaysCheckIns; }
+        get => _todaysCheckIns;
         set
         {
             _todaysCheckIns = value;
-            OnPropertyChanged(nameof(TodaysCheckIns));
+            OnPropertyChanged();
         }
     }
-
-    private string _todaysCheckOuts;
 
     public string TodaysCheckOuts
     {
-        get { return _todaysCheckOuts; }
+        get => _todaysCheckOuts;
         set
         {
             _todaysCheckOuts = value;
-            OnPropertyChanged(nameof(TodaysCheckOuts));
+            OnPropertyChanged();
         }
     }
-    
-    private ReservationComboBoxDto _selectedReservation;
 
     public ReservationComboBoxDto SelectedReservation
     {
-        get { return _selectedReservation; }
+        get => _selectedReservation;
         set
         {
             _selectedReservation = value;
-            OnPropertyChanged(nameof(SelectedReservation));
+            OnPropertyChanged();
         }
     }
-
-    private ObservableCollection<CheckInListingDto> _allCheckIns;
-
-    public ObservableCollection<CheckInListingDto> AllCheckIns
-    {
-        get { return _allCheckIns; }
-        set
-        {
-            _allCheckIns = value;
-            OnPropertyChanged(nameof(AllCheckIns));
-        }
-    }
-
-    private CheckInListingDto _selectedCheckIn;
 
     public CheckInListingDto SelectedCheckIn
     {
-        get { return _selectedCheckIn; }
+        get => _selectedCheckIn;
         set
         {
             _selectedCheckIn = value;
-            OnPropertyChanged(nameof(SelectedCheckIn));
+            OnPropertyChanged();
         }
+    }
+
+    protected override Dictionary<string, Func<CheckInListingDto, string>> FilterByColumn { get; } = new()
+    {
+        { "Floor and room number", a => a.FloorAndRoomNumber },
+        { "Reservation number", a => a.ReservationNumber },
+        { "Fullname", a => a.FullGuestName },
+        { "Check in date", a => a.CheckInDate.ToString() },
+        { "Check out date", a => a.CheckOutDate.ToString() }
+    };
+
+    private void LoadData()
+    {
+        new LoadCheckInsAsyncCommand(_checkInOutService, this).Execute(null);
+    }
+
+    protected override List<string> LoadFilterComboBoxList()
+    {
+        return new List<string>
+        {
+            "Floor and room number",
+            "Reservation number",
+            "Fullname",
+            "Check in date",
+            "Check out date"
+        };
+    }
+
+    protected override void Sort()
+    {
+        CollectionView.SortDescriptions.Clear();
+
+        var columnToSort = ChoosenSortField switch
+        {
+            "Floor and room number" => nameof(CheckInListingDto.FloorAndRoomNumber),
+            "Reservation number" => nameof(CheckInListingDto.ReservationNumber),
+            "Fullname" => nameof(CheckInListingDto.FullGuestName),
+            "Check in date" => nameof(CheckInListingDto.CheckInDate),
+            "Check out date" => nameof(CheckInListingDto.CheckOutDate),
+            _ => null
+        };
+        SortByAscOrDesc(columnToSort);
     }
 }

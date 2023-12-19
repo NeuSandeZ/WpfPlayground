@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Hotel.MVVM.Views.Modals"
              mc:Ignorable="d"
              d:DesignHeight="550" d:DesignWidth="550">
 
@@ -11,8 +10,8 @@
         <Grid Margin="10 0 0 0" Background="Transparent">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
 
             <TextBlock HorizontalAlignment="Center"
@@ -29,20 +28,21 @@
                     <StackPanel>
                         <TextBlock Text="Description" />
                         <Border CornerRadius="10" Background="Azure">
-                            <TextBox Margin="10 0 10 0" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Margin="10 0 10 0"
+                                     Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
                         </Border>
                     </StackPanel>
 
 
-                    <StackPanel >
+                    <StackPanel>
                         <TextBlock Text="Due Time" />
                         <Border CornerRadius="10" Background="Azure">
                             <DatePicker Margin="10 0 10 0"
-                                        Text="{Binding DueTime, UpdateSourceTrigger=PropertyChanged}" />
+                                        SelectedDate="{Binding DueTime, UpdateSourceTrigger=PropertyChanged}" />
                         </Border>
                     </StackPanel>
 
-                    <Grid >
+                    <Grid>
 
                         <StackPanel>
                             <TextBlock Text="Assign to" />
@@ -54,21 +54,19 @@
                                           SelectedValue="{Binding Path=SelectedMemberId,Mode=TwoWay}" />
                             </Border>
                         </StackPanel>
-                        
+
                     </Grid>
 
                     <Grid Margin="0 10 0 0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Button Content="Add" Command="{Binding AddTaskCommand}" Background="Green"
-                                Margin="0 10 0 20">
-                        </Button>
-                        <Button Grid.Row="1" Content="Cancel" Command="{Binding CloseModal}" Background="Red">
-                        </Button>
+                                Margin="0 10 0 20" />
+                        <Button Grid.Row="1" Content="Cancel" Command="{Binding CloseModal}" Background="Red" />
                     </Grid>
-                    
+
                 </StackPanel>
 
             </Grid>

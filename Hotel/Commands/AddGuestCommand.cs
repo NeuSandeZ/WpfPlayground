@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using Hotel.Application.DTOS.GuestsListingDto;
 using Hotel.Application.Services.Interfaces;
 using Hotel.MVVM.ViewModels.Modals;
@@ -33,7 +34,15 @@ public class AddGuestCommand : BaseCommand
             PostalCode = _guestViewModel.PostalCode
         };
 
-        Task.Run(() => _guestsListingService.CreateGuest(addGuestDto));
-        _navigator.Close();
+        if (addGuestDto is not null && !_guestViewModel.HasErrors)
+        {
+            Task.Run(() => _guestsListingService.CreateGuest(addGuestDto));
+            MessageBox.Show("Guest added!");
+            _navigator.Close();
+        }
+        else
+        {
+            MessageBox.Show("Fill in the template!");
+        }
     }
 }

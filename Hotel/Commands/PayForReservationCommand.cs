@@ -6,20 +6,21 @@ namespace Hotel.Commands;
 
 public class PayForReservationCommand : BaseCommand
 {
-    private readonly PaymentViewModel _paymentViewModel;
     private readonly IPaymentService _paymentService;
+    private readonly PaymentViewModel _paymentViewModel;
+
     public PayForReservationCommand(PaymentViewModel paymentViewModel, IPaymentService paymentService)
     {
         _paymentViewModel = paymentViewModel;
         _paymentService = paymentService;
-
     }
+
     public override void Execute(object? parameter)
     {
-        var paymentDto = new PaymentDto()
+        var paymentDto = new PaymentDto
         {
             PaymentDate = _paymentViewModel.PaymentDate,
-            Amount =  int.Parse(_paymentViewModel.TotalCost.Replace("$","")),
+            Amount = int.Parse(_paymentViewModel.TotalCost.Replace("$", "")),
             PaymentTypeId = _paymentViewModel.SelectedPaymentTypeId,
             ReservationId = _paymentViewModel.ReservationId
         };

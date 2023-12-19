@@ -59,7 +59,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-                        
+
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -76,7 +76,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-                        
+
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -93,7 +93,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-                        
+
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -110,7 +110,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-                        
+
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -127,7 +127,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-                        
+
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"
@@ -144,7 +144,7 @@
                             </Grid>
 
                         </myCustomControls:MyButton>
-                        
+
 
                         <myCustomControls:MyButton Style="{StaticResource ButtonStyle}"
                                                    Command="{Binding UpdateCurrentViewModelCommand}"

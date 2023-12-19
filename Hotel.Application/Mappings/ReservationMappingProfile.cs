@@ -40,7 +40,10 @@ public class ReservationMappingProfile : Profile
                     src.FloorNumber))
             .ForMember(dest => dest.PricePerNight,
                 opt => opt.MapFrom(src =>
-                    src.PricePerNight));
+                    src.PricePerNight))
+            .ForMember(dest => dest.DiscountAmount,
+                opt => opt.MapFrom(src =>
+                    int.Parse(src.RoomPromotions.DiscountAmount)));
 
         
         CreateMap<AddReservationDto, Reservation>()

@@ -30,7 +30,7 @@
     <DataTemplate DataType="{x:Type viewModels:StaffViewModel}">
         <views:StaffView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModels:TasksViewModel}">
         <views:TasksView />
     </DataTemplate>
@@ -48,11 +48,11 @@
     <DataTemplate DataType="{x:Type viewModelModals:AddRoomViewModel}">
         <viewsModals:AddRoomView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModelModals:AddStaffViewModel}">
         <viewsModals:AddStaffView />
     </DataTemplate>
-    
+
     <DataTemplate DataType="{x:Type viewModelModals:AddTaskViewModel}">
         <viewsModals:AddTaskView />
     </DataTemplate>

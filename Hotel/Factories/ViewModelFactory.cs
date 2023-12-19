@@ -11,19 +11,19 @@ public class ViewModelFactory : IViewModelFactory
 {
     //MODALS
     private readonly CreateViewModel<AddReservationViewModel> _createAddModalView;
-    private readonly CreateViewModel<AddGuestViewModel> _creatGuestViewModal;
-    private readonly CreateViewModel<AddRoomViewModel> _createRoomViewModal;
     private readonly CreateViewModel<AddStaffViewModel> _createAddStaffViewModel;
     private readonly CreateViewModel<AddTaskViewModel> _createAddTaskViewModel;
-    
+    private readonly CreateViewModel<CheckInsOutsViewModel> _createCheckInsViewModel;
+    private readonly CreateViewModel<GuestViewModel> _createGuestViewModel;
+    private readonly CreateViewModel<PaymentViewModel> _createPaymentViewModel;
+
     //VMS
     private readonly CreateViewModel<ReservationsListingViewModel> _createReservationViewModel;
     private readonly CreateViewModel<RoomsViewModel> _createRoomsViewModel;
-    private readonly CreateViewModel<PaymentViewModel> _createPaymentViewModel;
-    private readonly CreateViewModel<GuestViewModel> _createGuestViewModel;
-    private readonly CreateViewModel<CheckInsOutsViewModel> _createCheckInsViewModel;
+    private readonly CreateViewModel<AddRoomViewModel> _createRoomViewModal;
     private readonly CreateViewModel<StaffViewModel> _createStaffViewModel;
     private readonly CreateViewModel<TasksViewModel> _createTasksViewModel;
+    private readonly CreateViewModel<AddGuestViewModel> _creatGuestViewModal;
 
 
     //TODO i think i should find the way to create object with the ViewModel needed instead of creating all at once and choosing from them
@@ -33,9 +33,9 @@ public class ViewModelFactory : IViewModelFactory
         CreateViewModel<AddGuestViewModel> creatGuestViewModal,
         CreateViewModel<RoomsViewModel> createRoomsViewModel,
         CreateViewModel<PaymentViewModel> createPaymentViewModel,
-        CreateViewModel<AddRoomViewModel> createRoomViewModal, 
+        CreateViewModel<AddRoomViewModel> createRoomViewModal,
         CreateViewModel<CheckInsOutsViewModel> createCheckInsViewModel,
-        CreateViewModel<StaffViewModel> createStaffViewModel, 
+        CreateViewModel<StaffViewModel> createStaffViewModel,
         CreateViewModel<TasksViewModel> createTasksViewModel,
         CreateViewModel<AddStaffViewModel> createAddStaffViewModel,
         CreateViewModel<AddTaskViewModel> createAddTaskViewModel)

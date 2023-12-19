@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Hotel.Application.DTOS.TasksListingDto;
 using Hotel.Application.Services.Interfaces;
@@ -8,12 +10,12 @@ using Hotel.Services.Interfaces;
 
 namespace Hotel.MVVM.ViewModels;
 
-public class TasksViewModel : ViewModelBase
+public class TasksViewModel : SortingAndFilteringViewModel<TasksListingDto>
 {
     private readonly INavigator _navigator;
-    private readonly IViewModelFactory _viewModelFactory;
     private readonly ITaskService _taskService;
-    
+    private readonly IViewModelFactory _viewModelFactory;
+
     public TasksViewModel(INavigator navigator, IViewModelFactory viewModelFactory, ITaskService taskService)
     {
         _navigator = navigator;
@@ -22,27 +24,59 @@ public class TasksViewModel : ViewModelBase
 
         GetAllTasks();
 
+        FilterComboBoxList = new ObservableCollection<string>(LoadFilterComboBoxList());
+        SortComboBoxList = new ObservableCollection<string>(LoadSortComboBoxList());
+
         OpenModal = new OpenModalCommand(navigator, viewModelFactory, () => ViewType.AddTask);
         Refresh = new ActionBaseCommand(() => GetAllTasks());
     }
 
-    public ICommand OpenModal { get;}
-    public ICommand Refresh { get;}
+    public ICommand OpenModal { get; }
+    public ICommand Refresh { get; }
 
-    private ObservableCollection<TasksListingDto> _allTasks;
-
-    public ObservableCollection<TasksListingDto> AllTasks
+    protected override Dictionary<string, Func<TasksListingDto, string>> FilterByColumn { get; } = new()
     {
-        get { return _allTasks; }
-        set
-        {
-            _allTasks = value;
-            OnPropertyChanged(nameof(AllTasks));
-        }
+        { "Description", a => a.Description },
+        { "Status", a => a.Status },
+        { "Assigned to", a => a.AssignedTo },
+        { "Due time", a => a.DueTime.ToString() }
+    };
+
+    ~TasksViewModel()
+    {
+        DisposeFilter();
     }
+
+
     private void GetAllTasks()
     {
         var tasksListingDtos = _taskService.GetAllTasks();
-        AllTasks = new ObservableCollection<TasksListingDto>(tasksListingDtos);
+        Items = new ObservableCollection<TasksListingDto>(tasksListingDtos);
+    }
+
+    protected override List<string> LoadFilterComboBoxList()
+    {
+        return new List<string>
+        {
+            "Description",
+            "Status",
+            "Assigned to",
+            "Due time"
+        };
+    }
+
+    protected override void Sort()
+    {
+        CollectionView.SortDescriptions.Clear();
+
+        var columnToSort = ChoosenSortField switch
+        {
+            "Description" => nameof(TasksListingDto.Description),
+            "Status" => nameof(TasksListingDto.Status),
+            "Assigned to" => nameof(TasksListingDto.AssignedTo),
+            "Due time" => nameof(TasksListingDto.DueTime),
+            _ => null
+        };
+        SortByAscOrDesc(columnToSort);
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
+﻿namespace Hotel.MVVM.Views;
 
-namespace Hotel.MVVM.Views;
-
-public partial class CheckInsOutsView : UserControl
+public partial class CheckInsOutsView : CrudViewBase
 {
     public CheckInsOutsView()
     {

@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
 using Hotel.Application.Services.Interfaces;
-using Hotel.Factories;
 using Hotel.MVVM.ViewModels;
 using Hotel.MVVM.ViewModels.Modals;
 using Hotel.Services.Interfaces;
@@ -54,7 +53,7 @@ public class EditGuestCommand : BaseCommand, IRecipient<string>
     {
         return _guestViewModel.SelectedGuest != null;
     }
-    
+
     private void OnModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(GuestViewModel.SelectedGuest)) OnCanExecutedChanged();
