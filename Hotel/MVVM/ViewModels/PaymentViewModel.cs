@@ -40,12 +40,15 @@ public class PaymentViewModel : SortingAndFilteringViewModel<PaymentListingDto>,
 
         TestCommand = new TestCommand("Open", this, messengerCurrentViewStorage);
         PayForReservationCommand = new PayForReservationCommand(this, paymentService);
+        
 
         GetAllPaymentTypes();
         GetListingPayments();
 
         FilterComboBoxList = new ObservableCollection<string>(LoadFilterComboBoxList());
         SortComboBoxList = new ObservableCollection<string>(LoadSortComboBoxList());
+
+        Refresh = new ActionBaseCommand(GetListingPayments);
     }
 
     public DateTime CheckInDate
@@ -145,6 +148,7 @@ public class PaymentViewModel : SortingAndFilteringViewModel<PaymentListingDto>,
     public IQueryable<PaymentType> PaymentTypes { get; set; }
     public ICommand PayForReservationCommand { get; }
     public ICommand TestCommand { get; }
+    public ICommand Refresh { get; set; }
 
     protected override Dictionary<string, Func<PaymentListingDto, string>> FilterByColumn { get; } = new()
     {

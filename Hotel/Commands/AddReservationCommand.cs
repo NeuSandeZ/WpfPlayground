@@ -48,8 +48,8 @@ public class AddReservationCommand : BaseCommand
         if (addReservationDto is not null && !_reservationViewModel.HasErrors)
         {
             Task.Run(() => _reservationListingService.CreateReservation(addReservationDto));
-            ;
-            MessageBox.Show("Guest added!");
+            
+            MessageBox.Show("Reservation created!");
             _navigator.Close();
         }
         else

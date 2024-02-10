@@ -15,7 +15,7 @@ public class AddReservationDto
     public string Street { get; set; }
     public string PostalCode { get; set; }
 
-    public int ReservationStatusId { get; set; } = 4;
+    public int ReservationStatusId { get; set; } = 1;
     public string ReservationNumber => new Random().Next(200000, 250000).ToString();
 
     public int RoomId { get; set; }

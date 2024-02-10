@@ -39,7 +39,7 @@ public class ReservationListingRepository : IReservationListingRepository
                 },
                 ReservationStatus = new ReservationStatus
                 {
-                    Status = r.ReservationStatus.Status
+                    Status = r.ReservationStatus!.Status
                 },
                 ReservationNumber = r.ReservationNumber
             })
@@ -50,8 +50,7 @@ public class ReservationListingRepository : IReservationListingRepository
     public async Task CreateReservation(Reservation reservation)
     {
         var room = _dbContext.Rooms.FirstOrDefault(a => a.Id == reservation.RoomId);
-        //TODO weird ID on DB
-        room.RoomStatusId = 1002;
+        room.RoomStatusId = 3;
         _dbContext.Update(room);
         await _dbContext.AddAsync(reservation);
         await _dbContext.SaveChangesAsync();

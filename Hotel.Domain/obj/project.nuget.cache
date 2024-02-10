@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Eq8w0u3qvAeCrbsJRtBMCxDywOHNL/GoH1rQWjgpj3nLVMkCcYOtfFIeLtf8T0l7hmKAXbDFnn3Rjxyjl4ruMA==",
+  "dgSpecHash": "OsCgUsRRMpuMzTWjcY3UMBpSH8dv1NgyVdh5oaybbFnaa78rcU9/SE1cA3f2z/17+Fd2VglJys9VSSEC1fpcEg==",
   "success": true,
-  "projectFilePath": "D:\\RiderProjects\\SRC\\Hotel.Domain\\Hotel.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\ProgramingProjects\\MyWpfProject\\Hotel.Domain\\Hotel.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
+  ],
   "logs": []
 }

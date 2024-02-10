@@ -9,3 +9,15 @@ D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.dll
 D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\refint\Hotel.Domain.dll
 D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.pdb
 D:\RiderProjects\SRC\Hotel.Domain\obj\Debug\net7.0\ref\Hotel.Domain.dll
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\bin\Debug\net7.0\Hotel.Domain.deps.json
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\bin\Debug\net7.0\Hotel.Domain.dll
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\bin\Debug\net7.0\Hotel.Domain.pdb
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.AssemblyInfoInputs.cache
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.AssemblyInfo.cs
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.csproj.CoreCompileInputs.cache
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.sourcelink.json
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.dll
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\refint\Hotel.Domain.dll
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\Hotel.Domain.pdb
+D:\ProgramingProjects\MyWpfProject\Hotel.Domain\obj\Debug\net7.0\ref\Hotel.Domain.dll

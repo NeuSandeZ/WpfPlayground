@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5lskzR/s7xwvwW0HkvpTK7gyfdpzzcGHTS43KSmzNFeeILPHvzUXoSXBuZt+urNzYsTnX2MxvNtOstmnsvw0mw==",
+  "dgSpecHash": "u6h0gGVrTIVN3MIgKJeTCi69Nh+KTXv3/ZTOxr9XCGZ6OIBxz1jVF6yW8H/oiAjfpM90+hrAEKF1qXA4UINEcg==",
   "success": true,
-  "projectFilePath": "D:\\RiderProjects\\SRC\\Hotel.Application\\Hotel.Application.csproj",
+  "projectFilePath": "D:\\ProgramingProjects\\MyWpfProject\\Hotel.Application\\Hotel.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\smile\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -10,7 +10,10 @@
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\smile\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\smile\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

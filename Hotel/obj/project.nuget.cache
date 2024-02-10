@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+RnVq9/R2MJLBEZb7QFdDWGXN3HgGX3vD8IQWpJn3VXEHweZbw0tTr8+lKCPizySljhKVx6lZOVXN/Uf6YRfew==",
+  "dgSpecHash": "sOStlVV2j7+XxTSPwfI1Xu3jU5gAZjTI+Q1zdM40YpqLW/J/WVWku/r7ynAVF+XMzRc8U6N24yiO2xNfidth2g==",
   "success": true,
-  "projectFilePath": "D:\\RiderProjects\\SRC\\Hotel\\Hotel.csproj",
+  "projectFilePath": "D:\\ProgramingProjects\\MyWpfProject\\Hotel\\Hotel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\smile\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -93,7 +93,11 @@
     "C:\\Users\\smile\\.nuget\\packages\\system.text.encodings.web\\8.0.0-rc.2.23479.6\\system.text.encodings.web.8.0.0-rc.2.23479.6.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\system.text.json\\8.0.0-rc.2.23479.6\\system.text.json.8.0.0-rc.2.23479.6.nupkg.sha512",
     "C:\\Users\\smile\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\smile\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\smile\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\smile\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,13 +1,16 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Windows;
 using Hotel.Application.Extensions;
 using Hotel.Factories;
+using Hotel.Infrastructure;
 using Hotel.Infrastructure.Extensions;
 using Hotel.MVVM.ViewModels;
 using Hotel.MVVM.ViewModels.Modals;
 using Hotel.Services;
 using Hotel.Services.Interfaces;
 using Hotel.Stores;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -91,6 +94,14 @@ public partial class App : System.Windows.Application
                 });
             })
             .Build();
+        
+        var serviceScope = _host.Services.CreateScope();
+        var dbContext = serviceScope.ServiceProvider.GetRequiredService<HotelDbContext>();
+        var pendingMigrations = dbContext.Database.GetPendingMigrations();
+        if (pendingMigrations.Any())
+        {
+            dbContext.Database.Migrate();
+        }
     }
 
     protected override void OnStartup(StartupEventArgs e)

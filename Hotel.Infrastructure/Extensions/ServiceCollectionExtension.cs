@@ -10,7 +10,6 @@ public static class ServiceCollectionExtension
     public static void AddInfrastructure(this IServiceCollection services, string connectionString)
     {
         services.AddDbContext<HotelDbContext>(builder => { builder.UseSqlServer(connectionString); });
-
         services.AddScoped<IReservationListingRepository, ReservationListingRepository>();
         services.AddScoped<IGuestsListingsRepository, GuestsListingRepository>();
         services.AddScoped<IRoomListingRepository, RoomListingRepository>();
